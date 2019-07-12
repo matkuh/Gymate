@@ -1,32 +1,25 @@
 {
-  "name": "project2",
+  "name": "testAnt",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gljacobs/project2.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gljacobs/project2/issues"
-  },
-  "homepage": "https://github.com/gljacobs/project2#readme",
   "dependencies": {
-    "@okta/okta-signin-widget": "^3.0.2",
     "aws-sdk": "^2.491.0",
-    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.5",
-    "https": "^1.0.0",
     "mysql2": "^1.6.5",
     "path": "^0.12.7",
-    "sequelize": "^5.9.4",
+    "rc-tween-one": "^2.4.1",
+    "sequelize": "^5.10.0",
+    "sequelize-cli": "^5.5.0",
     "uuid": "^3.3.2"
   }
 }

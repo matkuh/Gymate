@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+	 <script src="https://code.jquery.com/jquery.js"></script>
+	 <style type="text/css">
+	 	#loader {
+	 		width: 100vw;
+	 		min-height: 100vh;
+	 		z-index: 9999;
+	 		position: fixed;
+	 		background-color: rgba(255,255,255,.7);
+	 		color: blue;
+	 		text-align: center;
+	 		padding-top: 10%;
+	 	}
+	 	.hide {
+	 		display: none;
+	 	}
+	 </style>
+</head>
+<body>
+<div id="loader" class="hide">
+	<img src="https://thumbs.gfycat.com/InfantileSpiritedGoldenretriever-max-1mb.gif" title="loading..." alt="loading..." aria-label="data is loading please wait.">
+	<h1>LOADING...</h1>
+</div>
+
+<form id="survey">
+       
+    <div>
+        <input id="status" type="textArea" class="validate" name="status" required>
+        <label for="status">Text Area</label>
+    </div>
+
+    <div>
+        <input id="image" type="file" class="validate" name="image" required>
+       <label for="image">Upload a photo</label>
+    </div>
+    <div>
+    	<input type="submit" value="Submit" id="submit">
+	</div>
+
+
+  
+
+</form>
+
+  <img id="match-image"/>
+
+    <div id="match-status">
+    </div>
+
+ <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script>
+
+$(document).ready(function () {
+    $("#submit").click(function (e) {
+    	$("#loader").removeClass("hide");
+        $("#match-image").attr("src", "");
+        $("#survey")[0].reportValidity();
+        e.preventDefault();
+        var formIsValid = $("#survey")[0].checkValidity();
+        var user = new FormData();
+
+        console.log(user);
+
+        if (formIsValid) {
+            var status = $("#status").val().trim();
+            var image = $("#image").prop("files")[0]; 
+
+
+            user.append('status', status);
+            user.append("file", image);
+   				
+   			$("#status").val("")
+       		$("#image").val("")
+
+            $.ajax({
+                type: "POST",
+                url: "/test",
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                data: user, 
+                success: function(response, textStatus, jqXHR) {
+                    if(response === null) {
+                       alert("Error.");
+                    } else {
+                    	$("#loader").addClass("hide");
+                    	console.log("post back");
+                       $("#match-status").text(response.status);
+                       $("#match-image").attr("src", `https://gymateproject2.s3.us-west-1.amazonaws.com/${response.image}.jpg`);}
+                }
+            })
+        } else {
+            alert("Check form and resubmit");
+        }
+    })
+})
+
+</script>
+   
+
+
+</body>
+</html>
