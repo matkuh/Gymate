@@ -45,6 +45,9 @@ require("./app/routes/api-routes.js")(app);
 // Here we introduce HTML routing to serve different HTML files
 require("./app/routes/html-routes.js")(app);
 
+require("./routes")(app);
+
+
 // Starts the server to begin listening
 // =============================================================
 db.sequelize.sync({ force: true }).then(function() {

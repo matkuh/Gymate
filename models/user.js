@@ -24,9 +24,11 @@ module.exports = function(sequelize, DataTypes) {
     buddyId: DataTypes.INTEGER,
     height: DataTypes.INTEGER,
     weight: DataTypes.INTEGER,
+
+    
     profilePhoto: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         len: [1],
         isUrl: true
