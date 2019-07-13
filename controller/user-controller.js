@@ -52,25 +52,63 @@ function uploadImage(req, image, cb) {
 
 module.exports = {
 
-	addUser: function (req, res) {
-    db.User.create(req.body).then(function(dbRoutine) {
-      res.json(dbUser);
-    });
+
+getAllUsers: function (req, res) => {
+
+      db.User.findAll({})
+        .then(dbUser => res.json(dbUser))
+        .catch(err => res.status(422).json(err));   
   },
 
 
 
+getUser: function (req, res) => {
 
-	getUser: function (req, res) {
-
-	db.User.findAll({
-	      where: {
-	        id: req.params.id
-	      }
-	    }).then(function(dbUser) {
-	      res.json(dbUser);
-	    });
+      db.User.findOne({where:{id:req.params.id}})
+        .then(dbUser => res.json(dbUser))
+        .catch(err => res.status(422).json(err));   
   },
+
+
+addUser: function (req, res) => {
+
+		db.User.create(req.body, {username:req.body.username})
+				.then(dbuser => {
+		          res.json(dbuser);
+		        })
+		        .catch(err => res.status(422).json(err));
+  },
+
+
+editUser: function (req, res) => {
+db.User
+      .update(req.body,{ where: {name: req.body.name, username: req.body.username, password: req.body.password, height: req.body.height, weight: req.body.weight}})
+        .then(dbuser => {
+          res.json(dbuser);
+        })
+        .catch(err => res.status(422).json(err));
+    },
+
+
+    // db.User.create(req.body).then(function(dbUser) {
+    //   res.json(dbUser)
+    // });
+  // },
+
+
+
+	
+
+
+
+	// db.User.findAll({
+	//       where: {
+	//         id: req.params.id
+	//       }
+	//     }).then(function(dbUser) {
+	//       res.json(dbUser);
+	//     }).catch(err => res.status(422).json(err));
+  // },
 
 
 
@@ -119,14 +157,15 @@ module.exports = {
 	        });
 	},
 
+});
 
 
 
-	delete: function(req, res) {
-		console.log("delete")
-	}
 
-}
+
+
+
+
 
 
 
