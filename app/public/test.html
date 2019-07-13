@@ -76,6 +76,15 @@ $(document).ready(function () {
    			$("#status").val("")
        		$("#image").val("")
 
+
+
+
+             $.get("/api/users/1", function(data) {
+                console.log(data);
+            });
+
+
+
             $.ajax({
                 type: "POST",
                 url: "/test",

@@ -12,7 +12,7 @@
 
 //get aws keys
 require("dotenv").config();
-var userController = requier("../controllers/user-controller")
+var userController = require("../../controller/user-controller")
 
 
 
@@ -20,7 +20,7 @@ var userController = requier("../controllers/user-controller")
 
 module.exports = function (app) {
     app.post("/test", function (req, res) {
-      userController.update(req, res)
+      userController.updatePhoto(req, res)
         
     });
 

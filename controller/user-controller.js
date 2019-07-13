@@ -1,4 +1,4 @@
-var db = requier("../models");
+var db = require("../models");
 
 
 var uuid = require("uuid/v4");
@@ -8,8 +8,15 @@ var s3 = new AWS.S3({
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 })
 
+
+
+
+
+
+
 function uploadImage(req, image, cb) {
  //use req from the post method, and the image data can be get using the code below
+ 
  var imageFile = req.files.file.data;
 
  s3.createBucket(function(){
@@ -26,7 +33,7 @@ function uploadImage(req, image, cb) {
          } else {
            console.log("Upload Success");
             console.log("image",data);
-            cb();
+            cb(data.Location);
          }
         
        
@@ -35,8 +42,39 @@ function uploadImage(req, image, cb) {
 
 };
 
+
+
+
+
+
+
+
+
 module.exports = {
-	update: function(req, res){
+
+	addUser: function (req, res) {
+    db.User.create(req.body).then(function(dbRoutine) {
+      res.json(dbUser);
+    });
+  },
+
+
+
+
+	getUser: function (req, res) {
+
+	db.User.findAll({
+	      where: {
+	        id: req.params.id
+	      }
+	    }).then(function(dbUser) {
+	      res.json(dbUser);
+	    });
+  },
+
+
+
+	updatePhoto: function(req, res){
 		// find user by id and update user with image and other properties
 		// example
 		/*
@@ -56,17 +94,41 @@ module.exports = {
 	        status = status + uuid();
 
 
-	        var newFriend = {
+	        var profilePhoto = {
 	            status: req.body.status,
 	            image: status
 	        };
 
-	         uploadImage(req, newFriend.image, function(){
-	            res.json(newFriend); 
+
+	        console.log(`https://gymateproject2.s3.us-west-1.amazonaws.com/${profilePhoto.image}.jpg`);
+
+	         uploadImage(req, profilePhoto.image, function(location){
+	         	console.log(location);
+             	db.User.update(
+		      	{
+			        profilePhoto: location,
+		      	},
+		      	{
+		        	where: {id: 1 }
+		      	})
+			    .then(function(dbUser)
+			    {
+		      		res.json(dbUser);
+			    });
+
 	        });
 	},
+
+
+
+
 	delete: function(req, res) {
 		console.log("delete")
 	}
 
 }
+
+
+
+
+
