@@ -1,0 +1,14 @@
+#logo {
+    margin-top: 5%;
+    height: 50px;
+    width: 200px;
+}
+
+#okta-signin-submit {
+    background-color: rgb(255, 79, 79);
+    
+}
+
+.okta-form-title {
+    color: red !important;
+}
