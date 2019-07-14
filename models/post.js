@@ -9,12 +9,10 @@ module.exports = function(sequelize, DataTypes) {
     //     len: [1]
     //   }
     // },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+    time: {
+        type: 'TIMESTAMP',
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+        allowNull: false
     },
     content: {
       type: DataTypes.STRING,
@@ -22,16 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1]
       }
-    },
-    photoUrl: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [1],
-        isUrl: true
-      }
-    },
-   
+    },   
   },
   {
   freezeTableName: true, // Model tableName will be the same as the model name

@@ -18,7 +18,6 @@ function uploadImage(req, image, cb) {
  //use req from the post method, and the image data can be get using the code below
  
  var imageFile = req.files.file.data;
-
  s3.createBucket(function(){
      var params = {
          Bucket: process.env.S3_BUCKET_NAME,
@@ -35,8 +34,6 @@ function uploadImage(req, image, cb) {
             console.log("image",data);
             cb(data.Location);
          }
-        
-       
      })
  });
 
@@ -52,25 +49,62 @@ function uploadImage(req, image, cb) {
 
 module.exports = {
 
-	addUser: function (req, res) {
-    db.User.create(req.body).then(function(dbRoutine) {
-      res.json(dbUser);
-    });
+
+getAllUsers: function (req, res) {
+
+      db.User.findAll({})
+        .then(dbUser => res.json(dbUser))
+        .catch(err => res.status(422).json(err));   
   },
 
 
 
+getUser: function (req, res) {
 
-	getUser: function (req, res) {
-
-	db.User.findAll({
-	      where: {
-	        id: req.params.id
-	      }
-	    }).then(function(dbUser) {
-	      res.json(dbUser);
-	    });
+      db.User.findOne({where:{id:req.params.id}})
+        .then(dbUser => res.json(dbUser))
+        .catch(err => res.status(422).json(err));   
   },
+
+
+addUser: function (req, res) {
+
+		db.User.create(req.body, {username:req.body.username})
+				.then(dbuser => {
+		          res.json(dbuser);
+		        })
+		        .catch(err => res.status(422).json(err));
+  },
+
+
+editUser: function (req, res) {
+db.User.update({name: req.body.name, username: req.body.username, password: req.body.password, height: req.body.height, weight: req.body.weight},{ where: {id: req.params.id}})
+        .then(dbuser => {
+          res.json(dbuser);
+        })
+        .catch(err => res.status(422).json(err));
+    },
+
+
+    // db.User.create(req.body).then(function(dbUser) {
+    //   res.json(dbUser)
+    // });
+  // },
+
+
+
+	
+
+
+
+	// db.User.findAll({
+	//       where: {
+	//         id: req.params.id
+	//       }
+	//     }).then(function(dbUser) {
+	//       res.json(dbUser);
+	//     }).catch(err => res.status(422).json(err));
+  // },
 
 
 
@@ -99,34 +133,46 @@ module.exports = {
 	            image: status
 	        };
 
-
-	        console.log(`https://gymateproject2.s3.us-west-1.amazonaws.com/${profilePhoto.image}.jpg`);
-
 	         uploadImage(req, profilePhoto.image, function(location){
 	         	console.log(location);
+	         	console.log('!!!!!!!!!!');
+	         	console.log(req);
+
+
              	db.User.update(
 		      	{
 			        profilePhoto: location,
 		      	},
 		      	{
-		        	where: {id: 1 }
+		        	where: {id: req.body.UserId}
 		      	})
 			    .then(function(dbUser)
 			    {
-		      		res.json(dbUser);
+		      		res.json({imageUrl: location});
 			    });
 
+				// db.User.update({profilePhoto: location},{ where: {id: req.body.userId}})
+		  //       .then(dbuser => {
+		  //         res.json(dbuser);
+		  //       })
+		  //       .catch(err => res.status(422).json(err));
+		    
 	        });
-	},
-
-
-
-
-	delete: function(req, res) {
-		console.log("delete")
 	}
 
+
+
+
 }
+
+
+
+
+
+
+
+
+
 
 
 

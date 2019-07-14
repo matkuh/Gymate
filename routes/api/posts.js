@@ -1,27 +1,19 @@
 const router = require("express").Router();
-const postscontroller = require("../../controller/postscontroller");
+const postcontroller = require("../../controller/post-controller");
 
 
 // Matches with "api/posts/"
 router.route("/")
 
-   .get(routinescontroller.getAllposts);
+   .get(postcontroller.getPosts)
+   .post(postcontroller.addPost)
 
 
 
 
-// Matches with "api/routines/:id"
-router.route("/:id")
-
-   .post(postscontroller.addPost)
-
-   .put(postscontroller.editPost)
-
-   .get(postscontroller.getUserPost)
-
-   .delete(postscontroller.deletePost);
-
-
+// // Matches with "api/posts/:id"
+ router.route("/:id")
+    .get(postcontroller.getPostsByUser)
 
 module.exports = router;
 

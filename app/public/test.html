@@ -25,6 +25,8 @@
 	<h1>LOADING...</h1>
 </div>
 
+
+<h1> Upload Image </h1>
 <form id="survey">
        
     <div>
@@ -37,11 +39,8 @@
        <label for="image">Upload a photo</label>
     </div>
     <div>
-    	<input type="submit" value="Submit" id="submit">
+    	<input type="submit" value="Upload" id="uploadProfilePic">
 	</div>
-
-
-  
 
 </form>
 
@@ -50,12 +49,238 @@
     <div id="match-status">
     </div>
 
+
+
+
+
+
+
+
+
+
+
+<h1> Post Models </h1>
+
+<div>
+    <input id="postText" type="textArea" name="postText" required>
+    <input type="submit" value="Post" id="post">
+</div>
+
+<div>
+    <input type="submit" value="GetPost" id="getpost">
+     <div id="getpostDisplay"></div>
+</div>
+
+
+
+
+
+
+
+<h1> User Stats</h1>
+
+
+<div id = "userStats">
+    <label for="weight">Weight</label>
+    <input id="weight" type="textArea" name="weight" required>
+    
+    <label for="height">Height</label>
+    <input id="height" type="textArea" name="height" required>
+
+    <input type="submit" value="AddStats" id="addStat">
+</div>
+
+<div id = "userStatsDisplay">
+
+</div>
+
+
+
+
+<h1> Routine </h1>
+
+<h2>Select Routines </h2>
+
+<div>
+
+        <p>Routine1</p><div id = "monday"></div>
+        <input type="checkbox" id="1" value = "1" class = "routine" name="1">
+
+        <p>Routine2</p><div id = "tuesday"></div>
+        <input type="checkbox" id="2" value = "2" class = "routine" name="2">
+
+        <p>Routine3</p><div id = "wednesday"></div>
+        <input type="checkbox" id="3" value = "3" class = "routine" name="3">
+
+</div>
+
+
+
+<div id = "buddy">
+    
+</div>
+<div id = "me">
+    
+</div>
+
+
+
+
+<div id = "myRoutine">
+
+        <p>Monday</p><div id = "day1"></div>
+        <input type="checkbox" id="mondayCheck" name="mondayCheck">
+
+        <p>Tuesday</p><div id = "day2"></div>
+        <input type="checkbox" id="tuesdayCheck" name="tuesdayCheck">
+
+        <p>Wednesday</p><div id = "day3"></div>
+        <input type="checkbox" id="wednesdayCheck" name="wednesdayCheck">
+
+        <p>Thursday</p><div id = "day4"></div>
+        <input type="checkbox" id="thursdayCheck" name="thursdayCheck">
+
+        <p>Friday</p><div id = "day5"></div>
+        <input type="checkbox" id="fridayCheck" name="fridayCheck">
+
+        <p>Saturday</p><div id = "day6"></div>
+        <input type="checkbox" id="saturdayCheck" name="saturdayCheck">
+
+
+        <p>Sunday</p><div id = "day7"></div>
+        <input type="checkbox" id="sundayCheck" name="sundayCheck">
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script>
 
-$(document).ready(function () {
-    $("#submit").click(function (e) {
+//Information from log in and sign up page 
+// =============================================================
+
+
+var userName = "Chloe";
+var name = "Chloe Zhou"
+var password = "xxxx";
+var buddyId;
+var userId;
+
+
+addUser();
+
+setInterval(function(){
+    displayUserRoutine(userId);
+}, 1000);
+setInterval(function(){
+    displayAllPosts();
+}, 5000);
+setInterval(function(){
+    displayBuddyPosts();
+}, 5000);
+setInterval(function(){
+    displayUserPosts();
+}, 5000);
+
+
+
+
+//User Section
+// =============================================================
+
+function getUser(id, cb)
+{
+     $.get("api/users/" + id).
+             then(function(data) {
+              console.log(data);
+              cb(data)
+            });
+}
+
+
+
+
+function addUser()
+{
+
+    var newUser = {
+    name: name,
+    password: password,
+    username: userName,
+    buddyId: buddyId
+  };
+
+
+     $.post("/api/users/", newUser)
+
+    .then(function(data) {
+
+      console.log(data);
+      userId = (data.id);
+
+      alert("Adding user...");
+    });
+
+}
+
+
+
+
+function addUserStat()
+{
+
+
+    var newStat = 
+    {
+        weight: $("#height").val().trim(),
+        height: $("#weight").val().trim()
+    }
+
+    console.log(newStat);
+
+    $.ajax({
+          method: "PUT",
+          url: "/api/users/" + userId,
+          data: newStat
+        }).then(function(data) {
+
+      console.log(data);
+      console.log(data.weight);
+
+       $("#userStatsDisplay").append("weight: "+ data.weight + "<br>");
+       $("#userStatsDisplay").append("height: "+ data.height + "<br>");
+
+
+
+      alert("Adding userStats...");
+
+
+    });
+}
+
+
+
+
+ $("#addStat").click(function (e) {
+
+     addUserStat();
+    })
+
+
+
+
+    $("#uploadProfilePic").click(function (e) {
     	$("#loader").removeClass("hide");
         $("#match-image").attr("src", "");
         $("#survey")[0].reportValidity();
@@ -70,8 +295,10 @@ $(document).ready(function () {
             var image = $("#image").prop("files")[0]; 
 
 
+
             user.append('status', status);
             user.append("file", image);
+            user.append("UserId", userId);
    				
    			$("#status").val("")
        		$("#image").val("")
@@ -79,7 +306,7 @@ $(document).ready(function () {
 
 
 
-             $.get("/api/users/1", function(data) {
+             $.get("/api/users/" + userId, function(data) {
                 console.log(data);
             });
 
@@ -87,7 +314,7 @@ $(document).ready(function () {
 
             $.ajax({
                 type: "POST",
-                url: "/test",
+                url: "/api/users/test",
                 processData: false,
                 contentType: false,
                 dataType: "json",
@@ -98,15 +325,244 @@ $(document).ready(function () {
                     } else {
                     	$("#loader").addClass("hide");
                     	console.log("post back");
+                      console.log(response);
                        $("#match-status").text(response.status);
-                       $("#match-image").attr("src", `https://gymateproject2.s3.us-west-1.amazonaws.com/${response.image}.jpg`);}
+                       $("#match-image").attr("src", `https://gymateproject2.s3.us-west-1.amazonaws.com/${response.image}.jpg`);
+
+                        $("#match-image").attr("src", response.imageUrl);
+
+
+
+
+                     }
                 }
             })
         } else {
             alert("Check form and resubmit");
         }
+
+
+
     })
-})
+
+
+
+
+
+
+
+// Routine Models
+// =============================================================
+
+
+var Routine1 = ["aa","bb", "cc", "dd", "ee", "ff", "gg"];
+var Routine2 = ["aa","bb", "cc", "dd", "ee", "ff", "gg"];
+var Routine3 = ["aa","bb", "cc", "dd", "ee", "ff", "gg"];
+
+
+
+
+var routineArr = [Routine1, Routine2, Routine3];
+
+
+
+function addRoutine(routine)
+{
+
+    console.log(routine);
+
+    for (var i = 0; i < 7;i ++)
+    {
+        var dailyRoutine = 
+        {
+            dayOfTheWeek: i + 1,
+            routine: routine[i],
+            UserId: userId
+        }
+
+          $.ajax({
+          method: "POST",
+          url: "/api/routines/" + userId,
+          data: dailyRoutine
+        }).then(function(data) {
+
+      console.log(data);
+    });
+    }
+ 
+}
+
+
+function displayUserRoutine(i)
+{
+    $.get("/api/routines/" + userId, function(data) {
+      console.log(data);
+        for (var i = 0; i < data.length; i++)
+        {
+            $("#day" + data[i].dayOfTheWeek).text(" "+ data[i].routine + " ");
+        }
+    });
+
+}
+
+
+
+
+$(".routine").click(function (e) {
+
+
+    var index = parseInt($(this).val()) - 1;
+
+    addRoutine(routineArr[index]);
+
+
+
+});
+
+
+$("#getRoutine").click(function (e) {
+
+
+            $.get("api/posts").
+             then(function(data) {
+
+              console.log(data);
+              for (var i = 0; i < data.length; i ++)
+              {
+                cb = function (i, userData)
+                {
+                    username = userData.name;
+                    console.log(username);
+                    console.log(i);
+                    console.log(data[i].content);
+                    $("#getpostDisplay").append(username + ": " + data[i].content);
+                    $("#getpostDisplay").append("<br>");
+
+                }
+                getUser(data[i].UserId, cb.bind(null,i));
+              }
+            });
+
+
+     });
+
+
+
+
+
+
+
+
+
+
+// post forums 
+// =============================================================
+
+
+
+//Get all posts for all users based on times
+
+function displayAllPosts()
+{
+    $.get("api/posts").
+     then(function(data) {
+
+      console.log(data);
+      $("#getpostDisplay").text("");
+      for (var i = 0; i < data.length; i ++)
+      {
+        cb = function (i, userData)
+        {
+            username = userData.name;
+            $("#getpostDisplay").append(username + ": " + data[i].content);
+            $("#getpostDisplay").append("<br>");
+
+        }
+        getUser(data[i].UserId, cb.bind(null,i));
+      }
+    });
+
+
+};
+
+
+function displayUserPosts()
+{
+    $.get("api/posts/"+userId).
+     then(function(data) {
+
+      console.log(data);
+      $("#me").text("");
+      for (var i = 0; i < data.length; i ++)
+      {
+        cb = function (i, userData)
+        {
+            username = userData.name;
+            $("#me").append(username + ": " + data[i].content);
+            $("#me").append("<br>");
+
+        }
+        getUser(data[i].UserId, cb.bind(null,i));
+      }
+    });
+
+
+};
+
+function displayBuddyPosts()
+{
+    $.get("api/posts/"+buddyId).
+     then(function(data) {
+
+      console.log(data);
+      $("#buddy").text("");
+      for (var i = 0; i < data.length; i ++)
+      {
+        cb = function (i, userData)
+        {
+            username = userData.name;
+            $("#buddy").append(username + ": " + data[i].content);
+            $("#getposbuddytDisplay").append("<br>");
+
+        }
+        getUser(data[i].UserId, cb.bind(null,i));
+      }
+    });
+};
+
+
+
+//User post text after click post button
+     $("#post").click(function (e) {
+
+
+
+        var postText = $("#postText").val().trim();
+
+
+        var postText = {
+
+            content: $("#postText").val().trim(),
+            userId: userId
+         };
+ 
+             $.post("api/posts", postText).
+             then(function(data) {
+
+              console.log(data);
+
+              alert("Adding post...");
+            });
+    })
+
+
+
+
+
+
+
+
+
 
 </script>
    
