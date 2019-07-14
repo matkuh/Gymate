@@ -97,6 +97,71 @@
 
 
 
+<h1> Routine </h1>
+
+<h2>Select Routines </h2>
+
+<div>
+
+        <p>Routine1</p><div id = "monday"></div>
+        <input type="checkbox" id="1" value = "1" class = "routine" name="1">
+
+        <p>Routine2</p><div id = "tuesday"></div>
+        <input type="checkbox" id="2" value = "2" class = "routine" name="2">
+
+        <p>Routine3</p><div id = "wednesday"></div>
+        <input type="checkbox" id="3" value = "3" class = "routine" name="3">
+
+</div>
+
+
+
+<div id = "buddy">
+    
+</div>
+<div id = "me">
+    
+</div>
+
+
+
+
+<div id = "myRoutine">
+
+        <p>Monday</p><div id = "monday"></div>
+        <input type="checkbox" id="mondayCheck" name="mondayCheck">
+
+        <p>Tuesday</p><div id = "tuesday"></div>
+        <input type="checkbox" id="tuesdayCheck" name="tuesdayCheck">
+
+        <p>Wednesday</p><div id = "wednesday"></div>
+        <input type="checkbox" id="wednesdayCheck" name="wednesdayCheck">
+
+        <p>Thursday</p><div id = "thursday"></div>
+        <input type="checkbox" id="thursdayCheck" name="thursdayCheck">
+
+        <p>Friday</p><div id = "friday"></div>
+        <input type="checkbox" id="fridayCheck" name="fridayCheck">
+
+        <p>Saturday</p><div id = "saturday"></div>
+        <input type="checkbox" id="saturdayCheck" name="saturdayCheck">
+
+
+        <p>Sunday</p><div id = "sunday"></div>
+        <input type="checkbox" id="sundayCheck" name="sundayCheck">
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -159,12 +224,6 @@ function addUser()
 
 
 
-
-
-
-
-
-
 function addUserStat()
 {
 
@@ -203,29 +262,10 @@ function addUserStat()
  $("#addStat").click(function (e) {
 
      addUserStat();
-
- 
     })
 
 
 
-
-
-
-
-
-
-
-
-
-
-$(document).ready(function () {
-
-
-
-
-// Upload profile picture
-// =============================================================
 
     $("#uploadProfilePic").click(function (e) {
     	$("#loader").removeClass("hide");
@@ -281,6 +321,134 @@ $(document).ready(function () {
 
 
     })
+
+
+
+
+
+
+
+// Routine Models
+// =============================================================
+
+
+var Routine1 = 
+{
+    monday: "aa",
+    tuesday: "bb",
+    wednesday: "cc",
+    thrusday: "dd"
+}
+
+var Routine2 = 
+{
+    monday: "2aa",
+    tuesday: "2bb",
+    wednesday: "2cc",
+    thrusday: "2dd"
+}
+
+var Routine3 = 
+{
+    monday: "3aa",
+    tuesday: "3bb",
+    wednesday: "3cc",
+    thrusday: "3dd"
+}
+
+var routineArr = [Routine1, Routine2, Routine3];
+
+
+
+function addRoutine(routine)
+{
+
+    console.log(routine);
+
+    $.ajax({
+          method: "POST",
+          url: "/api/routines/" + userId,
+          data: routine
+        }).then(function(data) {
+
+      console.log(data);
+
+       // $("#userStatsDisplay").append("weight: "+ data + "<br>");
+       // $("#userStatsDisplay").append("height: "+ data + "<br>");
+
+
+
+      alert("Adding userStats...");
+
+
+    });
+}
+
+
+
+
+
+$("#addRoutine").click(function (e) {
+
+     addRoutine();
+    })
+
+
+
+$(".routine").click(function (e) {
+
+
+    var index = parsInt(this.val()) - 1;
+
+    addRountie(routineArr[index]);
+
+
+
+
+
+}
+
+
+$("#getRoutine").click(function (e) {
+
+
+            $.get("api/posts").
+             then(function(data) {
+
+              console.log(data);
+              for (var i = 0; i < data.length; i ++)
+              {
+                cb = function (i, userData)
+                {
+                    username = userData.name;
+                    console.log(username);
+                    console.log(i);
+                    console.log(data[i].content);
+                    $("#getpostDisplay").append(username + ": " + data[i].content);
+                    $("#getpostDisplay").append("<br>");
+
+                }
+                getUser(data[i].UserId, cb.bind(null,i));
+              }
+            });
+
+
+     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -364,7 +532,7 @@ $(document).ready(function () {
 
 
 
-})
+
 
 </script>
    

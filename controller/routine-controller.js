@@ -3,7 +3,7 @@ const db = require("../models");
 
 module.exports = {
 
-  // Gets all code snippets in db
+
   getAllRoutines: function (req, res) {
     db.Routine.findAll({}).then(function(dbRoutine) {
       res.json(dbRoutine);
@@ -11,7 +11,8 @@ module.exports = {
 
   },
 
-  // Gets all code snippets in db for a specified tag
+
+
   editRoutine: function (req, res) {
     db.Routine.update(
       {
@@ -45,7 +46,13 @@ module.exports = {
 
 //Add new routine for specific user
    addRoutine: function (req, res) {
-    db.Routine.create(req.body).then(function(dbRoutine) {
+    db.Routine.create(
+
+
+
+
+
+      req.body).then(function(dbRoutine) {
       res.json(dbRoutine);
     });
   },
