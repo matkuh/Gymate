@@ -23,3 +23,20 @@ h3{
 footer {
     color: black;
 }
+
+.card-title {
+    font-weight: bold;
+}
+
+.carousel {
+    height: 240px;
+    perspective: 1000px;
+}
+
+.collection .title {
+    font-weight: bold;
+}
+
+.input-field.col.s12 {
+    margin-bottom: -20px;
+}
