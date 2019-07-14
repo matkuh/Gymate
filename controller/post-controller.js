@@ -21,23 +21,24 @@ module.exports = {
 
 
 
+//Add new routine for specific user
+   addPost: function (req, res) {
+    db.Post.create({
+      user_id: req.body.user_id,
+      content: req.body.text}
+      ).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  },
 
 
-  // addPost: function (req, res) {
-  //   db.Post.create(req.body).then(function(dbPost) {
-  //     res.json(dbPost);
-  //   }).catch(err => res.status(422).json(err));   
-  // },
-
-
-
-addPost: function (req, res) {
-
-    db.Post.create(req.body)
-        .then(function(dbpost){
-              res.json(dbpost);
-            })
-            // .catch(err => res.status(422).json(err));
+  getPosts: function (req, res) {
+    db.Post.findAll({
+      order:[['time', 'desc']],
+      limit:10}
+      ).then(function(dbPost) {
+      res.json(dbPost);
+    });
   },
 
 
@@ -86,36 +87,7 @@ addPost: function (req, res) {
   // },
 
 
-editPost: function (req, res) {
-db.Post.update({
-  title: req.body.title, content: req.body.content, photoUrl: req.body.photoUrl},{ where: {id: req.params.id}})
-        .then(function(dbpost){
-              res.json(dbpost);
-        })
-        // .catch(err => res.status(422).json(err));
-    },
 
-
-
-   deletePost: function(req, res) {
-
-
-    // db.Post.destroy({
-    //   where: {
-    //     id: req.params.id
-    //   }
-    // }).then(function(dbPost) {
-    //   res.json(dbPost);
-    // }).catch(err => res.status(422).json(err));   
-
-
-
-     db.Post.destroy(req.body,{ where: {id: req.params.id}})
-        .then(function(dbpost){
-              res.json(dbpost);
-        })
-        // .catch(err => res.status(422).json(err));
-    }
 
 
 }
