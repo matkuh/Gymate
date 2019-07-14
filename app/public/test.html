@@ -128,26 +128,26 @@
 
 <div id = "myRoutine">
 
-        <p>Monday</p><div id = "monday"></div>
+        <p>Monday</p><div id = "day1"></div>
         <input type="checkbox" id="mondayCheck" name="mondayCheck">
 
-        <p>Tuesday</p><div id = "tuesday"></div>
+        <p>Tuesday</p><div id = "day2"></div>
         <input type="checkbox" id="tuesdayCheck" name="tuesdayCheck">
 
-        <p>Wednesday</p><div id = "wednesday"></div>
+        <p>Wednesday</p><div id = "day3"></div>
         <input type="checkbox" id="wednesdayCheck" name="wednesdayCheck">
 
-        <p>Thursday</p><div id = "thursday"></div>
+        <p>Thursday</p><div id = "day4"></div>
         <input type="checkbox" id="thursdayCheck" name="thursdayCheck">
 
-        <p>Friday</p><div id = "friday"></div>
+        <p>Friday</p><div id = "day5"></div>
         <input type="checkbox" id="fridayCheck" name="fridayCheck">
 
-        <p>Saturday</p><div id = "saturday"></div>
+        <p>Saturday</p><div id = "day6"></div>
         <input type="checkbox" id="saturdayCheck" name="saturdayCheck">
 
 
-        <p>Sunday</p><div id = "sunday"></div>
+        <p>Sunday</p><div id = "day7"></div>
         <input type="checkbox" id="sundayCheck" name="sundayCheck">
 
 </div>
@@ -332,29 +332,12 @@ function addUserStat()
 // =============================================================
 
 
-var Routine1 = 
-{
-    monday: "aa",
-    tuesday: "bb",
-    wednesday: "cc",
-    thrusday: "dd"
-}
+var Routine1 = ["aa","bb", "cc", "dd", "ee", "ff", "gg"];
+var Routine2 = ["aa","bb", "cc", "dd", "ee", "ff", "gg"];
+var Routine3 = ["aa","bb", "cc", "dd", "ee", "ff", "gg"];
 
-var Routine2 = 
-{
-    monday: "2aa",
-    tuesday: "2bb",
-    wednesday: "2cc",
-    thrusday: "2dd"
-}
 
-var Routine3 = 
-{
-    monday: "3aa",
-    tuesday: "3bb",
-    wednesday: "3cc",
-    thrusday: "3dd"
-}
+
 
 var routineArr = [Routine1, Routine2, Routine3];
 
@@ -365,48 +348,60 @@ function addRoutine(routine)
 
     console.log(routine);
 
-    $.ajax({
+    for (var i = 0; i < 7;i ++)
+    {
+        var dailyRoutine = 
+        {
+            dayOfTheWeek: i + 1,
+            routine: routine[i],
+            UserId: userId
+        }
+
+          $.ajax({
           method: "POST",
           url: "/api/routines/" + userId,
-          data: routine
+          data: dailyRoutine
         }).then(function(data) {
 
       console.log(data);
+        $.get("/api/routines/" + userId, function(data) {
 
-       // $("#userStatsDisplay").append("weight: "+ data + "<br>");
-       // $("#userStatsDisplay").append("height: "+ data + "<br>");
+        $("#day" + data[i].dayOfTheWeek).append(" "+ data[i].routine + " ");
+    });
 
-
-
-      alert("Adding userStats...");
 
 
     });
+
+
+    }
+ 
 }
 
 
+// function displayUserRoutine(i)
+// {
+//     $.get("/api/routines/" + userId, function(data) {
+//       console.log(data);
 
+//         $("#day" + data[i].dayOfTheWeek).append(" "+ data[i].routine + " ");
+//     });
 
+// }
 
-$("#addRoutine").click(function (e) {
-
-     addRoutine();
-    })
 
 
 
 $(".routine").click(function (e) {
 
 
-    var index = parsInt(this.val()) - 1;
+    var index = parseInt($(this).val()) - 1;
 
-    addRountie(routineArr[index]);
-
-
+    addRoutine(routineArr[index]);
 
 
 
-}
+});
 
 
 $("#getRoutine").click(function (e) {

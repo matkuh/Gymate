@@ -34,7 +34,7 @@ module.exports = {
   getUserRoutines: function (req, res) {
     db.Routine.findAll({
       where: {
-        User_id: req.params.id
+        UserId: req.params.id
       }
     }).then(function(dbRoutine) {
       res.json(dbRoutine);
@@ -46,13 +46,10 @@ module.exports = {
 
 //Add new routine for specific user
    addRoutine: function (req, res) {
-    db.Routine.create(
-
-
-
-
-
-      req.body).then(function(dbRoutine) {
+    db.Routine.create({
+     dayOfTheWeek: parseInt(req.body.dayOfTheWeek),
+     routine: req.body.routine,
+     UserId: req.body.UserId}).then(function(dbRoutine) {
       res.json(dbRoutine);
     });
   },
