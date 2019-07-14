@@ -53,7 +53,7 @@ function uploadImage(req, image, cb) {
 module.exports = {
 
 
-getAllUsers: function (req, res) => {
+getAllUsers: function (req, res) {
 
       db.User.findAll({})
         .then(dbUser => res.json(dbUser))
@@ -62,7 +62,7 @@ getAllUsers: function (req, res) => {
 
 
 
-getUser: function (req, res) => {
+getUser: function (req, res) {
 
       db.User.findOne({where:{id:req.params.id}})
         .then(dbUser => res.json(dbUser))
@@ -70,7 +70,7 @@ getUser: function (req, res) => {
   },
 
 
-addUser: function (req, res) => {
+addUser: function (req, res) {
 
 		db.User.create(req.body, {username:req.body.username})
 				.then(dbuser => {
@@ -80,9 +80,8 @@ addUser: function (req, res) => {
   },
 
 
-editUser: function (req, res) => {
-db.User
-      .update(req.body,{ where: {name: req.body.name, username: req.body.username, password: req.body.password, height: req.body.height, weight: req.body.weight}})
+editUser: function (req, res) {
+db.User.update({name: req.body.name, username: req.body.username, password: req.body.password, height: req.body.height, weight: req.body.weight},{ where: {id: req.params.id}})
         .then(dbuser => {
           res.json(dbuser);
         })
@@ -142,22 +141,32 @@ db.User
 
 	         uploadImage(req, profilePhoto.image, function(location){
 	         	console.log(location);
-             	db.User.update(
-		      	{
-			        profilePhoto: location,
-		      	},
-		      	{
-		        	where: {id: 1 }
-		      	})
-			    .then(function(dbUser)
-			    {
-		      		res.json(dbUser);
-			    });
+       //       	db.User.update(
+		     //  	{
+			    //     profilePhoto: location,
+		     //  	},
+		     //  	{
+		     //    	where: {id: 1 }
+		     //  	})
+			    // .then(function(dbUser)
+			    // {
+		     //  		res.json(dbUser);
+			    // });
 
+		db.User.update({profilePhoto: location},{ where: {id: res.params.id}})
+        .then(dbuser => {
+          res.json(dbuser);
+        })
+        .catch(err => res.status(422).json(err));
+    
 	        });
-	},
+	}
 
-});
+
+
+
+}
+
 
 
 

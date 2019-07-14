@@ -10,14 +10,14 @@ router.route("/")
 
 
 
-// Matches with "api/routines/:id"
+// Matches with "api/posts/:id"
 router.route("/:id")
 
    .post(postscontroller.addPost)
 
    .put(postscontroller.editPost)
 
-   .get(postscontroller.getUserPost)
+   .get(postscontroller.getPosts)
 
    .delete(postscontroller.deletePost);
 
