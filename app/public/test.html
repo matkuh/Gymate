@@ -182,10 +182,17 @@ addUser();
 
 setInterval(function(){
     displayUserRoutine(userId);
-}, 10000);
+}, 1000);
 setInterval(function(){
     displayAllPosts();
-}, 10000);
+}, 5000);
+setInterval(function(){
+    displayBuddyPosts();
+}, 5000);
+setInterval(function(){
+    displayUserPosts();
+}, 5000);
+
 
 
 
@@ -479,7 +486,49 @@ function displayAllPosts()
 };
 
 
+function displayUserPosts()
+{
+    $.get("api/posts/"+userId).
+     then(function(data) {
 
+      console.log(data);
+      $("#me").text("");
+      for (var i = 0; i < data.length; i ++)
+      {
+        cb = function (i, userData)
+        {
+            username = userData.name;
+            $("#me").append(username + ": " + data[i].content);
+            $("#me").append("<br>");
+
+        }
+        getUser(data[i].UserId, cb.bind(null,i));
+      }
+    });
+
+
+};
+
+function displayBuddyPosts()
+{
+    $.get("api/posts/"+buddyId).
+     then(function(data) {
+
+      console.log(data);
+      $("#buddy").text("");
+      for (var i = 0; i < data.length; i ++)
+      {
+        cb = function (i, userData)
+        {
+            username = userData.name;
+            $("#buddy").append(username + ": " + data[i].content);
+            $("#getposbuddytDisplay").append("<br>");
+
+        }
+        getUser(data[i].UserId, cb.bind(null,i));
+      }
+    });
+};
 
 
 

@@ -12,8 +12,8 @@ router.route("/")
 
 
 // // Matches with "api/posts/:id"
-// router.route("/")
-
+ router.route("/:id")
+    .get(postcontroller.getPostsByUser)
 
 module.exports = router;
 

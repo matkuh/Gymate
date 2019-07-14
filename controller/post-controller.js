@@ -37,6 +37,19 @@ module.exports = {
     });
   },
 
+  getPostsByUser: function (req, res) {
+    db.Post.findAll(
+      {
+        where: {UserId: req.params.id}
+      },
+      {
+        order:[['time', 'desc']],
+        limit:10
+      }
+      ).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  },
 
 
 

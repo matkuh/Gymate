@@ -34,8 +34,6 @@ function uploadImage(req, image, cb) {
             console.log("image",data);
             cb(data.Location);
          }
-        
-       
      })
  });
 
