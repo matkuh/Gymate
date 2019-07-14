@@ -12,12 +12,12 @@ module.exports = {
   // },
 
 
-  getAllPosts: function (req, res) {
+  // getAllPosts: function (req, res) {
 
-      db.Post.findAll({})
-        .then(dbUser => res.json(dbPost))
-        .catch(err => res.status(422).json(err));   
-  },
+  //     db.Post.findAll({})
+  //       .then(dbUser => res.json(dbPost))
+  //       .catch(err => res.status(422).json(err));   
+  // },
 
 
 
@@ -34,10 +34,10 @@ module.exports = {
 addPost: function (req, res) {
 
     db.Post.create(req.body)
-        .then(dbuser => {
+        .then(function(dbpost){
               res.json(dbpost);
             })
-            .catch(err => res.status(422).json(err));
+            // .catch(err => res.status(422).json(err));
   },
 
 
@@ -57,12 +57,12 @@ addPost: function (req, res) {
   // },
 
 
-getPosts: function (req, res) {
+// getPosts: function (req, res) {
 
-      db.Post.findAll({where:{User_id:req.params.id}})
-        .then(dbPost => res.json(dbPost))
-        .catch(err => res.status(422).json(err));   
-  },
+//       db.Post.findAll({where:{User_id:req.params.id}})
+//         .then(dbPost => res.json(dbPost))
+//         .catch(err => res.status(422).json(err));   
+//   },
 
 
 
@@ -89,10 +89,10 @@ getPosts: function (req, res) {
 editPost: function (req, res) {
 db.Post.update({
   title: req.body.title, content: req.body.content, photoUrl: req.body.photoUrl},{ where: {id: req.params.id}})
-        .then(dbPost => {
-          res.json(dbPost);
+        .then(function(dbpost){
+              res.json(dbpost);
         })
-        .catch(err => res.status(422).json(err));
+        // .catch(err => res.status(422).json(err));
     },
 
 
@@ -111,10 +111,10 @@ db.Post.update({
 
 
      db.Post.destroy(req.body,{ where: {id: req.params.id}})
-        .then(dbpost => {
-          res.json(dbpost);
+        .then(function(dbpost){
+              res.json(dbpost);
         })
-        .catch(err => res.status(422).json(err));
+        // .catch(err => res.status(422).json(err));
     }
 
 

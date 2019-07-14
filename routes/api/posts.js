@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const postscontroller = require("../../controller/post-controller");
+const postcontroller = require("../../controller/post-controller");
 
 
 // Matches with "api/posts/"
 router.route("/")
 
-   .get(postscontroller.getAllposts);
+   .get(postcontroller.getAllposts);
 
 
 
@@ -13,13 +13,13 @@ router.route("/")
 // Matches with "api/posts/:id"
 router.route("/:id")
 
-   .post(postscontroller.addPost)
+   .post(postcontroller.addPost)
 
-   .put(postscontroller.editPost)
+   .put(postcontroller.editPost)
 
-   .get(postscontroller.getPosts)
+   .get(postcontroller.getPosts)
 
-   .delete(postscontroller.deletePost);
+   .delete(postcontroller.deletePost);
 
 
 
