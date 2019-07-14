@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const postscontroller = require("../../controller/postscontroller");
+const postscontroller = require("../../controller/post-controller");
 
 
 // Matches with "api/posts/"
 router.route("/")
 
-   .get(routinescontroller.getAllposts);
+   .get(postscontroller.getAllposts);
 
 
 
