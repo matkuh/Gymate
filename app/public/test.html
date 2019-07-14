@@ -39,7 +39,7 @@
        <label for="image">Upload a photo</label>
     </div>
     <div>
-    	<input type="submit" value="Submit" id="submit">
+    	<input type="submit" value="Upload" id="uploadProfilePic">
 	</div>
 
 </form>
@@ -77,8 +77,22 @@
 
 
 
-<h1></h1>
+<h1> User Stats</h1>
 
+
+<div id = "userStats">
+    <label for="weight">Weight</label>
+    <input id="weight" type="textArea" name="weight" required>
+    
+    <label for="height">Height</label>
+    <input id="height" type="textArea" name="height" required>
+
+    <input type="submit" value="AddStats" id="addStat">
+</div>
+
+<div id = "userStatsDisplay">
+
+</div>
 
 
 
@@ -88,7 +102,24 @@
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script>
 
+//Information from log in and sign up page 
+// =============================================================
 
+
+var userName = "Chloe";
+var name = "Chloe Zhou"
+var password = "xxxx";
+var buddyId;
+var userId;
+
+
+addUser();
+
+
+
+
+//User Section
+// =============================================================
 
 function getUser(id, cb)
 {
@@ -102,6 +133,87 @@ function getUser(id, cb)
 
 
 
+function addUser()
+{
+
+    var newUser = {
+    name: name,
+    password: password,
+    username: userName,
+    buddyId: buddyId
+  };
+
+
+     $.post("/api/users/", newUser)
+
+    .then(function(data) {
+
+      console.log(data);
+      userId = (data.id);
+
+      alert("Adding user...");
+    });
+
+}
+
+
+
+
+
+
+
+
+
+
+function addUserStat()
+{
+
+
+    var newStat = 
+    {
+        weight: $("#height").val().trim(),
+        height: $("#weight").val().trim()
+    }
+
+    console.log(newStat);
+
+    $.ajax({
+          method: "PUT",
+          url: "/api/users/" + userId,
+          data: newStat
+        }).then(function(data) {
+
+      console.log(data);
+      console.log(data.weight);
+
+       $("#userStatsDisplay").append("weight: "+ data.weight + "<br>");
+       $("#userStatsDisplay").append("height: "+ data.height + "<br>");
+
+
+
+      alert("Adding userStats...");
+
+
+    });
+}
+
+
+
+
+ $("#addStat").click(function (e) {
+
+     addUserStat();
+
+ 
+    })
+
+
+
+
+
+
+
+
 
 
 
@@ -109,13 +221,13 @@ function getUser(id, cb)
 
 $(document).ready(function () {
 
-const userId = 1;
 
 
 
+// Upload profile picture
+// =============================================================
 
-
-    $("#submit").click(function (e) {
+    $("#uploadProfilePic").click(function (e) {
     	$("#loader").removeClass("hide");
         $("#match-image").attr("src", "");
         $("#survey")[0].reportValidity();
@@ -177,6 +289,20 @@ const userId = 1;
 
 
 
+
+
+
+
+
+
+
+
+// post forums 
+// =============================================================
+
+
+
+//Get all posts for all users based on times
      $("#getpost").click(function (e) {
 
 
@@ -208,6 +334,7 @@ const userId = 1;
 
 
 
+//User post text after click post button
      $("#post").click(function (e) {
 
 
@@ -229,14 +356,6 @@ const userId = 1;
               alert("Adding post...");
             });
     })
-
-
-
-
-
-
-
-
 
 
 

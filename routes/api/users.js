@@ -5,11 +5,11 @@ const usercontroller = require("../../controller/user-controller");
 // equivalent to "api/users"
 router.route("/")
 
-    .get(usercontroller.getAllUsers);
+    .get(usercontroller.getAllUsers)
+
+    .post(usercontroller.addUser);
 
 router.route("/:id")
-
-	.post(usercontroller.addUser)
 
 	.get(usercontroller.getUser)
 
