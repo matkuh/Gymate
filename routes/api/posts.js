@@ -6,16 +6,13 @@ const postcontroller = require("../../controller/post-controller");
 router.route("/")
 
    .get(postcontroller.getPosts)
-
-
-
-
-// Matches with "api/posts/:id"
-router.route("/:id")
-
    .post(postcontroller.addPost)
 
-   
+
+
+
+// // Matches with "api/posts/:id"
+// router.route("/")
 
 
 module.exports = router;

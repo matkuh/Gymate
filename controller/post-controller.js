@@ -3,13 +3,6 @@ const db = require("../models");
 
 module.exports = {
 
-  // Gets all code snippets in db
-  // getAllPosts: function (req, res) {
-  //   db.Post.findAll({}).then(function(dbPost) {
-  //     res.json(dbPost);
-  //   }).catch(err => res.status(422).json(err));   
-
-  // },
 
 
   // getAllPosts: function (req, res) {
@@ -21,11 +14,14 @@ module.exports = {
 
 
 
-//Add new routine for specific user
+
    addPost: function (req, res) {
+
+    console.log(req.body);
+    console.log(req.body.userId);
     db.Post.create({
-      user_id: req.body.user_id,
-      content: req.body.text}
+      UserId: req.body.userId,
+      content: req.body.content}
       ).then(function(dbPost) {
       res.json(dbPost);
     });
