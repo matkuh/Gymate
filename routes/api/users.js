@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const usercontroller = require("../../controller/user-controller");
 
+require("dotenv").config();
+
 
 // equivalent to "api/users"
 router.route("/")

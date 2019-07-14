@@ -18,7 +18,6 @@ function uploadImage(req, image, cb) {
  //use req from the post method, and the image data can be get using the code below
  
  var imageFile = req.files.file.data;
-
  s3.createBucket(function(){
      var params = {
          Bucket: process.env.S3_BUCKET_NAME,
@@ -136,29 +135,30 @@ db.User.update({name: req.body.name, username: req.body.username, password: req.
 	            image: status
 	        };
 
-
-	        console.log(`https://gymateproject2.s3.us-west-1.amazonaws.com/${profilePhoto.image}.jpg`);
-
 	         uploadImage(req, profilePhoto.image, function(location){
 	         	console.log(location);
-       //       	db.User.update(
-		     //  	{
-			    //     profilePhoto: location,
-		     //  	},
-		     //  	{
-		     //    	where: {id: 1 }
-		     //  	})
-			    // .then(function(dbUser)
-			    // {
-		     //  		res.json(dbUser);
-			    // });
+	         	console.log('!!!!!!!!!!');
+	         	console.log(req);
 
-		db.User.update({profilePhoto: location},{ where: {id: res.params.id}})
-        .then(dbuser => {
-          res.json(dbuser);
-        })
-        .catch(err => res.status(422).json(err));
-    
+
+             	db.User.update(
+		      	{
+			        profilePhoto: location,
+		      	},
+		      	{
+		        	where: {id: req.body.UserId}
+		      	})
+			    .then(function(dbUser)
+			    {
+		      		res.json({imageUrl: location});
+			    });
+
+				// db.User.update({profilePhoto: location},{ where: {id: req.body.userId}})
+		  //       .then(dbuser => {
+		  //         res.json(dbuser);
+		  //       })
+		  //       .catch(err => res.status(422).json(err));
+		    
 	        });
 	}
 

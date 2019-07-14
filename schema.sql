@@ -14,3 +14,8 @@ insert into gymate.User(name, username, password) values('gabriel','gabrielJ','e
 insert into gymate.User(name, username, password) values('matthew','matthewK','ccc');
 insert into gymate.User(name, username, password) values('megha','meghaP','bbbb');
 
+
+
+
+
+
