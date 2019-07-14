@@ -9,3 +9,8 @@ CREATE DATABASE gymate;
 
 
 
+insert into gymate.User(name, username, password) values('chloe','chloezhouny','aaaaa');
+insert into gymate.User(name, username, password) values('gabriel','gabrielJ','eee');
+insert into gymate.User(name, username, password) values('matthew','matthewK','ccc');
+insert into gymate.User(name, username, password) values('megha','meghaP','bbbb');
+

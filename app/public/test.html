@@ -68,6 +68,7 @@
 
 <div>
     <input type="submit" value="GetPost" id="getpost">
+     <div id="getpostDisplay"><div>
 </div>
 
 
@@ -87,7 +88,33 @@
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script>
 
+
+
+function getUser(id, cb)
+{
+     $.get("api/users/" + id).
+             then(function(data) {
+              console.log(data);
+              cb(data)
+            });
+}
+
+
+
+
+
+
+
+
+
 $(document).ready(function () {
+
+const userId = 1;
+
+
+
+
+
     $("#submit").click(function (e) {
     	$("#loader").removeClass("hide");
         $("#match-image").attr("src", "");
@@ -157,9 +184,20 @@ $(document).ready(function () {
              then(function(data) {
 
               console.log(data);
+              for (var i = 0; i < data.length; i ++)
+              {
+                cb = function (i, userData)
+                {
+                    username = userData.name;
+                    console.log(username);
+                    console.log(i);
+                    console.log(data[i].content);
+                    $("#getpostDisplay").append(username + ": " + data[i].content);
+                    $("#getpostDisplay").append("<br>");
 
-              alert("Getting post...");
-
+                }
+                getUser(data[i].UserId, cb.bind(null,i));
+              }
             });
 
 
@@ -170,11 +208,8 @@ $(document).ready(function () {
 
 
 
-
-
-
-
      $("#post").click(function (e) {
+
 
 
         var postText = $("#postText").val().trim();
@@ -183,7 +218,7 @@ $(document).ready(function () {
         var postText = {
 
             content: $("#postText").val().trim(),
-            userId: 1
+            userId: userId
          };
  
              $.post("api/posts", postText).
