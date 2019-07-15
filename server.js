@@ -1,7 +1,3 @@
-
-// Dependencies
-// =============================================================
-
 var express = require("express");
 var app = express();
 
@@ -26,6 +22,7 @@ app.use(express.static("app/public"));
 
 // Here we introduce HTML routing to serve different HTML files
 require("./app/routes/html-routes.js")(app);
+
 
 // require("./routes")(app);
 

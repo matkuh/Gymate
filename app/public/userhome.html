@@ -44,6 +44,7 @@
 
     <br>
 
+
     <div class="container" id="main">
 
         <div class="card-panel">
@@ -57,13 +58,15 @@
             </div>
         </div>
 
-
         <div class="row">
             <div class="col s6">
                 <div class="card-panel">
                     <span class="card-title">You vs. Buddy</span>
                 </div>
             </div>
+
+
+
             <div class="col s6">
                 <div class="card-panel">
                     <span class="card-title">Posts</span>
@@ -88,6 +91,68 @@
 
     </div>
 
+
+    <!-- 
+
+    <div class="container" id="main">
+
+        <div class="center card-panel">
+            <h3>Favorite Routines</h3>
+            <div class="carousel">        
+                 <div class="carousel-item " >
+                    <p>Beginner</p>
+  
+                    <div class="carousel-fixed-item center">
+                        <a class="btn routine waves-effect white grey-text darken-text-2" data-index = "0" >Select</a>
+                    </div>
+                 </div>
+                
+                <div class="carousel-item " data-index = "1"><p>Intermediate</p>
+
+                  <div class="carousel-fixed-item center">
+                        <a class="btn routine waves-effect white grey-text darken-text-2" data-index = "1" >Select</a>
+                    </div>
+                </div>
+
+                <div class="carousel-item" data-index = "2">
+                <p>Advanced</p>
+
+                  <div class="carousel-fixed-item center">
+                        <a class="btn routine waves-effect white grey-text darken-text-2" data-index = "2" >Select</a>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s3">
+                <div class="card-panel center">
+                    <h3>You</h3>
+                    <div id = "me"></div>
+
+                </div>
+            </div>
+            <div class="col s3">
+                <div class="card-panel center">
+                    <h3>Buddy</h3>
+                    <div id = "buddy"></div>
+                </div>
+            </div>
+
+
+            <div class="col s6">
+                <div class="card-panel center">
+                    <h3>All Posts</h3>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div> -->
+
     <nav role="navigation red">
         <div class="nav-wrapper container">
             <div class="container center">
@@ -101,7 +166,7 @@
     <script>
         var colors = ["red", "yellow", "green", "blue", "orange", "purple"];
 
-        $(".carousel-item").each(function(index){
+        $(".carousel-item").each(function (index) {
             $(this).attr("style", `background: ${colors[index]};`)
         });
 
@@ -147,82 +212,111 @@
 
         $(document).ready(function () {
 
-            $('.carousel').carousel();
+            var buddyId;
+            var userId = 1;
+            var routineIndex;
+            var selected = false;
 
 
-            // for (let i = 0; i < posts.length; i++) {
-            //     var post = $("<li class='collection-item avatar'>");
-            //     var imgId = "post-img" + i;
-            //     var nameId = "post-name" + i;
-            //     var contentId = "post-content" + i;
+            var Routine1 = ["Chest, Back, Shoulders, Legs, Biceps, Triceps", "Rest", "Rest", "Legs, Triceps, Biceps, Chest, Back, Shoulder", "Rest", "Shoulders, Back, Chest, Legs, Triceps, Biceps", "Rest"];
+            var Routine2 = ["Chest, Shoulders and Triceps", "Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
+            var Routine3 = ["Chest & Back", "Legs", "Shoulders & Arms", "Rest", " Chest, Shoulders, & Triceps", "Back & Biceps", " Legs"];
 
-            //     post.append(`<img id='${imgId}' class='circle'>`);
-            //     post.append(`<span id='${nameId}' class='title'></span>`);
-            //     post.append(`<p id='${contentId}'>`);
 
-            //     $(".collection").append(post);
 
-            //     $("#" + imgId).attr('src', posts[i].img);
-            //     $("#" + nameId).text(posts[i].name);
-            //     $("#" + contentId).text(posts[i].content);
-            // }
-            displayAllPosts();
 
-            $("#send-post").on("click", (e) => {
-                e.preventDefault();
 
-                var contentToPost = $("#textarea1").val().trim();
-                // if(!contentId) {
-                //     alert()
-                // }
-                $("#textarea1").val("");
-                $("#textarea1").next().removeClass("active");
+            var routineArr = [Routine1, Routine2, Routine3];
 
-                var postText = {
 
-                    content: contentToPost,
-                    userId: 1
-                };
+            function updateUserRoutine(userId) {
 
-                $.post("api/posts", postText).
-                    then(function (data) {
+            }
+
+
+
+
+
+
+            function addRoutine(routine) {
+
+                console.log(routine);
+
+
+                for (var i = 0; i < 7; i++) {
+                    var dailyRoutine =
+                    {
+                        dayOfTheWeek: i + 1,
+                        routine: routine[i],
+                        UserId: userId
+                    }
+
+                    $.ajax({
+                        method: "POST",
+                        url: "/api/routines/" + userId,
+                        data: dailyRoutine
+                    }).then(function (data) {
 
                         console.log(data);
-
-                        alert("Adding post...");
                     });
-                $(".collection").empty();
-                displayAllPosts();
+                }
+
+            }
+
+            $(".routine").click(function (e) {
+
+                routineIndex = parseInt($(this).attr("data-index"));
+                console.log(routineIndex);
+                if (!selected) {
+                    addRoutine(routineArr[routineIndex]);
+                    selected = true;
+                }
+                else {
+
+                }
+
+            });
 
 
-                // posts.push({
-                //     name: "Gabriel Jacobs",
-                //     content: contentToPost,
-                //     img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-                // });
-                // var post = $("<li class='collection-item avatar'>");
-                // var imgId = "post-img" + 4;
-                // var nameId = "post-name" + 4;
-                // var contentId = "post-content" + 4;
 
-                // post.append(`<img id='${imgId}' class='circle'>`);
-                // post.append(`<span id='${nameId}' class='title'></span>`);
-                // post.append(`<p id='${contentId}'>`);
+        });
 
-                // $(".collection").prepend(post);
+        $('.carousel').carousel();
+        displayAllPosts();
 
-                // $("#" + imgId).attr('src', posts[4].img);
-                // $("#" + nameId).text(posts[4].name);
-                // $("#" + contentId).text(posts[4].content);
-            })
+        $("#send-post").on("click", (e) => {
+            e.preventDefault();
+
+            var contentToPost = $("#textarea1").val().trim();
+            // if(!contentId) {
+            //     alert()
+            // }
+            $("#textarea1").val("");
+            $("#textarea1").next().removeClass("active");
+
+            var postText = {
+
+                content: contentToPost,
+                userId: 1
+            };
+
+            $.post("api/posts", postText).
+                then(function (data) {
+
+                    console.log(data);
+
+                    alert("Adding post...");
+                });
+            $(".collection").empty();
+            displayAllPosts();
         });
     </script>
 </body>
 
-<script>
-      $(document).ready(function(){
-    $('.carousel').carousel();
-  });
 </script>
+
+</body>
+
+
 
 </html>

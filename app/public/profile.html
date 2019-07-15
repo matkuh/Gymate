@@ -40,33 +40,206 @@
     </nav>
     <br>
 
+
+
     <div class="container" id="main">
 
+    <div class = "row" id="userInfo">
+        <div class="col s3" >
+            <img id = "portfolioImage">Portfolio Image
+        </div>
+        <div class = "col s9" >
+            <div class = "row">
+                 <div class="col s8 center">Name</div>
+            </div>
+            <div class = "row">
+                 <div class="col s8 center">Buddy</div>
+            </div>
+            <div class = "row">
+                 <div class="col s8 center">Email</div>
+            </div>
+        </div>
+    </div>
+
+   
+
         <div class="row">
-            <div class="col s6">
+            <div class="col s12">
                 <div class="card-panel center">
                     <div class="card">
-                        <div class="card-image waves-block waves-light">
+                        <!-- <div class="card-image waves-block waves-light">
                             <img id="profilepic"
                                 src="http://www.independentmediators.co.uk/wp-content/uploads/2016/02/placeholder-image.jpg">
-                        </div>
+                        </div> -->
                         <div class="card-content">
-                            <span class="card-title grey-text text-darken-4">Current Routine<i
-                                    class="material-icons right activator waves-effect">add_circle</i></span>
-                                    <p></p>
+                            <span class="card-title grey-text text-darken-4"><h3>Current Routine</h3></span>
+                            <br>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Day</th>
+                                        <th>Routine Info</th>
+                                        <th>Complete</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>Monday</td>
+                                        <td>
+                                            <div class="input-field inline routine-info" id = "day1">
+                                         <!--        <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
+                                            </div>
+                                        </td>
+                                        <td> 
+                                          <label>
+                                            <input type="checkbox" class="filled-in"  />
+                                            <span></span>
+                                          </label>
+                                        
+                                        </td>
+                                        <td>
+                                             <button class="btn waves-effect waves-light" type="submit" name="action">Edit
+                                                 <i class="material-icons right">send</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tuesday</td>
+                                        <td>
+                                            <div class="input-field inline routine-info" id = "day2">
+                                         <!--        <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
+                                            </div>
+                                        </td>
+                                        <td> 
+                                          <label>
+                                            <input type="checkbox" class="filled-in"  />
+                                            <span></span>
+                                          </label>
+                                        
+                                        </td>
+                                         <td>
+                                             <button class="btn waves-effect waves-light" type="submit" name="action">Edit
+                                                 <i class="material-icons right">send</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Wednesday</td>
+                                        <td>
+                                            <div class="input-field inline routine-info" id = "day3">
+                        <!--                         <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
+                                            </div>
+                                        </td>
+                                        <td> <label>
+                                            <input type="checkbox" class="filled-in"  />
+                                            <span></span>
+                                          </label>
+                                        </td>
+                                         <td>
+                                             <button class="btn waves-effect waves-light" type="submit" name="action">Edit
+                                                 <i class="material-icons right">send</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Thursday</td>
+                                        <td>
+                                            <div class="input-field inline routine-info" id = "day4">
+                                             <!--    <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
+                                            </div>
+                                        </td>
+                                        <td><label>
+                                            <input type="checkbox" class="filled-in" />
+                                            <span></span>
+                                          </label>
+                                        </td>
+                                         <td>
+                                             <button class="btn waves-effect waves-light" type="submit" name="action">Edit
+                                                 <i class="material-icons right">send</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Friday</td>
+                                        <td>
+                                            <div class="input-field inline routine-info" id = "day5">
+                                     <!--            <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
+                                            </div>
+                                        </td>
+                                        <td><label>
+                                            <input type="checkbox" class="filled-in"/>
+                                            <span></span>
+                                          </label>
+                                        </td>
+                                         <td>
+                                             <button class="btn waves-effect waves-light" type="submit" name="action">Edit
+                                                 <i class="material-icons right">send</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Saturday</td>
+                                        <td>
+                                            <div class="input-field inline routine-info" id = "day6">
+                                             <!--    <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
+                                            </div>
+                                        </td>
+                                        <td> <label>
+                                            <input type="checkbox" class="filled-in"  />
+                                            <span></span>
+                                          </label>
+                                        </td>
+                                         <td>
+                                             <button class="btn waves-effect waves-light" type="submit" name="action">Edit
+                                                 <i class="material-icons right">send</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sunday</td>
+                                        <td>
+                                            <div class="input-field inline routine-info" id = "day7">
+                                               <!--  <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
+                                            </div>
+                                        </td>
+                                        <td><label>
+                                            <input type="checkbox" class="filled-in"  />
+                                            <span></span>
+                                          </label>
+                                        </td>
+                                         <td>
+                                             <button class="btn waves-effect waves-light" type="submit" name="action">Edit
+                                                 <i class="material-icons right">send</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        <br>
+                        <br>
+                          
 
                         </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Add Routine<i
-                                    class="material-icons right">close</i></span>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque est corrupti quidem ea
-                                natus voluptate doloremque animi aut facere sint nam, deleniti possimus modi sed
-                                provident distinctio. Maxime, non praesentium.'</p>
-                        </div>
+                     
+                       
                     </div>
                 </div>
             </div>
-            <div class="col s6">
+        </div>
+        <div class = "row">
+            <div class="col s12">
                 <div class="card-panel center">
                     <h3>Stats</h3>
                     <table class="centered">
@@ -121,8 +294,6 @@
 
 
 
-    </div>
-
 
     <nav role="navigation red">
         <div class="nav-wrapper container">
@@ -133,6 +304,79 @@
     </nav>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+
+    <script>
+
+        var userId = 1;
+        routineIndex = 1;
+
+
+        var Routine1 = ["Chest, Back, Shoulders, Legs, Biceps, Triceps","Rest", "Rest", "Legs, Triceps, Biceps, Chest, Back, Shoulder", "Rest", "Shoulders, Back, Chest, Legs, Triceps, Biceps", "Rest"];
+        var Routine2 = ["Chest, Shoulders and Triceps","Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
+        var Routine3 = ["Chest & Back","Legs", "Shoulders & Arms", "Rest", " Chest, Shoulders, & Triceps", "Back & Biceps", " Legs"];
+
+        var routineArr = [Routine1, Routine2, Routine3];
+
+
+
+        function getUser(id, cb)
+        {
+             $.get("api/users/" + id).
+                     then(function(data) {
+                      console.log(data);
+                      cb(data)
+                    });
+        }
+
+
+
+        function displayUserRoutine(i)
+        {
+            $.get("/api/routines/" + userId, function(data) {
+              console.log(data);
+                for (var i = 0; i < data.length; i++)
+                {
+                    $("#day" + data[i].dayOfTheWeek).text(" "+ data[i].routine + " ");
+                }
+            });
+
+        }
+
+
+        displayUserRoutine(userId);
+
+
+        //Upload portfolio image
+        getUser(userId, function(data)
+            {
+                console.log(data);
+                console.log(data.profilePhoto)
+
+            $("#portfolioImage").attr("src", data.profilePhoto);  
+
+
+            });
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
 </body>
 
 </html>

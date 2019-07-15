@@ -11,7 +11,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1]
+        len: [1],
+        isEmail: true 
       }
     },
     password: {
@@ -25,14 +26,28 @@ module.exports = function(sequelize, DataTypes) {
     height: DataTypes.INTEGER,
     weight: DataTypes.INTEGER,
 
-    
+    // {
+    //   type: DataTypes.INTEGER,
+      // allowNull: true,
+      // validate: {
+      //   len: [1]
+      // }
+    // },
+    // weight: {
+    //   type: DataTypes.INTEGER,
+    //   // allowNull: true,
+    //   // validate: {
+    //   //   len: [1]
+    //   // }
+    // },   
     profilePhoto: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: {
-        len: [1],
-        isUrl: true
-      }
+      defaultValue: "https://bethanychurch.org.uk/wp-content/uploads/2018/09/profile-icon-png-black-6.png",
+      // validate: {
+      //   len: [1],
+      //   isUrl: true
+      // }
     },
   },
    {

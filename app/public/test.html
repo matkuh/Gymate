@@ -196,6 +196,7 @@ setInterval(function(){
 
 
 
+
 //User Section
 // =============================================================
 
@@ -300,8 +301,8 @@ function addUserStat()
             user.append("file", image);
             user.append("UserId", userId);
    				
-   			$("#status").val("")
-       		$("#image").val("")
+   			$("#status").val("");
+       		$("#image").val("");
 
 
 
@@ -327,7 +328,7 @@ function addUserStat()
                     	console.log("post back");
                       console.log(response);
                        $("#match-status").text(response.status);
-                       $("#match-image").attr("src", `https://gymateproject2.s3.us-west-1.amazonaws.com/${response.image}.jpg`);
+                       // $("#match-image").attr("src", `https://gymateproject2.s3.us-west-1.amazonaws.com/${response.image}.jpg`);
 
                         $("#match-image").attr("src", response.imageUrl);
 
@@ -355,9 +356,9 @@ function addUserStat()
 // =============================================================
 
 
-var Routine1 = ["aa","bb", "cc", "dd", "ee", "ff", "gg"];
-var Routine2 = ["aa","bb", "cc", "dd", "ee", "ff", "gg"];
-var Routine3 = ["aa","bb", "cc", "dd", "ee", "ff", "gg"];
+var Routine1 = ["Chest, Back, Shoulders, Legs, Biceps, Triceps","Rest", "Rest", "Legs, Triceps, Biceps, Chest, Back, Shoulder", "Rest", "Shoulders, Back, Chest, Legs, Triceps, Biceps", "Rest"];
+var Routine2 = ["Chest, Shoulders and Triceps","Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
+var Routine3 = ["Chest & Back","Legs", "Shoulders & Arms", "Rest", " Chest, Shoulders, & Triceps", "Back & Biceps", " Legs"];
 
 
 
@@ -486,6 +487,18 @@ function displayAllPosts()
 };
 
 
+
+function getUser(id, cb)
+{
+     $.get("api/users/" + id).
+             then(function(data) {
+              console.log(data);
+              cb(data)
+            });
+}
+
+
+
 function displayUserPosts()
 {
     $.get("api/posts/"+userId).
@@ -554,7 +567,7 @@ function displayBuddyPosts()
               alert("Adding post...");
             });
     })
-
+llrffr
 
 
 
