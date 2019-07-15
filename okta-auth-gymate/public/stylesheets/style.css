@@ -24,10 +24,10 @@ header > a {
   color: #d1e5e1;
 }
 
-header,
+/* header,
 main {
   padding: 50px;
-}
+} */
 
 dt {
   padding: 4px 0;
