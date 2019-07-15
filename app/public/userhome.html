@@ -100,28 +100,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-        var posts = [
-            {
-                name: "Gabriel Jacobs",
-                content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti incidunt, ratione magni tenetur culpa molestias quo vero vel obcaecati! Quasi eius sunt temporibus fuga ipsa harum neque accusamus voluptates saepe!",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-            },
-            {
-                name: "Matt Kuh",
-                content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat ad magni suscipit, dolorem dignissimos asperiores vel quis fuga hic libero maiores commodi quas dolores recusandae reiciendis, dolore, voluptate animi cupiditate?",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-            },
-            {
-                name: "Chloe Zhou",
-                content: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure deleniti vitae accusantium quasi sequi eius, minima adipisci voluptatum reprehenderit odio iste a voluptas, dolorem alias, commodi consequatur debitis nulla dignissimos.",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-            },
-            {
-                name: "Megha Prasad",
-                content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti incidunt, ratione magni tenetur culpa molestias quo vero vel obcaecati! Quasi eius sunt temporibus fuga ipsa harum neque accusamus voluptates saepe!",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-            },
-        ];
 
         function getUser(id, cb) {
             $.get("api/users/" + id).
@@ -137,7 +115,6 @@
 
                     console.log(data);
                     for (var i = 0; i < data.length; i++) {
-                        console.log(data[i].content);
 
                         cb = function (i, userData) {
                             var post = $("<li class='collection-item avatar'>");
@@ -195,26 +172,44 @@
                 //     alert()
                 // }
                 $("#textarea1").val("");
+                $("#textarea1").next().removeClass("active");
 
-                posts.push({
-                    name: "Gabriel Jacobs",
+                var postText = {
+
                     content: contentToPost,
-                    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-                });
-                var post = $("<li class='collection-item avatar'>");
-                var imgId = "post-img" + 4;
-                var nameId = "post-name" + 4;
-                var contentId = "post-content" + 4;
+                    userId: 1
+                };
 
-                post.append(`<img id='${imgId}' class='circle'>`);
-                post.append(`<span id='${nameId}' class='title'></span>`);
-                post.append(`<p id='${contentId}'>`);
+                $.post("api/posts", postText).
+                    then(function (data) {
 
-                $(".collection").prepend(post);
+                        console.log(data);
 
-                $("#" + imgId).attr('src', posts[4].img);
-                $("#" + nameId).text(posts[4].name);
-                $("#" + contentId).text(posts[4].content);
+                        alert("Adding post...");
+                    });
+                $(".collection").empty();
+                displayAllPosts();
+
+
+                // posts.push({
+                //     name: "Gabriel Jacobs",
+                //     content: contentToPost,
+                //     img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
+                // });
+                // var post = $("<li class='collection-item avatar'>");
+                // var imgId = "post-img" + 4;
+                // var nameId = "post-name" + 4;
+                // var contentId = "post-content" + 4;
+
+                // post.append(`<img id='${imgId}' class='circle'>`);
+                // post.append(`<span id='${nameId}' class='title'></span>`);
+                // post.append(`<p id='${contentId}'>`);
+
+                // $(".collection").prepend(post);
+
+                // $("#" + imgId).attr('src', posts[4].img);
+                // $("#" + nameId).text(posts[4].name);
+                // $("#" + contentId).text(posts[4].content);
             })
         });
     </script>
