@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     hoursChecked: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
       validate: {
         len: [1],
         isNumeric: true

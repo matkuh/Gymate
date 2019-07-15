@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const routinescontroller = require("../../controller/routinescontroller");
+const routinecontroller = require("../../controller/routine-controller");
 
 
 // Matches with "api/routines/"
 router.route("/")
 
-   .get(routinescontroller.getAllRoutines);
+   .get(routinecontroller.getAllRoutines);
 
 
 
@@ -13,13 +13,13 @@ router.route("/")
 // Matches with "api/routines/:id"
 router.route("/:id")
 
-   .put(routinescontroller.editRoutine);
+   .put(routinecontroller.editRoutine)
 
-   .get(routinescontroller.getUserRoutines)
+   .get(routinecontroller.getUserRoutines)
 
-   .post(routinescontroller.addRoutine);
+   .post(routinecontroller.addRoutine)
 
-   .delete(routinescontroller.deleteRoutine);
+   .delete(routinecontroller.deleteRoutine);
 
 
 
