@@ -99,12 +99,17 @@ input[type=range] + .thumb.active .value {
     color: red;
 }
 
+.sign-out:hover{
+    color: red;
+}
+
+
 .nav-wrapper{
     display: flex;
     justify-content: space-between;
 }
 
-#nav-top {
-    display: flex;
-    justify-content: space-between;
-}
+/* #nav-top {
+    display: flex !important;
+    justify-content: space-between !important;
+} */

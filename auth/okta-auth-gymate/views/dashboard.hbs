@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gymate</title>
-    <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    {{!-- <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-icon-76x76.png">
@@ -22,7 +24,7 @@
     <link rel="manifest" href="favicons/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="favicons/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#ffffff"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="survey.css">
 
@@ -41,14 +43,14 @@
             </a>
             <ul>
               {{#if user}}
-                <a href="/profile">
+                <a href="/profile" >
                   Signed in as {{user.profile.firstName}} {{user.profile.lastName}}
                 </a>
               {{/if}}
             </ul>
             <ul>    
               {{#if user}}
-                <a href="/logout">Sign out</a>
+                <a class="sign-out"href="/logout">Sign out</a>
               {{else}}
                 <a href="/login">Sign in</a>
               {{/if}}
