@@ -162,7 +162,7 @@
 
 
 
-        function addUser()
+        function addUser(cb)
         {
             var newUser = {
             name: $("#name").val().trim(),
@@ -176,8 +176,10 @@
             .then(function(data) {
 
               console.log(data);
-              userId = (data.id);
+              console.log(data.id);
+              userId = data.id;
               console.log(userId);
+              cb();
 
               alert("Adding user...");
             });
@@ -185,8 +187,11 @@
         }
 
 
+
+
         function addProfilePic()
         {
+             console.log(userId);
              var user = new FormData();
 
             var name = $("#name").val().trim();
@@ -233,10 +238,10 @@
         $('#submitmodal').click(function (e) {
 
             e.preventDefault();
-            addUser();
-            setTimeout(addProfilePic(),3000);
+            addUser(function(){
+                setTimeout(addProfilePic(), 5000);
+            });
 
-            
 
 
         });
