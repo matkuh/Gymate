@@ -24,7 +24,7 @@
     <meta name="msapplication-TileImage" content="favicons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="css/userhome.css">
+    <link rel="stylesheet" type="text/css" href="survey.css">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -34,22 +34,24 @@
 
 <body>
 
-    <nav role="navigation red">
-        <div class="nav-wrapper container">
+    <nav role="navigation"style="background-color:black">
+        <div class="nav-wrapper container" id="nav-top">
             <a id="logo-container" href="survey.html" class="brand-logo">
-                <img src="GM.png" id="logo" style="width:100px; height:50px">
+                <img src="gm-white.png" id="logo">
             </a>
-            <ul class="right">{{#if user}}
-        <a href="/profile">
-          Signed in as {{user.profile.firstName}} {{user.profile.lastName}}
-        </a>
-      {{/if}}</ul>
-            <ul class="right">    
-      {{#if user}}
-        <a href="/logout">Sign out</a>
-      {{else}}
-        <a href="/login">Sign in</a>
-      {{/if}}
+            <ul>
+              {{#if user}}
+                <a href="/profile">
+                  Signed in as {{user.profile.firstName}} {{user.profile.lastName}}
+                </a>
+              {{/if}}
+            </ul>
+            <ul>    
+              {{#if user}}
+                <a href="/logout">Sign out</a>
+              {{else}}
+                <a href="/login">Sign in</a>
+              {{/if}}
             </ul>
         </div>
     </nav>
