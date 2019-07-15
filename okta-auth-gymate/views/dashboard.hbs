@@ -34,23 +34,23 @@
 
 <body>
 
-    <nav role="navigation red">
+    <nav role="navigation red" class="nav">
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo">
-                <img src="GM.png" id="logo">
+                <img src="gm-white.png" id="logo">
             </a>
             <ul class="right">{{#if user}}
 
                 {{/if}}</ul>
             <ul class="right">
                 {{#if user}}
-                <a style="color:black" href="/logout">Sign out</a>
+                <a style="color:red" href="/logout">Sign out</a>
                 {{else}}
-                <a style="color:black" href="/login">Sign in</a>
+                <a style="color:red" href="/login">Sign in</a>
                 {{/if}}
             </ul>
             <ul class="right">{{#if user}}
-                <a style="color:black" href="/profile">
+                <a style="color:red" href="/profile">
                     Profile
                 </a>
                 {{/if}}</ul>
@@ -92,7 +92,7 @@
 
     </div>
 
-    <nav role="navigation red">
+    <nav role="navigation red" class="nav">
         <div class="nav-wrapper container">
             <div class="container center">
                 <footer>© 2019 Copyright</footer>

@@ -26,44 +26,81 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="survey.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href=“https://fonts.googleapis.com/css?family=Nobile:700&display=swap” rel=“stylesheet”>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
 
-    <nav role="navigation red">
+    <nav role="navigation red" class="nav">
         <div class="nav-wrapper container">
             <a id="logo-container" href="dashboard" class="brand-logo">
-                <img src="GM.png" id="logo">
+                <img src="gm-white.png" id="logo">
             </a>
+            <ul class="right"></ul>
+            <ul class="right">
+            </ul>
+            <ul class="right">
+            </ul>
+            <ul class="right">
+                <a style="color: red" href="/dashboard">Home</a>
+
+            </ul>
         </div>
     </nav>
     <br>
 
+    <div class="container">
+        <div class="card-panel">
+            
+        </div>
+
+
+    </div>
+
+
+
     <div class="container" id="main">
 
+        {{!-- <div class="row" id="userInfo">
+            <div class="col s3">
+                <img id="portfolioImage">Portfolio Image
+            </div>
+            <div class="col s9">
+                <div class="row">
+                    <div class="col s8 center">Name</div>
+                </div>
+                <div class="row">
+                    <div class="col s8 center">Buddy</div>
+                </div>
+                <div class="row">
+                    <div class="col s8 center">Email</div>
+                </div>
+            </div>
+        </div> --}}
+
+
+
         <div class="row">
-            <div class="col s6">
+            <div class="col s12">
                 <div class="card-panel center">
                     <div class="card">
-                        <div class="card-image waves-block waves-light">
+                        <!-- <div class="card-image waves-block waves-light">
                             <img id="profilepic"
                                 src="http://www.independentmediators.co.uk/wp-content/uploads/2016/02/placeholder-image.jpg">
-                        </div>
+                        </div> -->
                         <div class="card-content">
-                            <span class="card-title grey-text text-darken-4">Current Routine<i
-                                    class="material-icons right activator waves-effect">add_circle</i></span>
-                            <p></p>
-
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">Add Routine<i
-                                    class="material-icons right">close</i></span>
+                            <span class="card-title grey-text text-darken-4">
+                                <h3>Current Routine</h3>
+                            </span>
+                            <br>
                             <table>
                                 <thead>
                                     <tr>
                                         <th>Day</th>
                                         <th>Routine Info</th>
+                                        <th>Complete</th>
+
                                     </tr>
                                 </thead>
 
@@ -71,79 +108,148 @@
                                     <tr>
                                         <td>Monday</td>
                                         <td>
-                                            <div class="input-field inline">
-                                                <input id="email_inline" type="email" class="validate">
-                                                <label for="email_inline">Routine Info</label>
+                                            <div class="input-field inline routine-info" id="day1">
+                                                <!--        <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
                                             </div>
                                         </td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" class="filled-in" />
+                                                <span></span>
+                                            </label>
+
+                                        </td>
+
                                     </tr>
                                     <tr>
                                         <td>Tuesday</td>
                                         <td>
-                                            <div class="input-field inline">
-                                                <input id="email_inline" type="email" class="validate">
-                                                <label for="email_inline">Routine Info</label>
+                                            <div class="input-field inline routine-info" id="day2">
+                                                <!--        <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
                                             </div>
                                         </td>
+                                        <td>
+                                            <label>
+                                                <input type="checkbox" class="filled-in" />
+                                                <span></span>
+                                            </label>
+
+                                        </td>
+
                                     </tr>
                                     <tr>
                                         <td>Wednesday</td>
                                         <td>
-                                            <div class="input-field inline">
-                                                <input id="email_inline" type="email" class="validate">
-                                                <label for="email_inline">Routine Info</label>
+                                            <div class="input-field inline routine-info" id="day3">
+                                                <!--                         <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
                                             </div>
                                         </td>
+                                        <td> <label>
+                                                <input type="checkbox" class="filled-in" />
+                                                <span></span>
+                                            </label>
+                                        </td>
+
                                     </tr>
                                     <tr>
                                         <td>Thursday</td>
                                         <td>
-                                            <div class="input-field inline">
-                                                <input id="email_inline" type="email" class="validate">
-                                                <label for="email_inline">Routine Info</label>
+                                            <div class="input-field inline routine-info" id="day4">
+                                                <!--    <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
                                             </div>
                                         </td>
+                                        <td><label>
+                                                <input type="checkbox" class="filled-in" />
+                                                <span></span>
+                                            </label>
+                                        </td>
+
                                     </tr>
                                     <tr>
                                         <td>Friday</td>
                                         <td>
-                                            <div class="input-field inline">
-                                                <input id="email_inline" type="email" class="validate">
-                                                <label for="email_inline">Routine Info</label>
+                                            <div class="input-field inline routine-info" id="day5">
+                                                <!--            <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
                                             </div>
                                         </td>
+                                        <td><label>
+                                                <input type="checkbox" class="filled-in" />
+                                                <span></span>
+                                            </label>
+                                        </td>
+
                                     </tr>
                                     <tr>
                                         <td>Saturday</td>
                                         <td>
-                                            <div class="input-field inline">
-                                                <input id="email_inline" type="email" class="validate">
-                                                <label for="email_inline">Routine Info</label>
+                                            <div class="input-field inline routine-info" id="day6">
+                                                <!--    <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
                                             </div>
                                         </td>
+                                        <td> <label>
+                                                <input type="checkbox" class="filled-in" />
+                                                <span></span>
+                                            </label>
+                                        </td>
+
                                     </tr>
                                     <tr>
                                         <td>Sunday</td>
                                         <td>
-                                            <div class="input-field inline">
-                                                <input id="email_inline" type="email" class="validate">
-                                                <label for="email_inline">Routine Info</label>
+                                            <div class="input-field inline routine-info" id="day7">
+                                                <!--  <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
                                             </div>
                                         </td>
+                                        <td><label>
+                                                <input type="checkbox" class="filled-in" />
+                                                <span></span>
+                                            </label>
+                                        </td>
+
                                     </tr>
 
                                 </tbody>
 
                             </table>
                             <br>
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                                <i class="material-icons right">send</i>
-                            </button>
+                            <br>
+                            <div class="row">
+                                <div class="col s12">
+                                    <a class="waves-effect waves-light btn-small" href="#modal1" id="editRoutine"><i
+                                            class="material-icons left">add_circle</i>Edit Your Routines</a>
+
+                                </div>
+                            </div>
+                            <div id="modal1" class="modal">
+                                <div class="modal-content">
+                                    <h4>Modal Header</h4>
+                                    <p>A bunch of text</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                                </div>
+                            </div>
+
+                            <br>
+                            <br>
+
+
                         </div>
+
+
                     </div>
                 </div>
             </div>
-            <div class="col s6">
+        </div>
+        <div class="row">
+            <div class="col s12">
                 <div class="card-panel center">
                     <h3>Stats</h3>
                     <table class="centered">
@@ -152,61 +258,43 @@
                                 <th>Date</th>
                                 <th>Weight</th>
                                 <th>Height (Inches)</th>
+                                <th>Body-Fat</th>
                                 <th>BMI</th>
                                 <th>Hours (Month)</th>
                                 <th>Pounds Loss (Month)</th>
                             </tr>
                         </thead>
 
-                        <tbody>
-                            <tr>
-                                <td>7/11/2019</td>
-                                <td>150</td>
-                                <td>70</td>
-                                <td>20%</td>
-                                <td>26</td>
-                                <td>50</td>
-                                <td>10</td>
-                            </tr>
+                        <tbody id="statsSection">
                         </tbody>
                     </table>
                     <br>
+                    <br>
                     <div class="row">
                         <div class="col s12 centered">
-                            <a class="waves-effect waves-light btn-small" id="addstat"><i
-                                    class="material-icons left">add_circle</i>Add</a>
-                        </div>
+                            <a class="waves-effect waves-light btn-small" href="#modal2" id="addStat"><i
+                                    class="material-icons left">add_circle</i>Add Your Stats</a>
 
+                        </div>
+                    </div>
+                    <div id="modal2" class="modal">
+                        <div class="modal-content">
+                            <h4>Modal Header</h4>
+                            <p>A bunch of text</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
         </div>
 
-
-
-    </div>
-    <div id="statmodal" class="modal center">
-        <div class="modal-content">
-            <h4>Add Stats</h4>
-            <div class="row">
-                <div class="input-field col s6">
-                    <input placeholder="Pounds" id="weightinput" type="text" class="validate">
-                    <label for="weight">Weight</label>
-                </div>
-                <div class="input-field col s6">
-                    <input placeholder="Hours" id="timeinput" type="text" class="validate">
-                    <label for="time">Time</label>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Add</a>
-        </div>
     </div>
 
 
-    <nav role="navigation red">
+    <nav role="navigation red" class="nav">
         <div class="nav-wrapper container">
             <div class="container center">
                 <footer>© 2019 Copyright</footer>
@@ -215,31 +303,213 @@
     </nav>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+
     <script>
+        var userEmail = { user.profile.email };
+
+        var userId = 1;
+        routineIndex = 1;
 
 
-        $('#addstat').click(function () {
-
-            function addUserStat() {
 
 
-                var newStat =
-                {
-                    weight: $("#weight").val().trim(),
-                    hours: $("#time").val().trim()
+
+
+        //User Info Section
+        // =============================================================
+        getUser(userId, function (data) {
+            console.log(data);
+            console.log(data.profilePhoto)
+
+            $("#portfolioImage").attr("src", data.profilePhoto);
+
+
+        });
+
+
+
+
+
+
+
+
+        //Routines Section
+        // =============================================================
+
+        var Routine1 = ["Chest, Back, Shoulders, Legs, Biceps, Triceps", "Rest", "Rest", "Legs, Triceps, Biceps, Chest, Back, Shoulder", "Rest", "Shoulders, Back, Chest, Legs, Triceps, Biceps", "Rest"];
+        var Routine2 = ["Chest, Shoulders and Triceps", "Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
+        var Routine3 = ["Chest & Back", "Legs", "Shoulders & Arms", "Rest", " Chest, Shoulders, & Triceps", "Back & Biceps", " Legs"];
+
+        var routineArr = [Routine1, Routine2, Routine3];
+
+
+
+        // function getUser(id, cb)
+        // {
+        //      $.get("api/users/" + id).
+        //              then(function(data) {
+        //               console.log(data);
+        //               cb(data)
+        //             });
+        // }
+
+
+
+        function displayUserRoutine(i) {
+            $.get("/api/routines/" + userId, function (data) {
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    $("#day" + data[i].dayOfTheWeek).text(" " + data[i].routine + " ");
+                }
+            });
+
+        }
+
+
+
+
+        displayUserRoutine(userId);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //User Stats Section
+        // =============================================================
+
+
+        //Modal pop up for current weight, hours, date
+
+        var initialWeight = 150;
+        var initialHeight = 66;
+        var aggregated_hour = 0;
+
+
+        var weight = $("#weight").val().trim();
+        var hours = $("#time").val().trim();
+
+        var poundsLoss = initialWeight - weight;
+        var bmi = weight / (initialHeight * initialHeight) * 703;
+        var date = $("#date").val().trim();
+
+
+
+
+        function addUserStat(weight, hours, poundsLoss, bmi, created_at, userId) {
+
+            var newStat =
+            {
+                weight: weight,
+                hours: hours,
+                poundsLoss: poundsLoss,
+                bmi: bmi,
+                created_at: date,
+                UserId: userId
+            }
+
+            $.ajax({
+                method: "POST",
+                url: "/api/stats/",
+                data: newStat
+            }).then(function (data) {
+                console.log(data);
+            });
+
+        };
+
+
+
+
+        function displayUserStats(userId) {
+            $.get("/api/stats/" + userId, function (data) {
+                console.log(data);
+
+                for (var i = data.length; i > data.length - 10; i--) {
+
+                    var row = $("<tr></tr>");
+                    var element = $("<td></td>").text(data[i].created_at);
+                    row.append(element);
+                    element = $("<td></td>").text(data[i].weight);
+                    row.append(element);
+                    element = $("<td></td>").text(data[i].bmi);
+                    row.append(element);
+                    element = $("<td></td>").text(data[i].hours);
+                    row.append(element);
+                    element = $("<td></td>").text(data[i].poundsLoss);
+                    row.append(element);
+                    $("#statsSection").append(row);
 
                 }
+            });
+        }
 
-            })
+
+
+
+
+        $('#editRoutine').click(function () {
+
+            $('.modal').modal();
+            $('#modal1').modal('open');
+            $('.trigger-modal').modal();
+
+
+
+
 
         });
-        
 
-        $('.modal').modal();
-        $('#statmodal').modal('open');
-        $('.trigger-modal').modal();
+
+
+        $('#addStat').click(function () {
+
+            $('.modal').modal();
+            $('#modal2').modal('open');
+            $('.trigger-modal').modal();
+
+
+
+
         });
+
+
+
+        $('#addStatSumbit').click(function () {
+
+            addUserStat(weight, hours, poundsLoss, bmi, created_at, userId);
+
+
+        });
+
+
+
+
+
+
+
+
     </script>
+
+
+
+
+
+
+
+
 </body>
 
 </html>

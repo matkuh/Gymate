@@ -16,7 +16,7 @@ module.exports = function(app) {
   // index route loads view.html
   app.get("/survey", function(req, res) {
     // res.sendFile(path.join(__dirname, "../public/test.html"));
-    res.sendFile(path.join(__dirname, "../public/survey.html"));
+    res.sendFile(path.join(__dirname, "../../okta-auth-gymate/views/index"));
   });
 
 };
