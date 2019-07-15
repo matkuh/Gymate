@@ -66,14 +66,15 @@
             </div>
             <div class="col s6">
                 <div class="card-panel">
-                        <span class="card-title">Posts</span>
+                    <span class="card-title">Posts</span>
                     <div class="row">
                         <form class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
                                     <textarea id="textarea1" class="materialize-textarea"></textarea>
                                     <label for="textarea1">How was your workout?</label>
-                                    <button id="send-post" class="btn waves-effect waves-light" type="submit" name="action">Send</button>
+                                    <button id="send-post" class="btn waves-effect waves-light" type="submit"
+                                        name="action">Send</button>
                                 </div>
                             </div>
                         </form>
@@ -81,7 +82,6 @@
                     <ul class="collection"></ul>
                 </div>
             </div>
-
         </div>
 
 
@@ -99,78 +99,125 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-        var posts = [
-            {
-                name: "Gabriel Jacobs",
-                content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti incidunt, ratione magni tenetur culpa molestias quo vero vel obcaecati! Quasi eius sunt temporibus fuga ipsa harum neque accusamus voluptates saepe!",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-            },
-            {
-                name: "Matt Kuh",
-                content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat ad magni suscipit, dolorem dignissimos asperiores vel quis fuga hic libero maiores commodi quas dolores recusandae reiciendis, dolore, voluptate animi cupiditate?",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-            },
-            {
-                name: "Chloe Zhou",
-                content: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure deleniti vitae accusantium quasi sequi eius, minima adipisci voluptatum reprehenderit odio iste a voluptas, dolorem alias, commodi consequatur debitis nulla dignissimos.",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-            },
-            {
-                name: "Megha Prasad",
-                content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti incidunt, ratione magni tenetur culpa molestias quo vero vel obcaecati! Quasi eius sunt temporibus fuga ipsa harum neque accusamus voluptates saepe!",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-            },
-        ];
+
+        function getUser(id, cb) {
+            $.get("api/users/" + id).
+                then(function (data) {
+                    console.log(data);
+                    cb(data)
+                });
+        };
+
+        function displayAllPosts() {
+            $.get("api/posts").
+                then(function (data) {
+
+                    console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+
+                        cb = function (i, userData) {
+                            var post = $("<li class='collection-item avatar'>");
+                            var imgId = "post-img" + i;
+                            var nameId = "post-name" + i;
+                            var contentId = "post-content" + i;
+
+                            post.append(`<img id='${imgId}' class='circle'>`);
+                            post.append(`<span id='${nameId}' class='title'></span>`);
+                            post.append(`<p id='${contentId}'>`);
+
+                            $(".collection").append(post);
+
+                            $("#" + imgId).attr('src', userData.profilePhoto);
+                            $("#" + nameId).text(userData.name);
+                            $("#" + contentId).text(data[i].content);
+
+
+                        }
+                        getUser(data[i].UserId, cb.bind(null, i));
+                    }
+                });
+
+
+        };
 
         $(document).ready(function () {
 
             $('.carousel').carousel();
 
-            for (let i = 0; i < posts.length; i++) {
-                var post = $("<li class='collection-item avatar'>");
-                var imgId = "post-img" + i;
-                var nameId = "post-name" + i;
-                var contentId = "post-content" + i;
 
-                post.append(`<img id='${imgId}' class='circle'>`);
-                post.append(`<span id='${nameId}' class='title'></span>`);
-                post.append(`<p id='${contentId}'>`);
+            // for (let i = 0; i < posts.length; i++) {
+            //     var post = $("<li class='collection-item avatar'>");
+            //     var imgId = "post-img" + i;
+            //     var nameId = "post-name" + i;
+            //     var contentId = "post-content" + i;
 
-                $(".collection").append(post);
+            //     post.append(`<img id='${imgId}' class='circle'>`);
+            //     post.append(`<span id='${nameId}' class='title'></span>`);
+            //     post.append(`<p id='${contentId}'>`);
 
-                $("#" + imgId).attr('src', posts[i].img);
-                $("#" + nameId).text(posts[i].name);
-                $("#" + contentId).text(posts[i].content);
-            }
+            //     $(".collection").append(post);
+
+            //     $("#" + imgId).attr('src', posts[i].img);
+            //     $("#" + nameId).text(posts[i].name);
+            //     $("#" + contentId).text(posts[i].content);
+            // }
+            displayAllPosts();
 
             $("#send-post").on("click", (e) => {
                 e.preventDefault();
-                
+
                 var contentToPost = $("#textarea1").val().trim();
-                $("#textarea1").val("");                
+                // if(!contentId) {
+                //     alert()
+                // }
+                $("#textarea1").val("");
+                $("#textarea1").next().removeClass("active");
 
-                posts.push({
-                    name: "Gabriel Jacobs",
+                var postText = {
+
                     content: contentToPost,
-                    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
-                });
-                var post = $("<li class='collection-item avatar'>");
-                var imgId = "post-img" + 4;
-                var nameId = "post-name" + 4;
-                var contentId = "post-content" + 4;
+                    userId: 1
+                };
 
-                post.append(`<img id='${imgId}' class='circle'>`);
-                post.append(`<span id='${nameId}' class='title'></span>`);
-                post.append(`<p id='${contentId}'>`);
+                $.post("api/posts", postText).
+                    then(function (data) {
 
-                $(".collection").prepend(post);
+                        console.log(data);
 
-                $("#" + imgId).attr('src', posts[4].img);
-                $("#" + nameId).text(posts[4].name);
-                $("#" + contentId).text(posts[4].content);
+                        alert("Adding post...");
+                    });
+                $(".collection").empty();
+                displayAllPosts();
+
+
+                // posts.push({
+                //     name: "Gabriel Jacobs",
+                //     content: contentToPost,
+                //     img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg"
+                // });
+                // var post = $("<li class='collection-item avatar'>");
+                // var imgId = "post-img" + 4;
+                // var nameId = "post-name" + 4;
+                // var contentId = "post-content" + 4;
+
+                // post.append(`<img id='${imgId}' class='circle'>`);
+                // post.append(`<span id='${nameId}' class='title'></span>`);
+                // post.append(`<p id='${contentId}'>`);
+
+                // $(".collection").prepend(post);
+
+                // $("#" + imgId).attr('src', posts[4].img);
+                // $("#" + nameId).text(posts[4].name);
+                // $("#" + contentId).text(posts[4].content);
             })
         });
     </script>
 </body>
+
+<script>
+      $(document).ready(function(){
+    $('.carousel').carousel();
+  });
+</script>
 
 </html>
