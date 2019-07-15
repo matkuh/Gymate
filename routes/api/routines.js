@@ -13,7 +13,7 @@ router.route("/")
 // Matches with "api/routines/:id"
 router.route("/:id")
 
-   .put(routinecontroller.editRoutine)
+ 
 
    .get(routinecontroller.getUserRoutines)
 
@@ -21,7 +21,8 @@ router.route("/:id")
 
    .delete(routinecontroller.deleteRoutine);
 
-
+router.route("/:id/:day")
+  .put(routinecontroller.editUserRoutine);
 
 module.exports = router;
 
