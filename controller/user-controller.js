@@ -129,13 +129,8 @@ db.User.update({name: req.body.name, username: req.body.username, password: req.
 
 
 	        var profilePhoto = {
-<<<<<<< HEAD
-	            status: req.body.status,
-	            image: status
-=======
 	            name: req.body.name,
 	            image: name
->>>>>>> 21b900d243ce2883d9135657340c3ca686fe65d2
 	        };
 
 	         uploadImage(req, profilePhoto.image, function(location){
