@@ -8,11 +8,10 @@ DROP DATABASE IF EXISTS gymate;
 CREATE DATABASE gymate;
 
 
-
-insert into gymate.User(name, username, password) values('chloe','chloezhouny','aaaaa');
-insert into gymate.User(name, username, password) values('gabriel','gabrielJ','eee');
-insert into gymate.User(name, username, password) values('matthew','matthewK','ccc');
-insert into gymate.User(name, username, password) values('megha','meghaP','bbbb');
+insert into gymate.User(name, username, password) values('chloe','chloezhouny@gmail.com','aaaaa');
+insert into gymate.User(name, username, password) values('gabriel','gabrielJ@gmail.com','eee');
+insert into gymate.User(name, username, password) values('matthew','matthewK@gmail.com','ccc');
+insert into gymate.User(name, username, password) values('megha','meghaP@gmail.com','bbbb');
 
 
 
