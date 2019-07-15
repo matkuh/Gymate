@@ -28,12 +28,15 @@ footer {
 .carousel-item
 {
     background-color: black;
+    color: white;
 }
 
 
 .routine
 {
-    background-color: white;
+    background-color: black;
     border-color: white;
+    color: white;
     width: 100px;
+    z-index: 100;
 }
