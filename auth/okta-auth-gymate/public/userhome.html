@@ -39,6 +39,10 @@
             <ul class="right">
                 <li><a href="profile.html" id="navprofile">Profile</a></li>
             </ul>
+            <ul class="right">{{#if user}}
+                <a href="/profile">
+                  Signed in as {{user.profile.firstName}} {{user.profile.lastName}}
+                </a>
         </div>
     </nav>
 
