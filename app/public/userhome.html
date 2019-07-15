@@ -66,14 +66,15 @@
             </div>
             <div class="col s6">
                 <div class="card-panel">
-                        <span class="card-title">Posts</span>
+                    <span class="card-title">Posts</span>
                     <div class="row">
                         <form class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
                                     <textarea id="textarea1" class="materialize-textarea"></textarea>
                                     <label for="textarea1">How was your workout?</label>
-                                    <button id="send-post" class="btn waves-effect waves-light" type="submit" name="action">Send</button>
+                                    <button id="send-post" class="btn waves-effect waves-light" type="submit"
+                                        name="action">Send</button>
                                 </div>
                             </div>
                         </form>
@@ -122,32 +123,78 @@
             },
         ];
 
+        function getUser(id, cb) {
+            $.get("api/users/" + id).
+                then(function (data) {
+                    console.log(data);
+                    cb(data)
+                });
+        };
+
+        function displayAllPosts() {
+            $.get("api/posts").
+                then(function (data) {
+
+                    console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        console.log(data[i].content);
+
+                        cb = function (i, userData) {
+                            var post = $("<li class='collection-item avatar'>");
+                            var imgId = "post-img" + i;
+                            var nameId = "post-name" + i;
+                            var contentId = "post-content" + i;
+
+                            post.append(`<img id='${imgId}' class='circle'>`);
+                            post.append(`<span id='${nameId}' class='title'></span>`);
+                            post.append(`<p id='${contentId}'>`);
+
+                            $(".collection").append(post);
+
+                            $("#" + imgId).attr('src', userData.profilePhoto);
+                            $("#" + nameId).text(userData.name);
+                            $("#" + contentId).text(data[i].content);
+
+
+                        }
+                        getUser(data[i].UserId, cb.bind(null, i));
+                    }
+                });
+
+
+        };
+
         $(document).ready(function () {
 
             $('.carousel').carousel();
 
-            for (let i = 0; i < posts.length; i++) {
-                var post = $("<li class='collection-item avatar'>");
-                var imgId = "post-img" + i;
-                var nameId = "post-name" + i;
-                var contentId = "post-content" + i;
 
-                post.append(`<img id='${imgId}' class='circle'>`);
-                post.append(`<span id='${nameId}' class='title'></span>`);
-                post.append(`<p id='${contentId}'>`);
+            // for (let i = 0; i < posts.length; i++) {
+            //     var post = $("<li class='collection-item avatar'>");
+            //     var imgId = "post-img" + i;
+            //     var nameId = "post-name" + i;
+            //     var contentId = "post-content" + i;
 
-                $(".collection").append(post);
+            //     post.append(`<img id='${imgId}' class='circle'>`);
+            //     post.append(`<span id='${nameId}' class='title'></span>`);
+            //     post.append(`<p id='${contentId}'>`);
 
-                $("#" + imgId).attr('src', posts[i].img);
-                $("#" + nameId).text(posts[i].name);
-                $("#" + contentId).text(posts[i].content);
-            }
+            //     $(".collection").append(post);
+
+            //     $("#" + imgId).attr('src', posts[i].img);
+            //     $("#" + nameId).text(posts[i].name);
+            //     $("#" + contentId).text(posts[i].content);
+            // }
+            displayAllPosts();
 
             $("#send-post").on("click", (e) => {
                 e.preventDefault();
-                
+
                 var contentToPost = $("#textarea1").val().trim();
-                $("#textarea1").val("");                
+                // if(!contentId) {
+                //     alert()
+                // }
+                $("#textarea1").val("");
 
                 posts.push({
                     name: "Gabriel Jacobs",
