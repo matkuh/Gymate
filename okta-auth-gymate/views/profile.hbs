@@ -221,18 +221,24 @@
         $('#addstat').click(function () {
 
             function addUserStat() {
-
-
+                
                 var newStat =
                 {
                     weight: $("#weight").val().trim(),
                     hours: $("#time").val().trim()
-
+                    poundsLoss: 
                 }
+            $.ajax({
+                method: "POST",
+                url: "/api/stats/" + userId,
+                data: newStat
+            }).then(function (data) {
 
-            })
+                console.log(data);
 
-        });
+            });
+        }
+
         
 
         $('.modal').modal();
