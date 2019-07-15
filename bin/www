@@ -5,7 +5,7 @@
  */
 
 require('dotenv').config()
-const { app, oidc } = require('../app')
+const { app, oidc } = require('../okta/app')
 const debug = require('debug')('simple-node-authentication:server')
 const http = require('http')
 

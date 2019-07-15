@@ -16,11 +16,15 @@ p {
     font-size: 13px;
 }
 #logo {
-    margin-top: 5%;
     height: 50px;
     width: 200px;
+    margin-top: 4%;
 }
 
+.test
+{
+    margin: 0 auto;
+}
 
 .input-field input:focus + label {
     color: red !important;
@@ -81,6 +85,10 @@ input[type=range] + .thumb.active .value {
     background-color: red;
 }
 
+td {
+    color: red;
+}
+
 #buddyimg {
     height: 300px;
     width: 50%;
@@ -88,4 +96,22 @@ input[type=range] + .thumb.active .value {
 
 footer {
     color: black;
+}
+
+.btn-small {
+    background-color: black;
+}
+.btn-small:visited{
+    background-color: red;
+}
+.btn-small:hover {
+    background-color: red;
+}
+.btn-small:focus{
+    background-color: red;
+}
+
+footer {
+    color: black;
+    
 }

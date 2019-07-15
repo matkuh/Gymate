@@ -6,6 +6,13 @@ const apiRoutes = require("./api");
 //API Routes
 router.use("/api", apiRoutes)
 
+router.get('/', function (req, res, next) {
+    res.render('index', {
+      title: 'Gymate',
+      user: req.user,
+    })
+  })
+
 
 
 // // Authentication Routes

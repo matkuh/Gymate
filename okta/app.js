@@ -8,11 +8,11 @@ const session = require('express-session')
 const { ExpressOIDC } = require('@okta/oidc-middleware')
 
 const okta = require('./okta')
-const indexRouter = require('./routes/index')
-const dashboardRouter = require('./routes/dashboard')
-const profileRouter = require('./routes/profile')
-const registrationRouter = require('./routes/register')
-const resetPassword = require('./routes/reset-password')
+const indexRouter = require('../routes/index')
+const dashboardRouter = require('../routes/dashboard')
+const profileRouter = require('../routes/profile')
+const registrationRouter = require('../routes/register')
+const resetPassword = require('../routes/reset-password')
 
 
 const app = express()
