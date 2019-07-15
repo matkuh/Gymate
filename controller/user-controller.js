@@ -123,14 +123,19 @@ db.User.update({name: req.body.name, username: req.body.username, password: req.
 	      console.log(process.env.AWS_SECRET_ACCESS_KEY)
 	      console.log(process.env.S3_BUCKET_NAME)
 
-	        var status = req.body.status.toLowerCase();
-	        status = status.replace(/\s/g, '');
-	        status = status + uuid();
+	        var name = req.body.name.toLowerCase();
+	        name = name.replace(/\s/g, '');
+	        name = name + uuid();
 
 
 	        var profilePhoto = {
+<<<<<<< HEAD
 	            status: req.body.status,
 	            image: status
+=======
+	            name: req.body.name,
+	            image: name
+>>>>>>> 21b900d243ce2883d9135657340c3ca686fe65d2
 	        };
 
 	         uploadImage(req, profilePhoto.image, function(location){
