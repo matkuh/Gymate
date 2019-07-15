@@ -19,7 +19,6 @@ router.route("/:id")
 
    
 
-
 router.route("/survey")
  	.post(usercontroller.updatePhoto);
 
