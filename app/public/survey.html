@@ -145,18 +145,71 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script>
-        $('#submitmodal').click(function () {
-            var user = new FormData();
 
+    var buddyId;
+    var userId;
+
+
+    function getUser(id, cb)
+    {
+         $.get("api/users/" + id).
+                 then(function(data) {
+                  console.log(data);
+                  cb(data)
+                });
+    }
+
+
+
+
+        function addUser()
+        {
+            var newUser = {
+            name: $("#name").val().trim(),
+            password: $("#password").val().trim(),
+            username: $("#email").val().trim()
+            };
+
+
+             $.post("/api/users/", newUser)
+
+            .then(function(data) {
+
+              console.log(data);
+              userId = (data.id);
+              console.log(userId);
+
+              alert("Adding user...");
+            });
+
+        }
+
+
+        function addProfilePic()
+        {
+             var user = new FormData();
+
+            var name = $("#name").val().trim();
             var image = $("#image").prop("files")[0]; 
 
+
+            console.log(name);
+            console.log(image);
+            console.log(userId);
+
+            user.append("name", name);
             user.append("file", image);
-   				
-       		$("#image").val("")
+            user.append("UserId", userId);
+
+
+                
+            $("#image").val("");
+            $("#name").val("");
+
 
             $.ajax({
                 type: "POST",
-                url: "/test",
+                url: "/api/users/survey",
                 processData: false,
                 contentType: false,
                 dataType: "json",
@@ -165,13 +218,27 @@
                     if(response === null) {
                        alert("Error.");
                     } else {
-                    	console.log("post back");
+                        console.log("post back");
                     }
                 }
             });
             $('.modal').modal();
             $('#modal1').modal('open');
             $('.trigger-modal').modal();
+
+        }
+
+
+
+        $('#submitmodal').click(function (e) {
+
+            e.preventDefault();
+            addUser();
+            setTimeout(addProfilePic(),3000);
+
+            
+
+
         });
     </script>
 

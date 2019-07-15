@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
 }
 body {
@@ -34,13 +34,14 @@ dt {
   font-weight: bold;
 }
 
-/* Registration */
+
 
 form {
   display: flex;
   flex-direction: column;
   max-width: 50%;
   max-width: 500px;
+  justify-content: center;
 }
 
 form > label {
@@ -66,10 +67,11 @@ form > button {
   border-radius: 4px;
 }
 
+
 label.error {
   color: #c21515;
 }
 
 #signinBtn {
   background-color: red;
-}
+} */

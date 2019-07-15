@@ -5,8 +5,8 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <header>
-      <h1>{{title}}</h1>
+    {{!-- <header>
+      <h1>hi</h1>
       {{#if user}}
         <a href="/profile">
           Signed in as {{user.profile.firstName}} {{user.profile.lastName}}
@@ -17,7 +17,7 @@
       {{else}}
         <a href="/login">Sign in</a>
       {{/if}}
-    </header>
+    </header> --}}
     <main>
       {{{body}}}
     </main>

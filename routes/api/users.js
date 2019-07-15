@@ -1,14 +1,35 @@
 const router = require("express").Router();
-const usercontroller = require("../../controller/usercontroller");
+const usercontroller = require("../../controller/user-controller");
+
+require("dotenv").config();
 
 
-// equivalent to "/api/users"
+// equivalent to "api/users"
 router.route("/")
 
-    .get(usercontroller.getAllUsers);
+    .get(usercontroller.getAllUsers)
+
+    .post(usercontroller.addUser);
 
 router.route("/:id")
 
-    .put(usercontroller.editUsers);
+	.get(usercontroller.getUser)
+
+    .put(usercontroller.editUser);
+
+   
+
+router.route("/survey")
+ 	.post(usercontroller.updatePhoto);
+
+
+
 
 module.exports = router;
+
+
+
+
+
+
+

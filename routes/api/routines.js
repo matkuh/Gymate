@@ -1,19 +1,29 @@
 const router = require("express").Router();
-const routinescontroller = require("../../controller/routinescontroller");
+const routinecontroller = require("../../controller/routine-controller");
 
-router.route("/api/users")
 
-   .get(routinescontroller.getAllRoutines);
+// Matches with "api/routines/"
+router.route("/")
 
-router.route("/api/users/:id")
+   .get(routinecontroller.getAllRoutines);
 
-   .put(routinescontroller.editRoutine);
 
-router.route("/api/routine/:id")
 
-   .get(routinescontroller.getUserRoutines)
 
-   .post(routinescontroller.addRoutine);
+// Matches with "api/routines/:id"
+router.route("/:id")
+
+   .put(routinecontroller.editRoutine)
+
+   .get(routinecontroller.getUserRoutines)
+
+   .post(routinecontroller.addRoutine)
+
+   .delete(routinecontroller.deleteRoutine);
+
 
 
 module.exports = router;
+
+
+
