@@ -24,25 +24,19 @@ footer {
     color: black;
 }
 
-
-.carousel-item
-{
-    background-color: black;
-    color: white;
+.card-title {
+    font-weight: bold;
 }
 
-
-.routine
-{
-    background-color: black;
-    border-color: white;
-    color: white;
-    width: 100px;
-    z-index: 100;
+.carousel {
+    height: 240px;
+    perspective: 1000px;
 }
 
+.collection .title {
+    font-weight: bold;
+}
 
-.routine-info
-{
-    color: black;
+.input-field.col.s12 {
+    margin-bottom: -20px;
 }

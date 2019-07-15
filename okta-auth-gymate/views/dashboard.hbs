@@ -24,7 +24,7 @@
     <meta name="msapplication-TileImage" content="favicons/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="css/userhome.css">
+    <link rel="stylesheet" type="text/css" href="survey.css">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -36,21 +36,24 @@
 
     <nav role="navigation red">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="survey.html" class="brand-logo">
-                <img src="GM.png" id="logo" style="width:100px; height:50px">
+            <a id="logo-container" href="#" class="brand-logo">
+                <img src="GM.png" id="logo">
             </a>
             <ul class="right">{{#if user}}
-        <a href="/profile">
-          Signed in as {{user.profile.firstName}} {{user.profile.lastName}}
-        </a>
-      {{/if}}</ul>
-            <ul class="right">    
-      {{#if user}}
-        <a href="/logout">Sign out</a>
-      {{else}}
-        <a href="/login">Sign in</a>
-      {{/if}}
+
+                {{/if}}</ul>
+            <ul class="right">
+                {{#if user}}
+                <a style="color:black" href="/logout">Sign out</a>
+                {{else}}
+                <a style="color:black" href="/login">Sign in</a>
+                {{/if}}
             </ul>
+            <ul class="right">{{#if user}}
+                <a style="color:black" href="/profile">
+                    Profile
+                </a>
+                {{/if}}</ul>
         </div>
     </nav>
 
@@ -102,9 +105,9 @@
 </body>
 
 <script>
-      $(document).ready(function(){
-    $('.carousel').carousel();
-  });
+    $(document).ready(function () {
+        $('.carousel').carousel();
+    });
 </script>
 
 </html>
