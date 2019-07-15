@@ -42,11 +42,6 @@ function uploadImage(req, image, cb) {
 
 
 
-
-
-
-
-
 module.exports = {
 
 
