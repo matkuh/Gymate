@@ -185,19 +185,9 @@
         }
 
 
-
-
-
-
-        $('#submitmodal').click(function (e) {
-
-            e.preventDefault();
-
-            addUser();
-
-            setTimeout( function(){
-
-            var user = new FormData();
+        function addProfilePic()
+        {
+             var user = new FormData();
 
             var name = $("#name").val().trim();
             var image = $("#image").prop("files")[0]; 
@@ -212,8 +202,8 @@
             user.append("UserId", userId);
 
 
-   				
-       		$("#image").val("");
+                
+            $("#image").val("");
             $("#name").val("");
 
 
@@ -228,7 +218,7 @@
                     if(response === null) {
                        alert("Error.");
                     } else {
-                    	console.log("post back");
+                        console.log("post back");
                     }
                 }
             });
@@ -236,7 +226,18 @@
             $('#modal1').modal('open');
             $('.trigger-modal').modal();
 
-            },3000);
+        }
+
+
+
+        $('#submitmodal').click(function (e) {
+
+            e.preventDefault();
+
+            addUser();
+            setTimeout(addProfilePic(),3000);
+
+            
         });
     </script>
 
