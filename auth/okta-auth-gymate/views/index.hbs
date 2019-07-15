@@ -25,7 +25,7 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="css/userhome.css">
-
+    <link href="https://fonts.googleapis.com/css?family=Nobile:700&display=swap" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -48,7 +48,7 @@
       {{#if user}}
         <a href="/logout">Sign out</a>
       {{else}}
-        <a href="/login">Sign in</a>
+        <a href="/dashboard">Sign In</a>
       {{/if}}
             </ul>
         </div>
@@ -58,21 +58,19 @@
 
     <div class="container" id="main" style="text-align: center">
       <div class="card-panel center">
-        <p>
-          To access your dashboard,
+        <h2 style="font-family: 'Nobile', sans-serif;">COMMIT TO BE FIT</h2>
+        <p> 
           {{#if userinfo}}
               <a href="/dashboard">click here</a>.
           {{else}}
-          <a href="/dashboard">sign in</a>.
+          <a class="btn-large waves-light waves-effect" style="background-color: red !important"href="/register">Sign Up</a>.
         </p>
-        <p>
+        {{!-- <p>
           If you don't have an account, you can
-          <a href="/register">register for free</a>.
-        </p>
+          <a href="/register"><button>register for free</button></a>.
+        </p> --}}
         <p>
-          If you have an account, but forgot your password,
-          <a href="/reset-password">click here</a> to
-          send a recovery link to your email address.
+          <a href="/reset-password">Forgot Password</a>
           {{/if}}
         </p>
       </div>
