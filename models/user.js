@@ -29,6 +29,7 @@ module.exports = function(sequelize, DataTypes) {
     profilePhoto: {
       type: DataTypes.STRING,
       allowNull: true,
+      defaultValue: "https://bethanychurch.org.uk/wp-content/uploads/2018/09/profile-icon-png-black-6.png",
       validate: {
         len: [1],
         isUrl: true

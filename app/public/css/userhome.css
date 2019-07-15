@@ -23,3 +23,17 @@ h3{
 footer {
     color: black;
 }
+
+
+.carousel-item
+{
+    background-color: black;
+}
+
+
+.routine
+{
+    background-color: white;
+    border-color: white;
+    width: 100px;
+}

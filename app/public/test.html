@@ -328,7 +328,7 @@ function addUserStat()
                     	console.log("post back");
                       console.log(response);
                        $("#match-status").text(response.status);
-                       $("#match-image").attr("src", `https://gymateproject2.s3.us-west-1.amazonaws.com/${response.image}.jpg`);
+                       // $("#match-image").attr("src", `https://gymateproject2.s3.us-west-1.amazonaws.com/${response.image}.jpg`);
 
                         $("#match-image").attr("src", response.imageUrl);
 
@@ -485,6 +485,18 @@ function displayAllPosts()
 
 
 };
+
+
+
+function getUser(id, cb)
+{
+     $.get("api/users/" + id).
+             then(function(data) {
+              console.log(data);
+              cb(data)
+            });
+}
+
 
 
 function displayUserPosts()

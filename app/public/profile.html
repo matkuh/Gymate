@@ -40,7 +40,17 @@
     </nav>
     <br>
 
+
+
     <div class="container" id="main">
+
+    <div class = "row">
+        <div class="col s3" >
+            <img id = "portfolioImage">
+        </div>
+
+
+    </div>
 
         <div class="row">
             <div class="col s6">
@@ -210,6 +220,49 @@
     </nav>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+
+    <script>
+
+        var userId = 1;
+
+
+
+
+        function getUser(id, cb)
+        {
+             $.get("api/users/" + id).
+                     then(function(data) {
+                      console.log(data);
+                      cb(data)
+                    });
+        }
+
+
+
+        //Upload portfolio image
+        getUser(userId, function(data)
+            {
+                console.log(data);
+
+            $("#portfolioImage").attr("src", data.profilePhoto);          
+
+            });
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
 </body>
 
 </html>
