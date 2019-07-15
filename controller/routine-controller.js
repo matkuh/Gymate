@@ -13,20 +13,23 @@ module.exports = {
 
 
 
-  editRoutine: function (req, res) {
+  editUserRoutine: function (req, res) {
     db.Routine.update(
       {
         routine: req.body.routine,
         hoursChecked: req.body.hoursChecked
       },
       {
-        where: {id: req.params.id }
+        where: {UserId: req.params.id, 
+        dayOfTheWeek: req.params.day}
       })
     .then(function(dbRoutine)
     {
       res.json(dbRoutine);
     });
   },
+
+
 
 
 

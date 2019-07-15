@@ -76,9 +76,9 @@
                                     <tr>
                                         <td>Monday</td>
                                         <td>
-                                            <div class="input-field inline">
-                                                <input id="email_inline" type="email" class="validate">
-                                                <label for="email_inline">Routine Info</label>
+                                            <div class="input-field inline routine-info" id = "day1">
+                                         <!--        <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
                                             </div>
                                         </td>
                                         <td> 
@@ -92,24 +92,25 @@
                                     <tr>
                                         <td>Tuesday</td>
                                         <td>
-                                            <div class="input-field inline">
-                                                <input id="email_inline" type="email" class="validate">
-                                                <label for="email_inline">Routine Info</label>
+                                            <div class="input-field inline routine-info" id = "day2">
+                                         <!--        <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
                                             </div>
                                         </td>
-                                        <td>
-                                         <label>
+                                        <td> 
+                                          <label>
                                             <input type="checkbox" class="filled-in"  />
                                             <span></span>
                                           </label>
+                                        
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Wednesday</td>
                                         <td>
-                                            <div class="input-field inline">
-                                                <input id="email_inline" type="email" class="validate">
-                                                <label for="email_inline">Routine Info</label>
+                                            <div class="input-field inline routine-info" id = "day3">
+                        <!--                         <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
                                             </div>
                                         </td>
                                         <td> <label>
@@ -121,9 +122,9 @@
                                     <tr>
                                         <td>Thursday</td>
                                         <td>
-                                            <div class="input-field inline">
-                                                <input id="email_inline" type="email" class="validate">
-                                                <label for="email_inline">Routine Info</label>
+                                            <div class="input-field inline routine-info" id = "day4">
+                                             <!--    <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
                                             </div>
                                         </td>
                                         <td><label>
@@ -135,9 +136,9 @@
                                     <tr>
                                         <td>Friday</td>
                                         <td>
-                                            <div class="input-field inline">
-                                                <input id="email_inline" type="email" class="validate">
-                                                <label for="email_inline">Routine Info</label>
+                                            <div class="input-field inline routine-info" id = "day5">
+                                     <!--            <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
                                             </div>
                                         </td>
                                         <td><label>
@@ -149,9 +150,9 @@
                                     <tr>
                                         <td>Saturday</td>
                                         <td>
-                                            <div class="input-field inline">
-                                                <input id="email_inline" type="email" class="validate">
-                                                <label for="email_inline">Routine Info</label>
+                                            <div class="input-field inline routine-info" id = "day6">
+                                             <!--    <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
                                             </div>
                                         </td>
                                         <td> <label>
@@ -163,9 +164,9 @@
                                     <tr>
                                         <td>Sunday</td>
                                         <td>
-                                            <div class="input-field inline">
-                                                <input id="email_inline" type="email" class="validate">
-                                                <label for="email_inline">Routine Info</label>
+                                            <div class="input-field inline routine-info" id = "day7">
+                                               <!--  <input id="email_inline" type="email" class="validate">
+                                                <label for="email_inline">Routine Info</label> -->
                                             </div>
                                         </td>
                                         <td><label>
@@ -178,11 +179,18 @@
                                 </tbody>
 
                             </table>
-                            <br>
+
+                        <br>
+                        <br>
                           
 
                         </div>
-                       <!--  <div class="card-reveal">
+                      <!--   <div class="card-reveal">
+                              <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                              <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        </div> -->
+                        <!-- <div class="card-reveal">
+
                             <span class="card-title grey-text text-darken-4">Add Routine<i
                                     class="material-icons right">close</i></span>
                             <table>
@@ -342,7 +350,14 @@
     <script>
 
         var userId = 1;
+        routineIndex = 1;
 
+
+        var Routine1 = ["Chest, Back, Shoulders, Legs, Biceps, Triceps","Rest", "Rest", "Legs, Triceps, Biceps, Chest, Back, Shoulder", "Rest", "Shoulders, Back, Chest, Legs, Triceps, Biceps", "Rest"];
+        var Routine2 = ["Chest, Shoulders and Triceps","Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
+        var Routine3 = ["Chest & Back","Legs", "Shoulders & Arms", "Rest", " Chest, Shoulders, & Triceps", "Back & Biceps", " Legs"];
+
+        var routineArr = [Routine1, Routine2, Routine3];
 
 
 
@@ -357,14 +372,35 @@
 
 
 
+        function displayUserRoutine(i)
+        {
+            $.get("/api/routines/" + userId, function(data) {
+              console.log(data);
+                for (var i = 0; i < data.length; i++)
+                {
+                    $("#day" + data[i].dayOfTheWeek).text(" "+ data[i].routine + " ");
+                }
+            });
+
+        }
+
+
+        displayUserRoutine(userId);
+
+
         //Upload portfolio image
         getUser(userId, function(data)
             {
                 console.log(data);
+                console.log(data.profilePhoto)
 
-            $("#portfolioImage").attr("src", data.profilePhoto);          
+            $("#portfolioImage").attr("src", data.profilePhoto);  
+                    
 
             });
+
+
+
 
 
 

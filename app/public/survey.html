@@ -150,14 +150,14 @@
     var userId;
 
 
-    function getUser(id, cb)
-    {
-         $.get("api/users/" + id).
-                 then(function(data) {
-                  console.log(data);
-                  cb(data)
-                });
-    }
+    // function getUser(id, cb)
+    // {
+    //      $.get("api/users/" + id).
+    //              then(function(data) {
+    //               console.log(data);
+    //               cb(data)
+    //             });
+    // }
 
 
 
@@ -227,9 +227,9 @@
                     }
                 }
             });
-            $('.modal').modal();
-            $('#modal1').modal('open');
-            $('.trigger-modal').modal();
+            // $('.modal').modal();
+            // $('#modal1').modal('open');
+            // $('.trigger-modal').modal();
 
         }
 
@@ -241,6 +241,10 @@
             addUser(function(){
                 setTimeout(addProfilePic(), 5000);
             });
+            // addUser();
+               $('.modal').modal();
+            $('#modal1').modal('open');
+            $('.trigger-modal').modal();
 
 
 
