@@ -1,8 +1,39 @@
-# Node Express Application with Okta Authentication
+# Gymate
 
-This example shows how to create a website in Node and Express that uses Okta for authentication. The application was bootstrapped with [Express Generator](https://expressjs.com/en/starter/generator.html). You can see it online at <https://okta-node-express-example.herokuapp.com>.
+A way to plan your workout routines and meet new friends! Gymate will take in your workout preferences and pair you with a buddy who has similar interests. 
 
-Please read [Simple Node Authentication](https://developer.okta.com/blog/2018/04/24/simple-node-authentication) to see how this application was created, and [How to Securely Manage Users in Your Node App](https://developer.okta.com/blog/2018/06/26/securely-manage-users-node-app) to see how the user profile page was created.
+### Link to delopyed site
+
+
+
+### Author
+
+Author : [Jacobs](https://github.com/gljacobs)
+
+Author : [Chloe](https://github.com/chloezhouny)
+
+Author : [Matt](https://github.com/matkuh)
+
+Author : [Megha](https://github.com/meghabprasad)
+
+### Images
+
+### Tech Used
+
+1. [JavaScript](https://www.javascript.com/)
+2. [Node](https://nodejs.org/en/)
+3. [Express](https://expressjs.com/)
+4. [Handlebars](https://www.npmjs.com/package/handlebars)
+5. [Okta](https://www.okta.com/)
+6. [AWS-SDK S3](https://aws.amazon.com/sdk-for-node-js/)
+7. [MySQL](https://www.mysql.com/)
+8. [Sequelize](http://docs.sequelizejs.com/)
+
+### How it Works
+
+<img src"wireframess.png" width 600 height 400>
+
+### Account Authentication
 
 ## Getting Started
 
