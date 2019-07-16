@@ -35,40 +35,6 @@ Author : [Megha](https://github.com/meghabprasad)
 
 ### Account Authentication
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Node Express Application with Okta Authentication
-
-This example shows how to create a website in Node and Express that uses Okta for authentication. The application was bootstrapped with [Express Generator](https://expressjs.com/en/starter/generator.html). You can see it online at <https://okta-node-express-example.herokuapp.com>.
-
-Please read [Simple Node Authentication](https://developer.okta.com/blog/2018/04/24/simple-node-authentication) to see how this application was created, and [How to Securely Manage Users in Your Node App](https://developer.okta.com/blog/2018/06/26/securely-manage-users-node-app) to see how the user profile page was created.
-
 ## Getting Started
 
 To install this example application, run the following commands:
