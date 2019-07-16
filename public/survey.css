@@ -1,0 +1,115 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+#main {
+    flex: 1 0 auto;
+    display: flex; 
+    justify-content:center;
+}
+h4 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+h5 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+p {
+    font-size: 13px;
+}
+#logo {
+    margin-top: 0px;
+    height: 56px;
+    width: 150px;
+    padding: 10px;
+}
+
+
+.input-field input:focus + label {
+    color: red !important;
+}
+.input-field input:focus {
+    border-bottom: 1px solid red !important;
+    box-shadow: 0 1px 0 0 red !important
+}
+.input-field input[type=text].valid {
+    border-bottom: 1px solid red;
+    box-shadow: 0 1px 0 0 red;
+}
+.input-field input[type=text].invalid {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+}
+
+
+input[type=range]::-webkit-slider-thumb {
+    background-color: red;
+}
+input[type=range]::-moz-range-thumb {
+    background-color: red;
+}
+input[type=range]::-ms-thumb {
+    background-color: red;
+}
+
+input[type=range] + .thumb {
+    background-color: red;
+}
+input[type=range] + .thumb.active .value {
+    color: white;
+}
+
+
+.btn{
+    background-color: red;
+}
+.btn:visited{
+    background-color: rgb(165, 1, 29);
+}
+.btn:hover {
+    background-color: rgb(165, 1, 29);
+}
+.btn:focus{
+    background-color: rgb(165, 1, 29);
+}
+
+.btn-accept {
+    width: 100%;
+    text-align: center;
+    background-color: green;
+}
+.btn-decline {
+    width: 100%;
+    text-align: center;
+    background-color: red;
+}
+
+#buddyimg {
+    height: 300px;
+    width: 50%;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    background-color: black;
+}
+
+.sign-in:hover{
+    color: red;
+}
+
+.sign-out:hover{
+    color: red;
+}
+
+
+.nav-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* #nav-top {
+    display: flex !important;
+    justify-content: space-between !important;
+} */
