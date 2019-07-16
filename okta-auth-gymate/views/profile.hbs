@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="survey.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href=“https://fonts.googleapis.com/css?family=Nobile:700&display=swap” rel=“stylesheet”>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
@@ -72,27 +72,8 @@
 
 
 
-    <div class="container" id="main">
 
-        {{!-- <div class="row" id="userInfo">
-            <div class="col s3">
-                <img id="portfolioImage">Portfolio Image
-            </div>
-            <div class="col s9">
-                <div class="row">
-                    <div class="col s8 center">Name</div>
-                </div>
-                <div class="row">
-                    <div class="col s8 center">Buddy</div>
-                </div>
-                <div class="row">
-                    <div class="col s8 center">Email</div>
-                </div>
-            </div>
-        </div> --}}
-
-
-
+<div class="container">
         <div class="row">
             <div class="col s12">
                 <div class="card-panel center">
@@ -234,8 +215,9 @@
                             <br>
                             <div class="row">
                                 <div class="col s12">
-                                    <a class="waves-effect waves-light btn-small" href="#modal1" id="editRoutine"><i
-                                            class="material-icons left">add_circle</i>Edit Your Routines</a>
+                                    <a class="waves-effect waves-light btn-small" data-target="#modal1"
+                                        id="editRoutine"><i class="material-icons left">add_circle</i>Edit Your
+                                        Routines</a>
 
                                 </div>
                             </div>
@@ -249,8 +231,9 @@
                                 </div>
                             </div>
 
+
                             <br>
-                            <br>
+                
 
 
                         </div>
@@ -260,6 +243,8 @@
                 </div>
             </div>
         </div>
+        </div>
+        <div class="container">
         <div class="row">
             <div class="col s12">
                 <div class="card-panel center">
@@ -302,8 +287,9 @@
             </div>
 
         </div>
+        </div>
 
-    </div>
+
 
 
     <nav role="navigation red" class="nav">
@@ -313,6 +299,7 @@
             </div>
         </div>
     </nav>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
@@ -336,16 +323,7 @@
             console.log(data.profilePhoto)
 
             $("#portfolioImage").attr("src", data.profilePhoto);
-
-
         });
-
-
-
-
-
-
-
 
         //Routines Section
         // =============================================================
@@ -383,21 +361,6 @@
 
 
         displayUserRoutine(userId);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         //User Stats Section
         // =============================================================
@@ -477,11 +440,6 @@
             $('.modal').modal();
             $('#modal1').modal('open');
             $('.trigger-modal').modal();
-
-
-
-
-
         });
 
 
@@ -491,9 +449,6 @@
             $('.modal').modal();
             $('#modal2').modal('open');
             $('.trigger-modal').modal();
-
-
-
 
         });
 
@@ -505,22 +460,7 @@
 
 
         });
-
-
-
-
-
-
-
-
     </script>
-
-
-
-
-
-
-
 
 </body>
 

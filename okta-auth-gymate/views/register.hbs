@@ -78,6 +78,19 @@
                                     <label for="password" class="error">{{errors.password}}Password</label>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="weight" type="text" class="validate" required
+                                        value="{{body.weight}}">
+                                    <label for="weight" class="error">{{errors.weight}}Weight</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="height" type="text" class="validate" required
+                                        value="{{body.height}}">
+                                    <label for="height" class="error">{{errors.height}}Height</label>
+                                </div>
+
+                            </div>
                     </div>
                     <div class="file-field input-field">
                         <div class="btn">
@@ -91,56 +104,56 @@
                     </form>
                 </div>
             </div>
-        
 
-        <div class="row">
-            <div class="col s12">
-                <h5>How much experience do you have in the gym?</h5>
-                <p>(0 = Novice, 10 = Expert)</p>
-                <form action="#">
-                    <p class="range-field">
-                        <input type="range" id="quest1" min="0" max="10" />
-                    </p>
-                </form>
-                <h5>Do you prefer lifting weights or doing cardio?</h5>
-                <p>(0 = Weights, 10 = Cardio)</p>
-                <form action="#">
-                    <p class="range-field">
-                        <input type="range" id="quest2" min="0" max="10" />
-                    </p>
-                </form>
-                <h5>How often do you go to the gym?</h5>
-                <p>(0 = Once a month, 10 = Every day)</p>
-                <form action="#">
-                    <p class="range-field">
-                        <input type="range" id="quest3" min="0" max="10" />
-                    </p>
-                </form>
-            </div>
-        </div>
-        <a class="waves-effect waves-light btn view" id="submitmodal" data-target="modal1">Submit</a>
 
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-                <h4>Find Buddy</h4>
-                <p></p>
-                <img src="http://www.independentmediators.co.uk/wp-content/uploads/2016/02/placeholder-image.jpg"
-                    id="buddyimg">
+            <div class="row">
+                <div class="col s12">
+                    <h5>How much experience do you have in the gym?</h5>
+                    <p>(0 = Novice, 10 = Expert)</p>
+                    <form action="#">
+                        <p class="range-field">
+                            <input type="range" id="quest1" min="0" max="10" />
+                        </p>
+                    </form>
+                    <h5>Do you prefer lifting weights or doing cardio?</h5>
+                    <p>(0 = Weights, 10 = Cardio)</p>
+                    <form action="#">
+                        <p class="range-field">
+                            <input type="range" id="quest2" min="0" max="10" />
+                        </p>
+                    </form>
+                    <h5>How often do you go to the gym?</h5>
+                    <p>(0 = Once a month, 10 = Every day)</p>
+                    <form action="#">
+                        <p class="range-field">
+                            <input type="range" id="quest3" min="0" max="10" />
+                        </p>
+                    </form>
+                </div>
             </div>
-            <div class="modal-footer">
-                <div class="row">
-                    <div class="col s6">
-                        <a href="/dashboard"
-                            class=" modal-action modal-close waves-effect waves-green btn-large btn-accept submit">Accept</a>
-                    </div>
-                    <div class="col s6">
-                        <a href="#!"
-                            class=" modal-action modal-close waves-effect waves-green btn-large btn-decline">Decline</a>
+            <a class="waves-effect waves-light btn view" id="submitmodal" data-target="modal1">Submit</a>
+
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <h4>Find Buddy</h4>
+                    <p></p>
+                    <img src="http://www.independentmediators.co.uk/wp-content/uploads/2016/02/placeholder-image.jpg"
+                        id="buddyimg">
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col s6">
+                            <a href="/dashboard"
+                                class=" modal-action modal-close waves-effect waves-green btn-large btn-accept submit">Accept</a>
+                        </div>
+                        <div class="col s6">
+                            <a href="#!"
+                                class=" modal-action modal-close waves-effect waves-green btn-large btn-decline">Decline</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
     </div>
 
