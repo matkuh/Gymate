@@ -5,6 +5,7 @@
  */
 
 require('dotenv').config()
+var db = require("../models")
 const { app, oidc } = require('../app')
 const debug = require('debug')('simple-node-authentication:server')
 const http = require('http')
@@ -27,7 +28,13 @@ const server = http.createServer(app)
  */
 
 oidc.on('ready', () => {
-  server.listen(port)
+  // server.listen(port)
+  db.sequelize.sync({ force: true }).then(function() {
+    server.listen(port, function() {
+      console.log("App listening on PORT " + port);
+      });
+    });
+    
 })
 oidc.on('error', onError)
 server.on('error', onError)

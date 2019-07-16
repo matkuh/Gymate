@@ -16,6 +16,8 @@ const resetPassword = require('./routes/reset-password')
 
 
 const app = express()
+const fileUpload = require("express-fileupload");
+app.use(fileUpload());
 
 const oidc = new ExpressOIDC({
   issuer: `${process.env.ORG_URL}/oauth2/default`,
@@ -71,3 +73,4 @@ app.use(function (err, req, res, next) {
 })
 
 module.exports = { app, oidc }
+

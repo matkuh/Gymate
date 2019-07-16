@@ -34,12 +34,10 @@
     <nav role="navigation red">
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo">
-                <img src="gymate-logo-final.png" id="logo">
+                <img src="GM.png" id="logo">
             </a>
         </div>
     </nav>
-
-    <br>
 
     <div class="container" id="main">
 
@@ -49,82 +47,101 @@
             <div class="row">
                 <div class="col s12">
                     <br>
-                    <div class="row">
-                      <form method="POST">
+                    <form id="okta-info"method="post">
                         <label for="firstname">
-                          First Name
-                          <input id="firstname" name="firstName" required value="{{body.firstName}}" />
-                          <label class="error">{{errors.firstName}}</label>
+                            First Name
+                            <input id="firstname" name="firstName" required value="{{body.firstName}}" />
+                            <label class="error">{{errors.firstName}}</label>
                         </label>
                         <label for="lastname">
-                          Last Name
-                          <input id="lastname" name="lastName" required value="{{body.lastName}}" />
-                          <label class="error">{{errors.lastName}}</label>
+                            Last Name
+                            <input id="lastname" name="lastName" required value="{{body.lastName}}" />
+                            <label class="error">{{errors.lastName}}</label>
                         </label>
                         <label for="email">
-                          Email address
-                          <input type="email" id="email" name="email" required value="{{body.email}}" />
-                          <label class="error">{{errors.email}}</label>
-                          <label class="error">{{errors.login}}</label>
+                            Email address
+                            <input type="email" id="email" name="email" required value="{{body.email}}" />
+                            <label class="error">{{errors.email}}</label>
+                            <label class="error">{{errors.login}}</label>
                         </label>
                         <label for="password">
-                          Password
-                          <input name="password" type="password" required value="{{body.password}}" />
-                          <label class="error">{{errors.password}}</label>
+                            Password
+                            <input name="password" type="password" required value="{{body.password}}" />
+                            <label class="error">{{errors.password}}</label>
                         </label>
-                      </form> 
+                
+                        
+                    </form>
+                
+                </div>
+            </div>
+        
+        <div class="row">
+            <div class="col s12">
+                <form>
+                    <div class="file-field input-field">
+                    <div class="btn">
+                        <span>File</span>
+                        <input id="image" type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload an profile picture">
                     </div>
                 </div>
+                </form>
+                
             </div>
-
-            <div class="row">
-                <div class="col s12">
-                    <h5>How much experience do you have in the gym?</h5>
-                    <p>(0 = Novice, 10 = Expert)</p>
-                    <form action="#">
-                        <p class="range-field">
-                            <input type="range" id="quest1" min="0" max="10" />
-                        </p>
-                    </form>
-                    <h5>Do you prefer lifting weights or doing cardio?</h5>
-                    <p>(0 = Weights, 10 = Cardio)</p>
-                    <form action="#">
-                        <p class="range-field">
-                            <input type="range" id="quest2" min="0" max="10" />
-                        </p>
-                    </form>
-                    <h5>How often do you go to the gym?</h5>
-                    <p>(0 = Once a month, 10 = Every day)</p>
-                    <form action="#">
-                        <p class="range-field">
-                            <input type="range" id="quest3" min="0" max="10" />
-                        </p>
-                    </form>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <h5>How much experience do you have in the gym?</h5>
+                <p>(0 = Novice, 10 = Expert)</p>
+                <form action="#">
+                    <p class="range-field">
+                        <input type="range" id="quest1" min="0" max="10" />
+                    </p>
+                </form>
+                <h5>Do you prefer lifting weights or doing cardio?</h5>
+                <p>(0 = Weights, 10 = Cardio)</p>
+                <form action="#">
+                    <p class="range-field">
+                        <input type="range" id="quest2" min="0" max="10" />
+                    </p>
+                </form>
+                <h5>How often do you go to the gym?</h5>
+                <p>(0 = Once a month, 10 = Every day)</p>
+                <form action="#">
+                    <p class="range-field">
+                        <input type="range" id="quest3" min="0" max="10" />
+                    </p>
+                </form>
             </div>
-            <a class="waves-effect waves-light btn view" id="submitmodal" data-target="modal1">Submit</a>
+        </div>
+        <a class="waves-effect waves-light btn view" id="submitmodal" data-target="modal1" type="submit">Submit</a>
+        
 
-            <div id="modal1" class="modal">
-                <div class="modal-content">
-                    <h4>Find Buddy</h4>
-                    <p></p>
-                    <img src="http://www.independentmediators.co.uk/wp-content/uploads/2016/02/placeholder-image.jpg"
-                        id="buddyimg">
-                </div>
-                <div class="modal-footer">
-                    <div class="row">
-                        <div class="col s6">
-                            <a href="userhome.html"
-                                class=" modal-action modal-close waves-effect waves-green btn-large btn-accept">Accept</a>
-                        </div>
-                        <div class="col s6">
-                            <a href="#!"
-                                class=" modal-action modal-close waves-effect waves-green btn-large btn-decline">Decline</a>
-                        </div>
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>Find Buddy</h4>
+                <p></p>
+                <img src="http://www.independentmediators.co.uk/wp-content/uploads/2016/02/placeholder-image.jpg"
+                    id="buddyimg">
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col s6">
+                        <a 
+                            class=" modal-action modal-close waves-effect waves-green btn-large btn-accept submit">Accept</a>
+                    </div>
+                    <div class="col s6">
+                        <a href="#!"
+                            class=" modal-action modal-close waves-effect waves-green btn-large btn-decline">Decline</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
 
@@ -139,18 +156,80 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script>
-        $('#submitmodal').click(function () {
-            var user = new FormData();
+        
+    var buddyId;
+    var userId;
+    var UserName = $("#firstname").val();
+    var UserEmail = $("#email").val();
 
+    console.log(UserName);
+    function getUser(id, cb)
+    {
+         $.get("api/users/" + id).
+                 then(function(data) {
+                  console.log(data);
+                  cb(data)
+                });
+    }
+
+
+
+
+        function addUser(cb)
+        {
+            var newUser = {
+            name: UserName,
+            password: 0,
+            username: UserEmail
+            };
+
+            console.log(newUser);
+
+
+             $.post("/api/users/", newUser)
+
+            .then(function(data) {
+
+              console.log(data);
+              console.log(data.id);
+              userId = data.id;
+              console.log(userId);
+              cb();
+
+              alert("Adding user...");
+            });
+
+        }
+
+
+
+
+        function addProfilePic()
+        {
+             console.log(userId);
+             var user = new FormData();
+
+            var name = UserName;
             var image = $("#image").prop("files")[0]; 
 
+
+            console.log(name);
+            console.log(image);
+            console.log(userId);
+
+            user.append("name", name);
             user.append("file", image);
-   				
-       		$("#image").val("")
+            user.append("UserId", userId);
+
+
+                
+            $("#image").val("");
+            $("#name").val("");
+
 
             $.ajax({
                 type: "POST",
-                url: "/test",
+                url: "/api/users/survey",
                 processData: false,
                 contentType: false,
                 dataType: "json",
@@ -159,44 +238,42 @@
                     if(response === null) {
                        alert("Error.");
                     } else {
-                    	console.log("post back");
+                        console.log("post back");
                     }
                 }
             });
+            // $('.modal').modal();
+            // $('#modal1').modal('open');
+            // $('.trigger-modal').modal();
+
+        }
+
+
+
+        $('#submitmodal').click(function (e) {
+
+            e.preventDefault();
+            UserName = $("#firstname").val();
+            UserEmail = $("#email").val();
+            console.log(UserName);
+            addUser(function(){
+                console.log("before settimeout");
+                setTimeout(addProfilePic(), 5000);
+            });
+            // addUser();
             $('.modal').modal();
             $('#modal1').modal('open');
             $('.trigger-modal').modal();
+
+            
+
+
         });
+        $(".btn-accept").click(function(e){
+            $("#okta-info").submit();
+        })
     </script>
 
 </body>
 
 </html>
-
-<label for="firstname">
-    First Name
-    <input id="firstname" name="firstName" required value="{{body.firstName}}" />
-    <label class="error">{{errors.firstName}}</label>
-  </label>
-  <label for="lastname">
-    Last Name
-    <input id="lastname" name="lastName" required value="{{body.lastName}}" />
-    <label class="error">{{errors.lastName}}</label>
-  </label>
-  <label for="email">
-    Email address
-    <input type="email" id="email" name="email" required value="{{body.email}}" />
-    <label class="error">{{errors.email}}</label>
-    <label class="error">{{errors.login}}</label>
-  </label>
-  <label for="password">
-    Password
-    <input
-      name="password"
-      type="password"
-      required
-      value="{{body.password}}"
-    />
-    <label class="error">{{errors.password}}</label>
-  </label>
-
