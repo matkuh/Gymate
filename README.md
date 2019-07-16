@@ -9,8 +9,11 @@ A way to plan your workout routines and meet new friends! Gymate will take in yo
 ### Author
 
 Author : [Jacobs](https://github.com/gljacobs)
+
 Author : [Chloe](https://github.com/chloezhouny)
+
 Author : [Matt](https://github.com/matkuh)
+
 Author : [Megha](https://github.com/meghabprasad)
 
 ### Images
