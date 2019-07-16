@@ -114,7 +114,7 @@
                                         </td>
                                         <td>
                                             <label>
-                                                <input type="checkbox" class="filled-in" />
+                                                <input type="checkbox" class="filled-in check" data-day= "0"/>
                                                 <span></span>
                                             </label>
 
@@ -131,7 +131,7 @@
                                         </td>
                                         <td>
                                             <label>
-                                                <input type="checkbox" class="filled-in" />
+                                                <input type="checkbox" class="filled-in check" data-day= "1"/>
                                                 <span></span>
                                             </label>
 
@@ -147,7 +147,7 @@
                                             </div>
                                         </td>
                                         <td> <label>
-                                                <input type="checkbox" class="filled-in" />
+                                                <input type="checkbox" class="filled-in check" data-day= "2"/>
                                                 <span></span>
                                             </label>
                                         </td>
@@ -162,7 +162,7 @@
                                             </div>
                                         </td>
                                         <td><label>
-                                                <input type="checkbox" class="filled-in" />
+                                                <input type="checkbox" class="filled-in check" data-day= "3"/>
                                                 <span></span>
                                             </label>
                                         </td>
@@ -177,7 +177,7 @@
                                             </div>
                                         </td>
                                         <td><label>
-                                                <input type="checkbox" class="filled-in" />
+                                                <input type="checkbox" class="filled-in check" data-day= "4"/>
                                                 <span></span>
                                             </label>
                                         </td>
@@ -192,7 +192,7 @@
                                             </div>
                                         </td>
                                         <td> <label>
-                                                <input type="checkbox" class="filled-in" />
+                                                <input type="checkbox" class="filled-in check" data-day= "5"/>
                                                 <span></span>
                                             </label>
                                         </td>
@@ -207,7 +207,7 @@
                                             </div>
                                         </td>
                                         <td><label>
-                                                <input type="checkbox" class="filled-in" />
+                                                <input type="checkbox" class="filled-in check" data-day="6"/>
                                                 <span></span>
                                             </label>
                                         </td>
@@ -243,7 +243,7 @@
                                                 <td>Monday</td>
                                                 <td>
                                                     <div class="input-field inline">
-                                                        <input id="email_inline" type="email" class="validate">
+                                                        <input id = "monday" type="email" class="validate" required>
                                                         <label for="email_inline">Routine Info</label>
                                                     </div>
                                                 </td>
@@ -252,7 +252,7 @@
                                                 <td>Tuesday</td>
                                                 <td>
                                                     <div class="input-field inline">
-                                                        <input id="email_inline" type="email" class="validate">
+                                                        <input id = "tuesday"  type="email" class="validate" required>
                                                         <label for="email_inline">Routine Info</label>
                                                     </div>
                                                 </td>
@@ -261,7 +261,7 @@
                                                 <td>Wednesday</td>
                                                 <td>
                                                     <div class="input-field inline">
-                                                        <input id="email_inline" type="email" class="validate">
+                                                        <input id = "wednesday" type="email" class="validate" required>
                                                         <label for="email_inline">Routine Info</label>
                                                     </div>
                                                 </td>
@@ -270,7 +270,7 @@
                                                 <td>Thursday</td>
                                                 <td>
                                                     <div class="input-field inline">
-                                                        <input id="email_inline" type="email" class="validate">
+                                                        <input id = "thursday" type="email" class="validate" required>
                                                         <label for="email_inline">Routine Info</label>
                                                     </div>
                                                 </td>
@@ -279,7 +279,7 @@
                                                 <td>Friday</td>
                                                 <td>
                                                     <div class="input-field inline">
-                                                        <input id="email_inline" type="email" class="validate">
+                                                        <input id = "friday" type="email" class="validate" required>
                                                         <label for="email_inline">Routine Info</label>
                                                     </div>
                                                 </td>
@@ -288,7 +288,7 @@
                                                 <td>Saturday</td>
                                                 <td>
                                                     <div class="input-field inline">
-                                                        <input id="email_inline" type="email" class="validate">
+                                                        <input id = "saturday" type="email" class="validate" required>
                                                         <label for="email_inline">Routine Info</label>
                                                     </div>
                                                 </td>
@@ -297,7 +297,7 @@
                                                 <td>Sunday</td>
                                                 <td>
                                                     <div class="input-field inline">
-                                                        <input id="email_inline" type="email" class="validate">
+                                                        <input  id = "sunday" type="email" class="validate" required>
                                                         <label for="email_inline">Routine Info</label>
                                                     </div>
                                                 </td>
@@ -307,7 +307,7 @@
 
                                     </table>
                                     <br>
-                                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                    <button class="btn waves-effect waves-light" type="submit" id = "editRoutineSubmit" name="action">Submit
                                         <i class="material-icons right">send</i>
                                     </button>
                                 </div>
@@ -372,7 +372,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="addStatSumbit">Agree</a>
                         </div>
                     </div>
                 </div>
@@ -401,16 +401,11 @@
 
 
 
-        console.log("id" + getUserbyEmail(userEmail))；
-  
-
-
-
-
-
-
         var userId = 1;
-        routineIndex = 1;
+        // getUserByEmail(userEmail);
+        // console.log(userId);
+        var routineIndex = 1;
+
 
 
 
@@ -428,15 +423,17 @@
                 });
         }
 
-        function getUserbyEmail(userEmail)
-        {
-             $.get("api/users/email" + userEmail).
-                then(function (data) {
-                    console.log(data);
 
-                });
 
-        }
+          function getUserByEmail(email) {
+            console.log("in getUser");
+                $.get("api/users/email/" + email).
+                    then(function (data) {
+                        console.log(data);
+                        userId = data.id;
+                    });
+            };
+
 
 
 
@@ -450,14 +447,22 @@
             $("#portfolioImage").attr("src", data.profilePhoto);
         });
 
+
+
+
         //Routines Section
         // =============================================================
 
-        var Routine1 = ["Chest, Back, Shoulders, Legs, Biceps, Triceps", "Rest", "Rest", "Legs, Triceps, Biceps, Chest, Back, Shoulder", "Rest", "Shoulders, Back, Chest, Legs, Triceps, Biceps", "Rest"];
-        var Routine2 = ["Chest, Shoulders and Triceps", "Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
-        var Routine3 = ["Chest & Back", "Legs", "Shoulders & Arms", "Rest", " Chest, Shoulders, & Triceps", "Back & Biceps", " Legs"];
+    var Routine1 = ["Chest, Back, Shoulders, Legs, Biceps, Triceps", "Rest", "Rest", "Legs, Triceps, Biceps, Chest, Back, Shoulder", "Rest", "Shoulders, Back, Chest, Legs, Triceps, Biceps", "Rest"];
+    var Routine2 = ["Chest, Shoulders and Triceps", "Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
+    var Routine3 = ["Chest & Back", "Legs", "Shoulders & Arms", "Rest", " Chest, Shoulders, & Triceps", "Back & Biceps", " Legs"];
+    var Routine4 = ["Chest, Shoulders and Triceps", "Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
+    var Routine5 = ["Chest, Shoulders and Triceps", "Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
 
-        var routineArr = [Routine1, Routine2, Routine3];
+
+        var routineArr = [Routine1, Routine2, Routine3, Routine4, Routine5];
+
+
 
         function displayUserRoutine(i) {
             $.get("/api/routines/" + userId, function (data) {
@@ -469,8 +474,78 @@
 
         }
 
+        function updateUserRoutine(routine, userId)
+        {    
+
+            for (var i = 0; i < 7;i ++)
+            {
+                  var dailyRoutine = 
+                {
+                    hoursChecked: 0,
+                    routine: routine[i],
+                }
+                    $.ajax({
+                    url: "/api/routines/" + userId + "/" + (i+1),
+                    type: 'PUT',    
+                    data: dailyRoutine  
+                    }).then(function(data) {
+
+                  console.log(data);
+                });
+            }
+            
+        }
+
+        function updateUserComplete(status, day)
+        {    
 
 
+                  var dailyRoutine = 
+                {
+                    completed: status
+                }
+
+                console.log(dailyRoutine);
+
+                    $.ajax({
+                    url: "/api/routines/" + userId + "/" + (day+1),
+                    type: 'PUT',    
+                    data: dailyRoutine  
+                    }).then(function(data) {
+
+                  console.log(data);
+                });
+            
+        }
+
+
+         function addRoutine(routine) {
+
+                console.log(routine);
+
+                for (var i = 0; i < 7; i++) {
+                    var dailyRoutine =
+                    {
+                        dayOfTheWeek: i + 1,
+                        routine: routine[i],
+                        UserId: userId
+                    }
+
+                    $.ajax({
+                        method: "POST",
+                        url: "/api/routines/" + userId,
+                        data: dailyRoutine
+                    }).then(function (data) {
+
+                        console.log(data);
+                    });
+                }
+
+            }
+
+        addRoutine(routineArr[routineIndex]);
+
+        // updateUserRoutine(routineArr[routineIndex], userId);
 
         displayUserRoutine(userId);
 
@@ -482,12 +557,12 @@
             var aggregated_hour = 0;
 
 
-            var weight = $("#weight").val().trim();
-            var hours = $("#time").val().trim();
+            var weight = $("#weightinput").val().trim();
+            var hours = $("#timeinput").val().trim();
 
             var poundsLoss = initialWeight - weight;
             var bmi = weight / (initialHeight * initialHeight) * 703;
-            var date = $("#date").val().trim();
+
 
 
 
@@ -497,9 +572,10 @@
                 hours: hours,
                 poundsLoss: poundsLoss,
                 bmi: bmi,
-                created_at: date,
                 UserId: userId
             }
+
+            console.log(newStat);
 
             $.ajax({
                 method: "POST",
@@ -512,16 +588,14 @@
         };
 
 
-        function displayUserStats(userId) {
+        function displayUserStats() {
             $.get("/api/stats/" + userId, function (data) {
                 console.log(data);
 
                 for (var i = data.length; i > data.length - 10; i--) {
 
                     var row = $("<tr></tr>");
-                    var element = $("<td></td>").text(data[i].created_at);
-                    row.append(element);
-                    element = $("<td></td>").text(data[i].weight);
+                    var element = $("<td></td>").text(data[i].weight);
                     row.append(element);
                     element = $("<td></td>").text(data[i].bmi);
                     row.append(element);
@@ -537,6 +611,23 @@
 
 
 
+        $('.check').click(function () {
+
+            var day = parseInt($(this).attr("data-day"));
+            console.log("day: " + day);
+            console.log($(this).prop("checked"));
+
+           if ($(this).prop("checked")=== true)
+           {
+                updateUserComplete(true, day);
+           }
+           else
+           {
+                updateUserComplete(false, day);
+           }
+        });
+
+
 
 
         $('#editRoutine').click(function () {
@@ -545,6 +636,31 @@
             $('#modal1').modal('open');
             $('.trigger-modal').modal();
         });
+
+
+
+
+         $('#editRoutineSubmit').click(function () {
+
+
+            var routine = [];
+
+            var monday = $("#monday").val();
+            var tuesday = $("#tuesday").val();
+            var wednesday = $("#wednesday").val();
+            var thursday = $("#thursday").val();
+            var friday = $("#friday").val();
+            var saturday = $("#saturday").val();
+            var sunday = $("#sunday").val();
+
+            routine = [monday, tuesday, wednesday, thursday, friday, saturday, sunday];
+
+            updateUserRoutine(routine, userId);
+            displayUserRoutine(userId);
+
+  });
+
+
 
 
 
@@ -560,13 +676,8 @@
 
         $('#addStatSumbit').click(function () {
 
-        // var weight = $("#weight").val().trim();
-        // var hours = $("#time").val().trim();
-        // var date = $("#date").val().trim();
-
-
-        //     addUserStat(date, weight, hours, poundsLoss, bmi, created_at, userId);
-
+            addUserStat();
+            displayUserStats();
 
         });
 

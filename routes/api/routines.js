@@ -22,7 +22,9 @@ router.route("/:id")
    .delete(routinecontroller.deleteRoutine);
 
 router.route("/:id/:day")
-  .put(routinecontroller.editUserRoutine);
+  .put(routinecontroller.editUserRoutine)
+  
+  .put(routinecontroller.updateUserComplete);
 
 module.exports = router;
 

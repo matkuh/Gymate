@@ -31,7 +31,20 @@ module.exports = {
 
 
 
-
+  updateUserComplete: function (req, res) {
+    db.Routine.update(
+      {
+        completed: req.body.completed    
+      },
+      {
+        where: {UserId: req.params.id, 
+        dayOfTheWeek: req.params.day}
+      })
+    .then(function(dbRoutine)
+    {
+      res.json(dbRoutine);
+    });
+  },
 
 
   getUserRoutines: function (req, res) {

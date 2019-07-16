@@ -53,11 +53,12 @@ module.exports = function(sequelize, DataTypes) {
     routineSelected:
     {
       type: DataTypes.INTEGER,
-      allowNull: true,
-      validate: {
-        len: [1]
-    }
+      allowNull: true
+    //   validate: {
+    //     len: [1]
+    // }
   },
+},
    {
   freezeTableName: true, // Model tableName will be the same as the model name
   timestamps: false

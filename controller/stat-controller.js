@@ -52,7 +52,6 @@ module.exports = {
      hours: req.body.hours,
      poundsLossed: req.body.poundsLossed,
      bmi: req.body.poundsLossed,
-     created_at: req.body.created_at,
      UserId: req.body.UserId
    }).then(function(dbStat) {
       res.json(dbStat);

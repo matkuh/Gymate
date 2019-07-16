@@ -45,11 +45,11 @@ module.exports = function(sequelize, DataTypes) {
     }
   },
 
-   created_at: {
-      type: DataTypes.DATE,
-      allowNull: false
+   time: {
+        type: 'TIMESTAMP',
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+        allowNull: false
     },
-   
   },
   {
   freezeTableName: true, // Model tableName will be the same as the model name

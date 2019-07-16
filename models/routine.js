@@ -27,11 +27,17 @@ module.exports = function(sequelize, DataTypes) {
     hoursChecked: {
       type: DataTypes.FLOAT,
       allowNull: true,
+      defaultValue: 0,
       validate: {
         len: [1],
         isNumeric: true
       }
     },
+    completed: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: true
+    }
    
   },
   {
