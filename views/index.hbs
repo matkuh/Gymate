@@ -20,29 +20,31 @@
 
 <body style="background-image: url('landing-gymate.jpg'); background-size: 100%;">
 
-    <nav role="navigation" style="background-color:black">
+    <nav role="navigation" class="nav">
         <div class="nav-wrapper container">
             <a id="logo-container" href="survey.html" class="brand-logo">
                 <img src="gm-white.png" id="logo" >
             </a>
             <ul class="right">{{#if user}}
-        <a href="/profile">
-          Signed in as {{user.profile.firstName}} {{user.profile.lastName}}
-        </a>
-      {{/if}}</ul>
-            <ul class="right">    
-      {{#if user}}
-        <a href="/logout">Sign out</a>
-      {{else}}
-        <a class="sign-in"href="/dashboard">Sign In</a>
-      {{/if}}
+
+                {{/if}}</ul>
+            <ul class="right">
+                {{#if user}}
+                <a style="color:red" href="/logout">Sign out</a>
+                {{else}}
+                <a style="color:red" href="/login">Sign in</a>
+                {{/if}}
+            </ul>
+            <ul class="right">
+                <a style="color: red" href="/dashboard">Home</a>
+
             </ul>
         </div>
     </nav>
 
     <br>
 
-
+          
 
     <div class="container" id="main">
       <div class="card-panel black">
@@ -67,7 +69,7 @@
                 Up</a>.
             </p>
             <p>
-              <a href="/reset-password">Forgot Password</a>
+              <a href="/reset-password" style="color: red">Forgot Password</a>
               {{/if}}
             </p>
           
@@ -78,7 +80,7 @@
       </div>
 
 <footer>
-    <nav role="navigation" class="footer">
+    <nav role="navigation" class="footer nav">
         <div class="nav-wrapper container">
             <div class="container center">
                 <footer>© 2019 Copyright</footer>
@@ -86,6 +88,8 @@
         </div>
     </nav>
     </footer>
+
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

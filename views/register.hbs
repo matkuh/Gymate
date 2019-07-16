@@ -31,10 +31,10 @@
 
 <body>
 
-    <nav role="navigation red">
+    <nav role="navigation" class="nav">
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo">
-                <img src="GM.png" id="logo">
+                <img src="gm-white.png" id="logo">
             </a>
         </div>
     </nav>
@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col s12">
                     <br>
-                    <form id="okta-info"method="post">
+                    <form id="okta-info" method="post">
                         <label for="firstname">
                             First Name
                             <input id="firstname" name="firstName" required value="{{body.firstName}}" />
@@ -69,83 +69,95 @@
                             <input name="password" type="password" required value="{{body.password}}" />
                             <label class="error">{{errors.password}}</label>
                         </label>
-                
-                        
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="weight" type="text" class="validate" required value="{{body.weight}}">
+                                <label for="weight" class="error">{{errors.weight}}Weight</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="height" type="text" class="validate" required value="{{body.height}}">
+                                <label for="height" class="error">{{errors.height}}Height</label>
+                            </div>
+
+                        </div>
+
+
                     </form>
-                
-                </div>
-            </div>
-        
-        <div class="row">
-            <div class="col s12">
-                <form>
-                    <div class="file-field input-field">
-                    <div class="btn">
-                        <span>File</span>
-                        <input id="image" type="file">
-                    </div>
-                    <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload an profile picture">
-                    </div>
-                </div>
-                </form>
-                
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                <h5>How much experience do you have in the gym?</h5>
-                <p>(0 = Novice, 10 = Expert)</p>
-                <form action="#">
-                    <p class="range-field">
-                        <input type="range" id="quest1" min="0" max="10" />
-                    </p>
-                </form>
-                <h5>Do you prefer lifting weights or doing cardio?</h5>
-                <p>(0 = Weights, 10 = Cardio)</p>
-                <form action="#">
-                    <p class="range-field">
-                        <input type="range" id="quest2" min="0" max="10" />
-                    </p>
-                </form>
-                <h5>How often do you go to the gym?</h5>
-                <p>(0 = Once a month, 10 = Every day)</p>
-                <form action="#">
-                    <p class="range-field">
-                        <input type="range" id="quest3" min="0" max="10" />
-                    </p>
-                </form>
-            </div>
-        </div>
-        <a class="waves-effect waves-light btn view" id="submitmodal" data-target="modal1" type="submit">Submit</a>
-        
 
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-                <h4>Find Buddy</h4>
-                <p></p>
-                <img src="http://www.independentmediators.co.uk/wp-content/uploads/2016/02/placeholder-image.jpg"
-                    id="buddyimg">
+                </div>
             </div>
-            <div class="modal-footer">
-                <div class="row">
-                    <div class="col s6">
-                        <a 
-                            class=" modal-action modal-close waves-effect waves-green btn-large btn-accept submit">Accept</a>
-                    </div>
-                    <div class="col s6">
-                        <a href="#!"
-                            class=" modal-action modal-close waves-effect waves-green btn-large btn-decline">Decline</a>
+
+            <div class="row">
+                <div class="col s12">
+                    <form>
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>File</span>
+                                <input id="image" type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" placeholder="Upload an profile picture">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <h5>How much experience do you have in the gym?</h5>
+                    <p>(0 = Novice, 10 = Expert)</p>
+                    <form action="#">
+                        <p class="range-field">
+                            <input type="range" id="quest1" min="0" max="10" />
+                        </p>
+                    </form>
+                    <h5>Do you prefer lifting weights or doing cardio?</h5>
+                    <p>(0 = Weights, 10 = Cardio)</p>
+                    <form action="#">
+                        <p class="range-field">
+                            <input type="range" id="quest2" min="0" max="10" />
+                        </p>
+                    </form>
+                    <h5>How often do you go to the gym?</h5>
+                    <p>(0 = Once a month, 10 = Every day)</p>
+                    <form action="#">
+                        <p class="range-field">
+                            <input type="range" id="quest3" min="0" max="10" />
+                        </p>
+                    </form>
+                </div>
+            </div>
+            <a class="waves-effect btn-small view" style="background-color: red;" id="submitmodal" data-target="modal1"
+                type="">Submit</a>
+
+
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <h4>Find Buddy</h4>
+                    <p></p>
+                    <img src="http://www.independentmediators.co.uk/wp-content/uploads/2016/02/placeholder-image.jpg"
+                        id="buddyimg">
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col s6">
+                            <a
+                                class=" modal-action modal-close waves-effect waves-green btn-large btn-accept submit">Accept</a>
+                        </div>
+                        <div class="col s6">
+                            <a href="#!"
+                                class=" modal-action modal-close waves-effect waves-green btn-large btn-decline">Decline</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     </div>
-    </div>
 
 
-    <nav role="navigation red">
+    <nav role="navigation red" class="nav">
         <div class="nav-wrapper container">
             <div class="container center">
                 <footer>© 2019 Copyright</footer>
@@ -156,87 +168,60 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script>
-        
-    var buddyId;
-    var userId;
-    var UserName = $("#firstname").val();
-    var UserEmail = $("#email").val();
 
-    console.log(UserName);
-    function getUser(id, cb)
-    {
-         $.get("api/users/" + id).
-                 then(function(data) {
-                  console.log(data);
-                  cb(data)
+        var buddyId;
+        var userId;
+        var UserName = $("#firstname").val();
+        var UserEmail = $("#email").val();
+        console.log(UserName);
+        function getUser(id, cb) {
+            $.get("api/users/" + id).
+                then(function (data) {
+                    console.log(data);
+                    cb(data)
                 });
-    }
-
-
-
-
-        function addUser(cb)
-        {
-            var newUser = {
-            name: UserName,
-            password: 0,
-            username: UserEmail
-            };
-
-            console.log(newUser);
-
-
-             $.post("/api/users/", newUser)
-
-            .then(function(data) {
-
-              console.log(data);
-              console.log(data.id);
-              userId = data.id;
-              console.log(userId);
-              cb();
-
-              alert("Adding user...");
-            });
-
         }
-
-
-
-
-        function addProfilePic()
-        {
-             console.log(userId);
-             var user = new FormData();
-
+        function addUser(cb) {
+            var newUser = {
+                name: UserName,
+                password: 0,
+                username: UserEmail
+            };
+            console.log(newUser);
+            $.post("/api/users/", newUser)
+                .then(function (data) {
+                    console.log(data);
+                    console.log(data.id);
+                    userId = data.id;
+                    console.log(userId);
+                    cb();
+                    alert("Adding user...");
+                });
+        }
+        function addProfilePic() {
+            console.log(userId);
+            var user = new FormData();
             var name = UserName;
-            var image = $("#image").prop("files")[0]; 
-
-
+            var image = $("#image").prop("files")[0];
             console.log(name);
             console.log(image);
             console.log(userId);
-
             user.append("name", name);
             user.append("file", image);
             user.append("UserId", userId);
 
-
-                
             $("#image").val("");
             $("#name").val("");
-
-
             $.ajax({
                 type: "POST",
                 url: "/api/users/survey",
                 processData: false,
                 contentType: false,
                 dataType: "json",
-                data: user, 
-                success: function(response, textStatus, jqXHR) {
-                    if(response === null) {
-                       alert("Error.");
+                data: user,
+                success: function (response, textStatus, jqXHR) {
+                    if (response === null) {
+                        alert("Error.");
                     } else {
                         console.log("post back");
                     }
@@ -245,18 +230,13 @@
             // $('.modal').modal();
             // $('#modal1').modal('open');
             // $('.trigger-modal').modal();
-
         }
-
-
-
         $('#submitmodal').click(function (e) {
-
             e.preventDefault();
             UserName = $("#firstname").val();
             UserEmail = $("#email").val();
             console.log(UserName);
-            addUser(function(){
+            addUser(function () {
                 console.log("before settimeout");
                 setTimeout(addProfilePic(), 5000);
             });
@@ -265,11 +245,8 @@
             $('#modal1').modal('open');
             $('.trigger-modal').modal();
 
-            
-
-
         });
-        $(".btn-accept").click(function(e){
+        $(".btn-accept").click(function (e) {
             $("#okta-info").submit();
         })
     </script>

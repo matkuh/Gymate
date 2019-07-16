@@ -113,3 +113,38 @@ input[type=range] + .thumb.active .value {
     display: flex !important;
     justify-content: space-between !important;
 } */
+.nav {
+    background-color: black
+}
+
+/* #nav-top {
+    display: flex !important;
+    justify-content: space-between !important;
+} */
+
+th {
+    color: black;
+}
+tr {
+    color: red;
+}
+
+.btn-small{
+    background-color: red;
+}
+.btn-small:visited{
+    background-color: red;
+}
+.btn-small:hover {
+    background-color: red;
+}
+.btn-small:focus{
+    background-color: red;
+}
+footer {
+    color: red;
+}
+#portfolioImage {
+    width: 50%;
+    height: 50%;
+}
