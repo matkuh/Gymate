@@ -63,7 +63,7 @@ module.exports = {
 //Add new routine for specific user
    addRoutine: function (req, res) {
     db.Routine.create({
-     dayOfTheWeek: parseInt(req.body.dayOfTheWeek),
+     dayOfTheWeek: req.body.dayOfTheWeek,
      routine: req.body.routine,
      UserId: req.body.UserId}).then(function(dbRoutine) {
       res.json(dbRoutine);

@@ -13,6 +13,9 @@ router.route("/")
 // Matches with "api/routines/:id"
 router.route("/:id")
 
+
+
+
  
 
    .get(routinecontroller.getUserRoutines)
