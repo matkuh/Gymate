@@ -179,8 +179,26 @@
         var routineArr = [Routine1, Routine2, Routine3];
 
 
-        function updateUserRoutine(userId)
-        {
+        function updateUserRoutine(routine, userId)
+
+        {    
+
+            for (var i = 0; i < 7;i ++)
+            {
+                  var dailyRoutine = 
+                {
+                    hoursChecked: 0,
+                    routine: routine[i],
+                }
+                    $.ajax({
+                    url: "/api/routines/" + userId + "/" + (i+1),
+                    type: 'PUT',    
+                    data: dailyRoutine  
+                    }).then(function(data) {
+
+                  console.log(data);
+                });
+            }
             
         }
 
@@ -227,7 +245,7 @@
             }
             else
             {
-
+                updateUserRoutine(routineArr[routineIndex], userId)
             }
 
         });

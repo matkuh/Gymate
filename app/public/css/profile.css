@@ -49,3 +49,14 @@ h3
     font-family: ‘Nobile’, sans-serif;
     font-weight: bold;
 }
+
+#portfolioImage
+{
+    width: 100%;
+}
+
+#name, #buddy, #email
+{
+    font-size: 20px;
+    font-weight: bold;
+}

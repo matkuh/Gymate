@@ -47,17 +47,14 @@
 
     <div class = "row" id="userInfo">
         <div class="col s3" >
-            <img id = "portfolioImage">Portfolio Image
+            <img id = "portfolioImage">
         </div>
         <div class = "col s9" >
             <div class = "row">
-                 <div class="col s8 center">Name</div>
+                 <div class="col s8 center" id="name">Name</div>
             </div>
             <div class = "row">
-                 <div class="col s8 center">Buddy</div>
-            </div>
-            <div class = "row">
-                 <div class="col s8 center">Email</div>
+                 <div class="col s8 center" id="email">Email</div>
             </div>
         </div>
     </div>
@@ -246,25 +243,7 @@
                             </tr>
                         </thead>
 
-                        <tbody>
-                            <tr>
-                                <td>7/11/2019</td>
-                                <td>150</td>
-                                <td>70</td>
-                                <td>20%</td>
-                                <td>26</td>
-                                <td>50</td>
-                                <td>10</td>
-                            </tr>
-                            <tr>
-                                <td>7/11/2019</td>
-                                <td>150</td>
-                                <td>70</td>
-                                <td>20%</td>
-                                <td>26</td>
-                                <td>50</td>
-                                <td>10</td>
-                            </tr>
+                        <tbody id = "statsSection">
                         </tbody>
                     </table>
                     <br>
@@ -306,21 +285,67 @@
 
 
     <script>
-        var userEmail = {user.profile.email};
 
-        
-            function getUser(id, cb)
-            {
-                 $.get("api/users/" + id).
-                         then(function(data) {
-                          console.log(data);
-                          cb(data)
-                        });
-            }
+
+//Get User Id through email from Okta
+// =============================================================
+    var email;
+
+
+         function getUserByEmail(email, cb) {
+      $.get("api/users/email/" + email).
+        then(function (data) {
+          console.log(data);
+          cb(data)
+        });
+    };
+
+
 
         var userId = 1;
         routineIndex = 1;
 
+
+
+
+
+
+//User Info Section
+// =============================================================
+
+  function getUser(id, cb)
+        {
+             $.get("api/users/" + id).
+                     then(function(data) {
+                      console.log(data);
+                      cb(data)
+                    });
+        }
+
+ 
+
+
+        getUser(userId, function(data)
+            {
+
+                console.log(data);
+                console.log(data.profilePhoto);
+
+            $("#portfolioImage").attr("src", data.profilePhoto);  
+            $("#name").text(data.name);
+            $("#email").text(data.username);
+
+            });
+
+
+
+
+
+
+
+
+//Routines Section
+// =============================================================
 
         var Routine1 = ["Chest, Back, Shoulders, Legs, Biceps, Triceps","Rest", "Rest", "Legs, Triceps, Biceps, Chest, Back, Shoulder", "Rest", "Shoulders, Back, Chest, Legs, Triceps, Biceps", "Rest"];
         var Routine2 = ["Chest, Shoulders and Triceps","Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
@@ -330,14 +355,14 @@
 
 
 
-        function getUser(id, cb)
-        {
-             $.get("api/users/" + id).
-                     then(function(data) {
-                      console.log(data);
-                      cb(data)
-                    });
-        }
+        // function getUser(id, cb)
+        // {
+        //      $.get("api/users/" + id).
+        //              then(function(data) {
+        //               console.log(data);
+        //               cb(data)
+        //             });
+        // }
 
 
 
@@ -354,26 +379,110 @@
         }
 
 
+
+
         displayUserRoutine(userId);
 
 
-        //Upload portfolio image
-        getUser(userId, function(data)
-            {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//User Stats Section
+// =============================================================
+
+
+//Modal pop up for current weight, hours, date
+
+
+
+
+
+         function addUserStat() {
+
+            var initialWeight = 150;
+            var initialHeight = 66;
+            var aggregated_hour = 0;
+
+
+        var weight = $("#weight").val().trim();
+        var hours = $("#time").val().trim();
+
+        var poundsLoss = initialWeight - weight;
+        var bmi = weight/(initialHeight * initialHeight) * 703;
+        var date = $("#date").val().trim();
+
+                
+                var newStat =
+                {
+                    weight: weight,
+                    hours: hours,
+                    poundsLoss: poundsLoss,
+                    bmi: bmi,
+                    created_at: date,
+                    UserId: userId
+                }
+
+            $.ajax({
+                method: "POST",
+                url: "/api/stats/",
+                data: newStat
+            }).then(function (data) {
                 console.log(data);
-                console.log(data.profilePhoto)
-
-            $("#portfolioImage").attr("src", data.profilePhoto);  
-
-
             });
 
+};
+
+
+
+
+        function displayUserStats(userId)
+        {
+            $.get("/api/stats/" + userId, function(data) {
+              console.log(data);
+
+                for (var i = data.length; i > data.length - 10; i--)
+                {
+
+                    var row = $("<tr></tr>");
+                    var element = $("<td></td>").text(data[i].created_at);
+                    row.append(element);
+                    element = $("<td></td>").text(data[i].weight);
+                    row.append(element);
+                    element = $("<td></td>").text(data[i].bmi);
+                    row.append(element);
+                    element = $("<td></td>").text(data[i].hours);
+                    row.append(element);
+                    element = $("<td></td>").text(data[i].poundsLoss);
+                    row.append(element);
+                    $("#statsSection").append(row);
+
+                }
+            });
+        }
+
+
+
+ 
 
         $('#editRoutine').click(function () {
 
              $('.modal').modal();
             $('#modal1').modal('open');
             $('.trigger-modal').modal();
+
+
+
 
 
         });
@@ -388,24 +497,17 @@
 
 
 
+        
+        });
 
 
 
-            // function addUserStat() {
-                
-            //     var newStat =
-            //     {
-            //         weight: $("#weight").val().trim(),
-            //         hours: $("#time").val().trim()
-            //         poundsLoss: 
-            //     }
-            // $.ajax({
-            //     method: "POST",
-            //     url: "/api/stats/" + userId,
-            //     data: newStat
-            // }).then(function (data) {
-            //     console.log(data);
-            // });
+         $('#addStatSumbit').click(function () {
+
+            // addUserStat();
+            // displayUserStats(userId);
+
+        
         });
 
 
