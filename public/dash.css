@@ -158,6 +158,10 @@ tr {
     color: red;
 }
 
+td {
+    text-align: center;
+}
+
 .btn-small{
     background-color: red;
 }
