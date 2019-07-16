@@ -52,6 +52,11 @@ getAllUsers: function (req, res) {
         .catch(err => res.status(422).json(err));   
   },
 
+getUserEmail: function (req, res) {
+      db.User.findOne({where:{username:req.params.email}})
+        .then(dbUser => res.json(dbUser))
+        .catch(err => res.status(422).json(err));   
+  },
 
 
 getUser: function (req, res) {
@@ -73,7 +78,7 @@ addUser: function (req, res) {
 
 
 editUser: function (req, res) {
-db.User.update({name: req.body.name, username: req.body.username, password: req.body.password, height: req.body.height, weight: req.body.weight},{ where: {id: req.params.id}})
+db.User.update({name: req.body.name, username: req.body.username, password: req.body.password, height: req.body.height, weight: req.body.weight, routineSelected: req.body.routineSelected},{ where: {id: req.params.id}})
         .then(dbuser => {
           res.json(dbuser);
         })

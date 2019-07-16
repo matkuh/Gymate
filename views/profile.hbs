@@ -39,7 +39,12 @@
             <ul class="right"></ul>
             <ul class="right">
             </ul>
-            <ul class="right">
+            <ul class="center">
+                {{#if user}}
+                <a href="/profile">
+                    Signed in as {{user.profile.firstName}} {{user.profile.lastName}}
+                </a>
+                {{/if}}
             </ul>
             <ul class="right">
                 <a style="color: red" href="/dashboard">Home</a>
@@ -50,6 +55,8 @@
     <br>
 
     <div class="container">
+        <p>Name: {{user.profile.firstName}} {{user.profile.lastName}}</p>
+        <p>Email: <span id="okta-email">{{user.profile.email}}</span></p>
         <div class="card-panel center">
             <div class="row">
                 <div class="col s4">
@@ -388,7 +395,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
 
-        //var userEmail = { user.profile.email };
+        
+        var userEmail = JSON.stringify($("#okta-email").text());
+        console.log("User Email: "+ userEmail);
+
+
+
+        console.log("id" + getUserbyEmail(userEmail))；
+  
+
+
+
+
+
 
         var userId = 1;
         routineIndex = 1;
@@ -407,6 +426,16 @@
                     console.log(data);
                     cb(data)
                 });
+        }
+
+        function getUserbyEmail(userEmail)
+        {
+             $.get("api/users/email" + userEmail).
+                then(function (data) {
+                    console.log(data);
+
+                });
+
         }
 
 
@@ -531,12 +560,12 @@
 
         $('#addStatSumbit').click(function () {
 
-        var weight = $("#weight").val().trim();
-        var hours = $("#time").val().trim();
-        var date = $("#date").val().trim();
+        // var weight = $("#weight").val().trim();
+        // var hours = $("#time").val().trim();
+        // var date = $("#date").val().trim();
 
 
-            addUserStat(date, weight, hours, poundsLoss, bmi, created_at, userId);
+        //     addUserStat(date, weight, hours, poundsLoss, bmi, created_at, userId);
 
 
         });

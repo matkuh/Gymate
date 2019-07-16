@@ -49,6 +49,14 @@ module.exports = function(sequelize, DataTypes) {
       //   isUrl: true
       // }
     },
+
+    routineSelected:
+    {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      validate: {
+        len: [1]
+    }
   },
    {
   freezeTableName: true, // Model tableName will be the same as the model name

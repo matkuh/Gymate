@@ -17,6 +17,10 @@ router.route("/:id")
 
     .put(usercontroller.editUser);
 
+router.route("/email/:email")
+
+	.get(usercontroller.getUserEmail);
+
    
 
 router.route("/survey")
