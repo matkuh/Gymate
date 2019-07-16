@@ -13,14 +13,15 @@ router.route("/")
 
 router.route("/:id")
 
-	.get(usercontroller.getUser)
+    .get(usercontroller.getUser)
 
     .put(usercontroller.editUser);
 
-   
+router.route("/email/:email")
+    .get(usercontroller.getUserEmail);
 
 router.route("/survey")
- 	.post(usercontroller.updatePhoto);
+    .post(usercontroller.updatePhoto);
 
 
 
