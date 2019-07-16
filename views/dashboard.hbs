@@ -8,35 +8,13 @@
     <title>Gymate</title>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    {{!-- <link rel="apple-touch-icon" sizes="57x57" href="favicons/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="favicons/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="favicons/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="favicons/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="favicons/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="favicons/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="favicons/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="favicons/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="favicons/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="favicons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
-    <link rel="manifest" href="favicons/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="favicons/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="survey.css">
-
-
+    <link rel="stylesheet" type="text/css" href="dash.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-
 </head>
 
 <body>
-
-    <nav role="navigation red" class="nav">
+    <nav id="navi" role="navigation red" class="nav" data-email={{user.profile.email}}>
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo">
                 <img src="gm-white.png" id="logo">
@@ -73,10 +51,33 @@
             <div class="col s6">
                 <div class="card-panel">
                     <span class="card-title">You vs. Buddy</span>
+                    <table class=“centered”>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Hours (Month)</th>
+                                <th>Pounds Loss (Month)</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>You</td>
+                                <td>7/11/2019</td>
+                                <td>50</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td>Gabe</td>
+                                <td>7/11/2019</td>
+                                <td>50</td>
+                                <td>10</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-
-
 
             <div class="col s6">
                 <div class="card-panel">
@@ -116,8 +117,6 @@
     var colors = ["red", "yellow", "green", "blue", "orange", "purple"];
     var idFromEmail;
 
-
-
     function getUser(id, cb) {
         $.get("api/users/" + id).
             then(function (data) {
@@ -132,7 +131,6 @@
                 idFromEmail = data.id;
             });
     };
-
 
     function displayAllPosts() {
         $.get("api/posts").
@@ -220,7 +218,7 @@
 
 
     $(document).ready(function () {
-        getUserByEmail("gabrielj@gmail.com");
+        getUserByEmail($("#navi").data().email);
         console.log(idFromEmail);
 
         $(".routine").click(function (e) {

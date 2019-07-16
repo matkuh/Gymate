@@ -1,8 +1,39 @@
-# Node Express Application with Okta Authentication
+# Gymate
 
-This example shows how to create a website in Node and Express that uses Okta for authentication. The application was bootstrapped with [Express Generator](https://expressjs.com/en/starter/generator.html). You can see it online at <https://okta-node-express-example.herokuapp.com>.
+A way to plan your workout routines and meet new friends! Gymate will take in your workout preferences and pair you with a buddy who has similar interests. 
 
-Please read [Simple Node Authentication](https://developer.okta.com/blog/2018/04/24/simple-node-authentication) to see how this application was created, and [How to Securely Manage Users in Your Node App](https://developer.okta.com/blog/2018/06/26/securely-manage-users-node-app) to see how the user profile page was created.
+### Link to delopyed site
+
+
+
+### Author
+
+Author : [Jacobs](https://github.com/gljacobs)
+
+Author : [Chloe](https://github.com/chloezhouny)
+
+Author : [Matt](https://github.com/matkuh)
+
+Author : [Megha](https://github.com/meghabprasad)
+
+### Images
+
+### Tech Used
+
+1. [JavaScript](https://www.javascript.com/)
+2. [Node](https://nodejs.org/en/)
+3. [Express](https://expressjs.com/)
+4. [Handlebars](https://www.npmjs.com/package/handlebars)
+5. [Okta](https://www.okta.com/)
+6. [AWS-SDK S3](https://aws.amazon.com/sdk-for-node-js/)
+7. [MySQL](https://www.mysql.com/)
+8. [Sequelize](http://docs.sequelizejs.com/)
+
+### How it Works
+
+<img src"wireframess.png" width 600 height 400>
+
+### Account Authentication
 
 ## Getting Started
 
@@ -31,8 +62,6 @@ You will need to create an application in Okta:
 * Save your **client ID** and **client secret** for later
 
 Your Okta application should have settings similar to the following:
-
-![Okta Application Settings](images/okta-app-settings.png)
 
 You will also need two API tokens:
 
@@ -64,33 +93,3 @@ echo "APP_SECRET=`openssl rand -base64 32`" >> .env
 
 The app also assumes users have `birthdate` and `favoriteColor` custom user attributes. Those need to be added from the Okta Developer Console by going to **Users > Profile Editor**, then click the **Profile** button on the profile labeled **User**. Click **Add Attribute**, then give it a display name like `Birth Date` and a variable name of `birthdate` (case sensitive). Click **Save and Add Another** to add another one with the variable name `favoriteColor`, then click **Save**. The rest of the options can stay at the default.
 
-Now run the application:
-
-```bash
-npm install
-npm start
-```
-
-If you want to run the application in development mode so that any changes you make automatically restart the web server, instead of `npm start` use the command `npm run dev`.
-
-## Links
-
-Here are some links that were helpful in the creation of this example:
-
-* Libraries
-  * [Okta OpenID Connect Middleware](https://github.com/okta/okta-oidc-js/tree/master/packages/oidc-middleware)
-  * [Okta Node SDK](https://github.com/okta/okta-sdk-nodejs)
-  * [Express](https://github.com/expressjs/express)
-* Tools
-  * [Express Application Generator](https://expressjs.com/en/starter/generator.html)
-* Blogs
-  * [Build User Registration with Node, React, and Okta](https://developer.okta.com/blog/2018/02/06/build-user-registration-with-node-react-and-okta)
-  * [Build a Basic CRUD App with Vue.js and Node](https://developer.okta.com/blog/2018/02/15/build-crud-app-vuejs-node)
-
-## Help
-
-Please post any questions as comments on the [blog post](https://developer.okta.com/blog/2018/04/24/simple-node-authentication), or visit our [Okta Developer Forums](https://devforum.okta.com/). You can also email [developers@okta.com](mailto:developers@okta.com) if would like to create a support ticket.
-
-## License
-
-Apache 2.0, see [LICENSE](LICENSE).
