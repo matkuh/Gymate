@@ -5,8 +5,9 @@ const statcontroller = require("../../controller/stat-controller");
 // Matches with "api/stats/"
 router.route("/")
 
-   .get(statcontroller.getAllstats)
-   .post(statcontroller.addStat);
+   .get(statcontroller.getAllstats);
+
+
 
 
 // Matches with "api/routines/:id"
@@ -16,7 +17,7 @@ router.route("/:id")
 
    .get(statcontroller.getUserStats)
 
-
+   .post(statcontroller.addStat)
 
 
 
