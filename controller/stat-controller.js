@@ -50,8 +50,8 @@ module.exports = {
     db.Stat.create({
      weight: req.body.weight,
      hours: req.body.hours,
-     poundsLossed: req.body.poundsLossed,
-     bmi: req.body.poundsLossed,
+     poundsLossed: req.body.poundsLoss,
+     bmi: req.body.bmi,
      UserId: req.body.UserId
    }).then(function(dbStat) {
       res.json(dbStat);
