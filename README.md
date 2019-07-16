@@ -63,8 +63,6 @@ You will need to create an application in Okta:
 
 Your Okta application should have settings similar to the following:
 
-![Okta Application Settings](images/okta-app-settings.png)
-
 You will also need two API tokens:
 
 * Log in to your Okta account, then navigate to **API > Tokens** and click the **Create Token** button
