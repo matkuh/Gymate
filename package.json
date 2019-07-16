@@ -10,10 +10,12 @@
   "dependencies": {
     "@okta/oidc-middleware": "^0.1.1",
     "@okta/okta-sdk-nodejs": "^1.1.0",
+    "aws-sdk": "^2.493.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "dotenv": "^5.0.1",
     "express": "~4.16.0",
+    "express-fileupload": "^1.1.5",
     "express-session": "^1.15.6",
     "hbs": "~4.0.1",
     "http-errors": "~1.6.2",
