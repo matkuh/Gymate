@@ -211,7 +211,7 @@
     var buddyId;
     var routineIndex;
     var selected = false;
-    var userId;
+    var userId = 1;
 
 
 
@@ -270,6 +270,8 @@
     var Routine4 = ["Chest, Shoulders and Triceps", "Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
     var Routine5 = ["Chest, Shoulders and Triceps", "Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
 
+     var routineArr = [Routine1, Routine2, Routine3, Routine4, Routine5];
+
     //$(".carousel").append("<a class='carousel-item'>R1</a>");
     //$(".carousel").append("<a class='carousel-item'>R2</a>");
     //$(".carousel").append("<a class='carousel-item'>R3</a>");
@@ -283,11 +285,27 @@
 
 
 
-    //var routineArr = [Routine1, Routine2, Routine3];
 
-    function updateUserRoutine(userId) {
+    function updateUserRoutine(routine, userId) {
 
+         for (var i = 0; i < 7;i ++)
+            {
+                  var dailyRoutine = 
+                {
+                    hoursChecked: 0,
+                    routine: routine[i],
+                }
+                    $.ajax({
+                    url: "/api/routines/" + userId + "/" + (i+1),
+                    type: 'PUT',    
+                    data: dailyRoutine  
+                    }).then(function(data) {
+
+                });
+            }
     }
+
+
 
     function addRoutine(routine) {
 
@@ -316,10 +334,12 @@
 
     $(document).ready(function () {
         idFromEmail = JSON.stringify($("#navi").text());
-        getUserByEmail(idFromEmail);
-        console.log(idFromEmail);
+        // getUserByEmail(idFromEmail);
+        // console.log(idFromEmail);
 
         $(".routine").click(function(){
+            routineIndex = $(this).attr("data-index");
+            console.log(routineIndex);
             $('.modal').modal();
             $('#modal1').modal('open');
             $('.trigger-modal').modal();
@@ -327,15 +347,17 @@
 
         $("#add-routine").click(function (e) {
             e.preventDefault();
-            //routineIndex = parseInt($(this).attr("data-index"));
-            //console.log(routineIndex);
-            //if (!selected) {
-                addRoutine(Routine1);
-                //selected = true;
-            //}
-            //else {
 
-            //}
+         $.get("/api/routines/" + userId, function (data) {
+        if(data.length === 0)
+            {
+                addRoutine(routineArr[0]);
+            }
+        else
+        {
+            updateUserRoutine(routineArr[routineIndex], userId);
+        }
+    });
 
         });
 

@@ -359,11 +359,11 @@
                             <h4>Add Stats</h4>
                             <div class="input-field col s6">
                                 <input placeholder="Pounds" id="weightinput" type="text" class="validate">
-                                <label for="weight">Weight</label>
+                                <label for="weightinput">Weight</label>
                             </div>
                             <div class="input-field col s6">
                                 <input placeholder="Hours" id="timeinput" type="text" class="validate">
-                                <label for="time">Time</label>
+                                <label for="timeinput">Time</label>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -550,15 +550,22 @@
         }
 
 
-         $.get("/api/routines/" + userId, function (data) {
-                console.log(data);
-            });
+         // $.get("/api/routines/" + userId, function (data) {
+         //        if(data.length === 0)
+         //            {
+         //                addRoutine(routineArr[0]);
+         //            }
+         //        else
+         //        {
+         //            updateUserRoutine(routineArr[routineIndex], userId);
+         //        }
+         //    });
 
         // addRoutine(routineArr[routineIndex]);
 
         // // updateUserRoutine(routineArr[routineIndex], userId);
 
-        // displayUserRoutine(userId);
+        displayUserRoutine(userId);
 
 
 
@@ -622,7 +629,18 @@
     // =============================================================
             initialWeight = 150;
             initialHeight = 66;
-            displayUserStats();
+
+
+              $.get("/api/stats/" + userId, function (data) {
+                console.log(data);
+                if(data.length !== 0)
+                    {
+                         displayUserStats();
+                    }
+
+            });
+
+           
 
 
         function addUserStat() {
@@ -667,11 +685,11 @@
 
                 console.log(data);
                 console.log("in display", data);
-                console.log("weight", data[0].weight)
+                console.log("weight", data[0].weight);
                 console.log("time", data[0].time);
 
 
-                for (var i = data.length-1; i > 0; i--) {
+                for (var i = data.length-1; i >= 0; i--) {
                     var time = data[i].time;
                     time = time.slice(0, 10);
                     var row = $("<tr></tr>");

@@ -11,7 +11,7 @@ router.route("/")
 
 
 
-// Matches with "api/routines/:id"
+// Matches with "api/stats/:id"
 router.route("/:id")
 
    // .put(statcontroller.editstat)
