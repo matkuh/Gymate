@@ -18,13 +18,13 @@ Author : [Megha](https://github.com/meghabprasad)
 
 ### Site Images
 
-<img src"images/wireframess.png" width 600 height 400>
+<img src"images/wireframess.png" width="600" height="400">
 
-<img src"images/wireframess1.png" width 600 height 400>
+<img src"images/wireframess1.png" width="600" height="400">
 
-<img src"images/wireframess2.png" width 600 height 400>
+<img src"images/wireframess2.png" width="600" height="400">
 
-<img src"images/wireframess3.png" width 600 height 400>
+<img src"images/wireframess3.png" width="600" height="600">
 
 ### Tech Used
 
