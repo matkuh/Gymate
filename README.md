@@ -16,7 +16,15 @@ Author : [Matt](https://github.com/matkuh)
 
 Author : [Megha](https://github.com/meghabprasad)
 
-### Images
+### Site Images
+
+<img src"wireframess.png" width 600 height 400>
+
+<img src"wireframess1.png" width 600 height 400>
+
+<img src"wireframess2.png" width 600 height 400>
+
+<img src"wireframess3.png" width 600 height 400>
 
 ### Tech Used
 
@@ -28,11 +36,11 @@ Author : [Megha](https://github.com/meghabprasad)
 
 3. [MySQL](https://www.mysql.com/)
 
-- MySQL is a relational database management system (RDBMS) and is considered one of the worlds most popular open source databases.
+- MySQL (structured query language) is a relational database management system (RDBMS) and is considered one of the worlds most popular open source databases.
 
 4. [Sequelize](http://docs.sequelizejs.com/)
 
-
+- Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server. It features solid transaction support, relations, eager and lazy loading, read replication and more.
 
 5. [Express](https://expressjs.com/)
 
@@ -44,6 +52,7 @@ Author : [Megha](https://github.com/meghabprasad)
 
 7. [Okta](https://www.okta.com/)
 
+- A user authentication service that allows developers to build identity controls into applications, website web services and  devices.
 - Create a file called `.env` in the project root and add the following variables, replacing the values with your own from the previous steps.
 
 `
@@ -63,7 +72,6 @@ APP_SECRET=something-random`
 
 ### How it Works
 
-<img src"wireframess.png" width 600 height 400>
 
 ### What We Learned
 
