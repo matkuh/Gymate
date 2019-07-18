@@ -549,11 +549,16 @@
             
         }
 
-        addRoutine(routineArr[routineIndex]);
 
-        // updateUserRoutine(routineArr[routineIndex], userId);
+         $.get("/api/routines/" + userId, function (data) {
+                console.log(data);
+            });
 
-        displayUserRoutine(userId);
+        // addRoutine(routineArr[routineIndex]);
+
+        // // updateUserRoutine(routineArr[routineIndex], userId);
+
+        // displayUserRoutine(userId);
 
 
 
