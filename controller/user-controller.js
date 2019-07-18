@@ -54,6 +54,7 @@ module.exports = {
 
 
 getUserEmail: function (req, res) {
+	console.log(req.params.email)
       db.User.findOne({where:{username:req.params.email}})
         .then(dbUser => res.json(dbUser))
         .catch(err => res.status(422).json(err));   

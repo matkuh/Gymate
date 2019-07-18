@@ -15,9 +15,6 @@ router.route("/:id")
 
 
 
-
- 
-
    .get(routinecontroller.getUserRoutines)
 
    .post(routinecontroller.addRoutine)
@@ -25,6 +22,9 @@ router.route("/:id")
    .delete(routinecontroller.deleteRoutine);
 
 router.route("/:id/:day")
+
+
+
   .put(routinecontroller.editUserRoutine)
   
   .put(routinecontroller.updateUserComplete);

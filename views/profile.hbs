@@ -41,9 +41,10 @@
             </ul>
             <ul class="center">
                 {{#if user}}
-                <a href="/profile">
-                    Signed in as {{user.profile.firstName}} {{user.profile.lastName}}
+                <a style="color:red" href="/logout">Sign out
                 </a>
+                {{else}}
+                <a style="color:red" href="/login">Sign in</a>
                 {{/if}}
             </ul>
             <ul class="right">
@@ -65,7 +66,7 @@
                 <div class="col s8" id="userInfo">
                     <br>
                     <h5>{{user.profile.firstName}} {{user.profile.lastName}}</h5>
-                    <h5><span id="okta-email">{{user.profile.email}}</span></h5>
+                    <h5><span data-email={{user.profile.email}} id="okta-email">{{user.profile.email}}</span></h5>
                 </div>
             </div>
         </div>
@@ -238,7 +239,7 @@
                                                 <td>Monday</td>
                                                 <td>
                                                     <div class="input-field inline">
-                                                        <input id = "monday" type="email" class="validate" required>
+                                                       <input id = "monday" type="email" class="validate" required>
                                                         <label for="email_inline">Routine Info</label>
                                                     </div>
                                                 </td>
@@ -393,15 +394,6 @@
     <script>
 
         
-        var userEmail = JSON.stringify($("#okta-email").text());
-        console.log("User Email: "+ userEmail);
-
-
-
-        var userId = 1;
-        // getUserByEmail(userEmail);
-        // console.log(userId);
-        var routineIndex = 1;
 
 
 
@@ -412,6 +404,14 @@
         //User Info Section
         // =============================================================
 
+
+
+        var userId = 1;
+        var idFromEmail;
+        var initialWeight;
+        var initialHeight;
+
+    
         function getUser(id, cb) {
             $.get("api/users/" + id).
                 then(function (data) {
@@ -421,19 +421,22 @@
         }
 
 
-
-          function getUserByEmail(email) {
-            console.log("in getUser");
-                $.get("api/users/email/" + email).
-                    then(function (data) {
-                        console.log(data);
-                        userId = data.id;
-                    });
-            };
-
-
+           function getUserByEmail(email) {
+            console.log(email);
+        $.get("api/users/email/" + email).
+            then(function (data) {
+                console.log("in get user")
+                console.log(data);
+                userId = data.id;
+            });
+    };
 
 
+    
+        idFromEmail = JSON.stringify($("#okta-email").text());
+        console.log(idFromEmail);
+        // getUserByEmail(idFromEmail);
+        console.log(userId);
 
 
 
@@ -441,7 +444,10 @@
             console.log(data);
             console.log(data.profilePhoto)
 
+
             $("#portfolioImage").attr("src", data.profilePhoto);
+                // initialWeight = data.weight;
+                // initialHeight = data.height; 
         });
 
 
@@ -449,8 +455,7 @@
 
         //Routines Section
         // =============================================================
-
-    // var Routine1 = ["Chest, Back, Shoulders, Legs, Biceps, Triceps", "Rest", "Rest", "Legs, Triceps, Biceps, Chest, Back, Shoulder", "Rest", "Shoulders, Back, Chest, Legs, Triceps, Biceps", "Rest"];
+    var routineIndex = 1;
     var Routine1 = ["3x5: Squat, Bench Press, Overhead Press", "Rest", "3x5: Squat, Bench Press, Deadlift", "Rest", "3x5: Squat, Bench Press, Overhead Press", "Rest", "Rest"];
 
     var Routine2 = ["Chest, Shoulders and Triceps", "Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
@@ -464,15 +469,12 @@
 
 
         function displayUserRoutine(user) {
-            // $.get("/api/routines/" + userId, function (data) {
-            //     for (var i = 0; i < data.length; i++) {
-            //         $("#day" + data[i].dayOfTheWeek).text(" " + data[i].routine + " ");
-            //     }
-            // });
-
-             for (var i = 0; i < Routine1.length; i++) {
-                    $("#day" + [i+1]).text(" " + Routine1[i] + " ");
+            $.get("/api/routines/" + userId, function (data) {
+                for (var i = 0; i < data.length; i++) {
+                    $("#day" + data[i].dayOfTheWeek).text(" " + data[i].routine + " ");
                 }
+            });
+
 
         }
 
@@ -497,6 +499,34 @@
             
         }
 
+ 
+
+
+         function addRoutine(routine) {
+
+                console.log(routine);
+
+                for (var i = 0; i < 7; i++) {
+                    var dailyRoutine =
+                    {
+                        dayOfTheWeek: i + 1,
+                        routine: routine[i],
+                        UserId: userId
+                    }
+
+                    $.ajax({
+                        method: "POST",
+                        url: "/api/routines/" + userId,
+                        data: dailyRoutine
+                    }).then(function (data) {
+
+                        console.log(data);
+                    });
+                }
+
+            }
+
+
         function updateUserComplete(status, day)
         {    
 
@@ -519,121 +549,11 @@
             
         }
 
-
-         function addRoutine(routine) {
-
-                console.log(routine);
-
-                for (var i = 0; i < 7; i++) {
-                    var dailyRoutine =
-                    {
-                        dayOfTheWeek: i + 1,
-                        routine: routine[i]
-                        // UserId: userId
-                    }
-
-                    $.ajax({
-                        method: "POST",
-                        url: "/api/routines/" + userId,
-                        data: dailyRoutine
-                    }).then(function (data) {
-
-                        console.log(data);
-                    });
-                }
-
-            }
-
-        // addRoutine(routineArr[routineIndex]);
+        addRoutine(routineArr[routineIndex]);
 
         // updateUserRoutine(routineArr[routineIndex], userId);
 
         displayUserRoutine(userId);
-
-
-        function addUserStat() {
-
-            var initialWeight = 150;
-            var initialHeight = 66;
-            var aggregated_hour = 0;
-
-
-            var weight = $("#weightinput").val().trim();
-            var hours = $("#timeinput").val().trim();
-
-            var poundsLoss = initialWeight - weight;
-            var bmi = weight / (initialHeight * initialHeight) * 703;
-
-
-
-
-            var newStat =
-            {
-                weight: weight,
-                hours: hours,
-                poundsLoss: poundsLoss,
-                bmi: bmi,
-                UserId: userId
-            }
-
-            // console.log(newStat);
-
-            $.ajax({
-                method: "POST",
-                url: "/api/stats/",
-                data: newStat
-            }).then(function (data) {
-                console.log(data);
-            });
-
-        };
-
-
-        function displayUserStats() {
-            $.get("/api/stats/" + userId, function (data) {
-                console.log(data);
-                console.log("in display", data);
-                console.log("weight", data[0].weight)
-                console.log("time", data[0].time);
-
-
-                for (var i = data.length - 1; i > data.length - 10; i--) {
-                    var time = data[i].time;
-                    time = time.slice(0, 10);
-                    var row = $("<tr></tr>");
-                    var element = $("<td></td>").text(time);
-                    row.append(element);
-                    element = $("<td></td>").text(data[i].weight);
-                    row.append(element);
-                    element = $("<td></td>").text(data[i].bmi);
-                    row.append(element);
-                    element = $("<td></td>").text(data[i].hours);
-                    row.append(element);
-                    element = $("<td></td>").text(data[i].poundsLossed);
-                    row.append(element);
-                    $("#statsSection").append(row);
-
-                }
-            });
-        }
-
-
-
-        $('.check').click(function () {
-
-            var day = parseInt($(this).attr("data-day"));
-            console.log("day: " + day);
-            console.log($(this).prop("checked"));
-
-           if ($(this).prop("checked")=== true)
-           {
-                updateUserComplete(true, day);
-           }
-           else
-           {
-                updateUserComplete(false, day);
-           }
-        });
 
 
 
@@ -663,10 +583,108 @@
 
             routine = [monday, tuesday, wednesday, thursday, friday, saturday, sunday];
 
-            // updateUserRoutine(routine, userId);
+            updateUserRoutine(routine, userId);
             displayUserRoutine(userId);
 
   });
+
+
+
+
+
+
+        $('.check').click(function () {
+
+            var day = parseInt($(this).attr("data-day"));
+            console.log("day: " + day);
+            console.log($(this).prop("checked"));
+
+           if ($(this).prop("checked")=== true)
+           {
+                updateUserComplete(true, day);
+           }
+           else
+           {
+                updateUserComplete(false, day);
+           }
+        });
+
+
+
+
+
+    //UserStat Section
+    // =============================================================
+            initialWeight = 150;
+            initialHeight = 66;
+            displayUserStats();
+
+
+        function addUserStat() {
+
+
+
+            var weight = $("#weightinput").val().trim();
+            var hours = $("#timeinput").val().trim();
+
+            var poundsLoss = initialWeight - weight;
+            var bmi = weight / (initialHeight * initialHeight) * 703;
+
+
+
+
+            var newStat =
+            {
+                weight: weight,
+                hours: hours,
+                poundsLoss: poundsLoss,
+                bmi: bmi,
+                UserId: userId
+            }
+
+
+
+            $.ajax({
+                method: "POST",
+                url: "/api/stats/",
+                data: newStat
+            }).then(function (data) {
+                console.log(data);
+            });
+
+        };
+
+
+        function displayUserStats() {
+            $("#statsSection").empty();
+
+            $.get("/api/stats/" + userId, function (data) {
+
+                console.log(data);
+                console.log("in display", data);
+                console.log("weight", data[0].weight)
+                console.log("time", data[0].time);
+
+
+                for (var i = data.length-1; i > 0; i--) {
+                    var time = data[i].time;
+                    time = time.slice(0, 10);
+                    var row = $("<tr></tr>");
+                    var element = $("<td></td>").text(time);
+                    row.append(element);
+                    element = $("<td></td>").text(data[i].weight);
+                    row.append(element);
+                    element = $("<td></td>").text(data[i].bmi);
+                    row.append(element);
+                    element = $("<td></td>").text(data[i].hours);
+                    row.append(element);
+                    element = $("<td></td>").text(data[i].poundsLossed);
+                    row.append(element);
+                    $("#statsSection").append(row);
+
+                }
+            });
+        }
 
 
 

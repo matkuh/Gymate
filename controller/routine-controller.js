@@ -32,6 +32,7 @@ module.exports = {
 
 
   updateUserComplete: function (req, res) {
+    console.log(req);
     db.Routine.update(
       {
         completed: req.body.completed    
@@ -62,6 +63,7 @@ module.exports = {
 
 //Add new routine for specific user
    addRoutine: function (req, res) {
+    console.log(req);
     db.Routine.create({
      dayOfTheWeek: req.body.dayOfTheWeek,
      routine: req.body.routine,

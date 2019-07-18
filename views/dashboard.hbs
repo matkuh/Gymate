@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <nav id="navi" role="navigation red" class="nav" data-email={{user.profile.email}}>
+    <nav role="navigation red" class="nav" data-email={{user.profile.email}}>
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo">
                 <img src="gm-white.png" id="logo">
@@ -208,6 +208,12 @@
 <script>
     var colors = ["red", "yellow", "green", "blue", "orange", "purple"];
     var idFromEmail;
+    var buddyId;
+    var routineIndex;
+    var selected = false;
+    var userId;
+
+
 
     function getUser(id, cb) {
         $.get("api/users/" + id).
@@ -220,7 +226,7 @@
     function getUserByEmail(email) {
         $.get("api/users/email/" + email).
             then(function (data) {
-                idFromEmail = data.id;
+               userId  = data.id;
             });
     };
 
@@ -256,16 +262,13 @@
 
     };
 
-    var buddyId;
-    var userId = 1;
-    var routineIndex;
-    var selected = false;
+    
 
     var Routine1 = ["3x5: Squat, Bench Press, Overhead Press", "Rest", "3x5: Squat, Bench Press, Deadlift", "Rest", "3x5: Squat, Bench Press, Overhead Press", "Rest", "Rest"];
-    //var Routine2 = ["Chest, Shoulders and Triceps", "Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
-    //var Routine3 = ["Chest & Back", "Legs", "Shoulders & Arms", "Rest", " Chest, Shoulders, & Triceps", "Back & Biceps", " Legs"];
-    //var Routine4 = ["Chest, Shoulders and Triceps", "Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
-    //var Routine5 = ["Chest, Shoulders and Triceps", "Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
+    var Routine2 = ["Chest, Shoulders and Triceps", "Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
+    var Routine3 = ["Chest & Back", "Legs", "Shoulders & Arms", "Rest", " Chest, Shoulders, & Triceps", "Back & Biceps", " Legs"];
+    var Routine4 = ["Chest, Shoulders and Triceps", "Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
+    var Routine5 = ["Chest, Shoulders and Triceps", "Back and Biceps", "Rest", "Legs", "Rest", "Shoulders, chest, and Triceps", "Back and Bis", "Rest"];
 
     //$(".carousel").append("<a class='carousel-item'>R1</a>");
     //$(".carousel").append("<a class='carousel-item'>R2</a>");
@@ -312,7 +315,8 @@
 
 
     $(document).ready(function () {
-        getUserByEmail($("#navi").data().email);
+        idFromEmail = JSON.stringify($("#navi").text());
+        getUserByEmail(idFromEmail);
         console.log(idFromEmail);
 
         $(".routine").click(function(){
